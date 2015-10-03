@@ -1,0 +1,10 @@
+--------------- 23-09-2015, 15:31:42 ---------------
+| DC v0.6.5 beta Rev. 6186 -- x86_64-Linux-qt4
+| Arch Linux \r (\l) -- Qt 4.8.7, libQt4Pas 4.5.3
+Unhandled exception: EAccessViolation: Access violation
+  Stack trace:
+  $00007F0191E8FB9B in /usr/lib/libQtGui.so.4
+  $00007F0191E88E5C in /usr/lib/libQtGui.so.4
+  $00007F0191EE6169 in /usr/lib/libQtGui.so.4
+  $0000000000010001 in 
+
