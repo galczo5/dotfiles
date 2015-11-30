@@ -9,26 +9,33 @@
 (package-initialize)
 
 (setq package-list '(auto-complete
-		     autopair
-		     multiple-cursors
-		     web-mode
-		     yasnippet
-		     emacs-eclim
-		     company
-		     project-explorer
-		     minimap
-		     ;;ace-jump-mode - nice, but for me useless
-		     sqlup-mode
-         expand-region
-         monokai-theme
-         rainbow-mode
-         atom-one-dark-theme
-         aurora-theme
-         latex-preview-pane
-         flyspell-popup
-         ;;helm - looks nice but I don't like it
-         smex
-         ))
+                     autopair
+                     multiple-cursors
+                     web-mode
+                     yasnippet
+                     emacs-eclim
+                     company
+                     project-explorer
+                     minimap
+                     ;;ace-jump-mode - nice, but for me useless
+                     sqlup-mode
+                     expand-region
+                     monokai-theme
+                     rainbow-mode ;; Color hexcodes
+                     atom-one-dark-theme
+                     aurora-theme
+                     latex-preview-pane
+                     flyspell-popup
+                     ;;helm - looks nice but I don't like it
+                     smex ;; ido-mode for M-x
+                     js2-mode ;; better mode for javascript
+                     emmet-mode
+                     sublime-themes
+                     auto-yasnippet
+                     aggressive-indent ;; auto indent
+                     indent-guide ;; crazy indent line
+                     impatient-mode ;; html live reload
+                     ))
 
 (dolist (package package-list)
   (unless (package-installed-p package)
@@ -49,7 +56,7 @@
 ;;Hide all bars
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
-(menu-bar-mode -1)
+;; (menu-bar-mode -1) ;;Sometimes it's usefull
 
 (set-face-attribute 'default nil :height 90)
 
@@ -61,7 +68,7 @@
 
 (global-visual-line-mode 1)
 
-(load-theme 'monokai t)
+(load-theme 'spolsky t)
 (set-default-font "Source Code Pro")
 
 (global-set-key (kbd "C-x k") 'kill-buffer-and-window)
@@ -100,6 +107,9 @@
 (require 'project-explorer)
 (global-set-key [f8] 'project-explorer-toggle)
 
+(require 'emmet-mode)
+(global-set-key (kbd "C-e") 'emmet-expand-line)
+
 ;;Web mode
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
@@ -113,6 +123,7 @@
 
 (require 'yasnippet)
 (yas-global-mode 1)
+(global-set-key (kbd "C-q") 'company-yasnippet)
 
 ;;(require 'ace-jump-mode)
 ;;    (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
@@ -126,17 +137,7 @@
 
 (require 'eclimd)
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(auth-source-save-behavior nil)
- '(eclimd-default-workspace "~/Dev/workspace-sts/")
- '(send-mail-function (quote mailclient-send-it))
- '(smtpmail-smtp-server "smtp.gmail.com")
- '(smtpmail-smtp-service 25))
-;; '(eclim-eclipse-dirs '("/opt/eclipse"))
-;; '(eclim-executable "/opt/eclipse/eclim"))
+ '(eclimd-default-workspace "~/Dev/workspace/"))
 
 (global-set-key [f9] 'eclim-maven-run)
 
@@ -186,3 +187,11 @@
 (setq ispell-program-name "hunspell"
       ispell-dictionary   "pl_PL")
 
+
+(require 'auto-yasnippet)
+(global-aggressive-indent-mode 1)
+
+(require 'indent-guide)
+(indent-guide-global-mode)
+
+(require 'impatient-mode)
