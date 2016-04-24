@@ -1,10 +1,11 @@
+
+  #define mod keys
   set $mod Mod1
   set $alt Mod1
-  set $ctrl Mod4
+  set $win Mod4
 
+  # set font
   font pango: Source Sans Pro 10
-
-  hide_edge_borders both
 
   floating_modifier $mod
 
@@ -14,7 +15,7 @@
   # kill focused window
   bindsym $mod+Shift+q kill
 
-  bindsym $ctrl+l exec "i3lock"
+  bindsym $win+l exec "i3lock"
 
   bindsym Print exec scrot
   bindsym $alt+Print exec scrot -u
@@ -51,6 +52,7 @@
   # focus the parent container
   bindsym $mod+a focus parent
 
+  # workspace names
   set $workspace1 "  1. home"
   set $workspace2 "  2. development"
   set $workspace3 "  3. tools"
@@ -86,6 +88,7 @@
   bindsym $mod+Shift+9 move container to workspace $workspace9
   bindsym $mod+Shift+0 move container to workspace $workspace10
 
+  # set workspace output
   workspace $workspace1 output DVI-I-1
   workspace $workspace2 output DVI-I-1
   workspace $workspace3 output DVI-I-1
@@ -117,12 +120,14 @@
 
   bindsym $mod+r mode "resize"
 
+  # define colors
   set $bg-color 	          #2f343f
   set $inactive-bg-color    #2f343f
   set $text-color           #f3f4f5
   set $inactive-text-color  #676E7D
   set $urgent-bg-color      #2f343f
 
+  # configure rofi
   bindsym $alt+space exec rofi -show run -lines 3 -eh 2 -width 100 -fullscreen -padding 300 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "Source Sans Pro 18"
     
   bar {
@@ -136,7 +141,6 @@
       active_workspace    #6c71c4 #6c71c4 #ffffff
       inactive_workspace  #002b36 #002b36 #fdf6e3
       urgent_workspace    #002b36 #002b36 #fdf6e3
-    
     }
   }
     
@@ -146,5 +150,10 @@
   client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #00ff00
   client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
 
-  exec --no-startup-id compton --config ~/.config/compton.conf
+  gaps inner 10
+  smart_gaps on
+  smart_borders on
+  
+  
+  exec --no-startup-id compton --config ~/.config/i3/compton.conf
   exec --no-startup-id redshift
