@@ -8,14 +8,17 @@
   font pango: Source Sans Pro 10
 
   floating_modifier $mod
-
+  new_window pixel 1
+  new_float pixel 1
+  hide_edge_borders both
+  
   # start a terminal
   bindsym $mod+Return exec i3-sensible-terminal
 
   # kill focused window
   bindsym $mod+Shift+q kill
 
-  bindsym $win+l exec "i3lock"
+  bindsym $win+l exec ~/.config/i3/i3lock-fancy-multimonitor/lock
 
   bindsym Print exec scrot
   bindsym $alt+Print exec scrot -u
@@ -53,16 +56,16 @@
   bindsym $mod+a focus parent
 
   # workspace names
-  set $workspace1 "  1. home"
-  set $workspace2 "  2. development"
-  set $workspace3 "  3. tools"
+  set $workspace1 "  1. home"
+  set $workspace2 "  2. development"
+  set $workspace3 "  3. tools"
   set $workspace4 "  4. workspace"
   set $workspace5 "  5. workspace"
   set $workspace6 "  6. workspace"
   set $workspace7 "  7. workspace"
   set $workspace8 "  8. workspace"
   set $workspace9 "  9. workspace"
-  set $workspace10 " 10. media"
+  set $workspace10 " 10. media"
 
   # switch to workspace
   bindsym $mod+1 workspace $workspace1
@@ -128,11 +131,17 @@
   set $urgent-bg-color      #2f343f
 
   # configure rofi
-  bindsym $alt+space exec rofi -show run -lines 3 -eh 2 -width 100 -fullscreen -padding 300 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "Source Sans Pro 18"
+  bindsym $alt+space exec rofi -show run -lines 3 -eh 2 -width 100 -fullscreen -padding 300 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "Source Sans Pro 24"
     
   bar {
+    mode hide
+    hidden_state hide
+    modifier Mod1
+  
     position top
-    status_command i3blocks -c ~/.config/i3/i3blocks.conf
+    #status_command i3blocks -c ~/.config/i3/i3blocks.conf
+    status_command i3status
+    
     colors {
       separator   #268bd2
       background  #002b36
@@ -151,9 +160,9 @@
   client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #00ff00
 
   gaps inner 10
-  smart_gaps on
-  smart_borders on
+  gaps outer 15
+  #smart_gaps on
   
   
-  exec --no-startup-id compton --config ~/.config/i3/compton.conf
+  exec --no-startup-id compton
   exec --no-startup-id redshift
