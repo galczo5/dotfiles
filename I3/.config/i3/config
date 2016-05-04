@@ -8,12 +8,12 @@
   font pango: Source Sans Pro 10
 
   floating_modifier $mod
+  #hide_edge_borders both
   new_window pixel 1
-  new_float pixel 1
-  hide_edge_borders both
+  new_float normal 1
   
   # start a terminal
-  bindsym $mod+Return exec i3-sensible-terminal
+  bindsym $mod+Return exec xfce4-terminal
 
   # kill focused window
   bindsym $mod+Shift+q kill
@@ -56,15 +56,15 @@
   bindsym $mod+a focus parent
 
   # workspace names
-  set $workspace1 "  1. home"
-  set $workspace2 "  2. development"
-  set $workspace3 "  3. tools"
-  set $workspace4 "  4. workspace"
-  set $workspace5 "  5. workspace"
-  set $workspace6 "  6. workspace"
-  set $workspace7 "  7. workspace"
-  set $workspace8 "  8. workspace"
-  set $workspace9 "  9. workspace"
+  set $workspace1  "  1. home"
+  set $workspace2  "  2. development"
+  set $workspace3  "  3. tools"
+  set $workspace4  "  4. workspace"
+  set $workspace5  "  5. workspace"
+  set $workspace6  "  6. workspace"
+  set $workspace7  "  7. workspace"
+  set $workspace8  "  8. workspace"
+  set $workspace9  "  9. workspace"
   set $workspace10 " 10. media"
 
   # switch to workspace
@@ -124,23 +124,23 @@
   bindsym $mod+r mode "resize"
 
   # define colors
-  set $bg-color 	          #2f343f
+  set $bg-color 	    #2f343f
   set $inactive-bg-color    #2f343f
   set $text-color           #f3f4f5
   set $inactive-text-color  #676E7D
   set $urgent-bg-color      #2f343f
 
   # configure rofi
-  bindsym $alt+space exec rofi -show run -lines 3 -eh 2 -width 100 -fullscreen -padding 300 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "Source Sans Pro 24"
+  bindsym $alt+space exec rofi -show run -color-enabled -lines 3 -eh 2 -font "Source Sans Pro 18" -opacity "80" -bg "#2f343f" -fg "#f3f4f5" -hide-scrollbar -regex
     
   bar {
     mode hide
     hidden_state hide
-    modifier Mod1
+    modifier $mod
   
     position top
-    #status_command i3blocks -c ~/.config/i3/i3blocks.conf
-    status_command i3status
+    status_command i3blocks -c ~/.config/i3/i3blocks.conf
+    #status_command i3status
     
     colors {
       separator   #268bd2
@@ -164,5 +164,8 @@
   #smart_gaps on
   
   
-  exec --no-startup-id compton
+  #exec --no-startup-id compton --config ~/.config/i3/compton.conf
   exec --no-startup-id redshift
+  exec --no-startup-id nitrogen --restore
+  exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+  exec --no-startup-id setxkbmap pl
