@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<doublecmd DCVersion="0.6.5 beta">
-  <Hotkeys Version="20">
+<doublecmd DCVersion="0.7.1 beta">
+  <Hotkeys Version="23">
     <Form Name="Main">
       <Hotkey>
         <Shortcut>F1</Shortcut>
@@ -264,6 +264,26 @@
         <Command>cm_TestArchive</Command>
       </Hotkey>
       <Hotkey>
+        <Shortcut>Ctrl+Down</Shortcut>
+        <Command>cm_ShowCmdLineHistory</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Alt+Down</Shortcut>
+        <Command>cm_DirHistory</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+O</Shortcut>
+        <Command>cm_ToggleFullscreenConsole</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Ctrl+Shift+F8</Shortcut>
+        <Command>cm_TreeView</Command>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Shift+F12</Shortcut>
+        <Command>cm_DoAnyCmCommand</Command>
+      </Hotkey>
+      <Hotkey>
         <Shortcut>Del</Shortcut>
         <Command>cm_Delete</Command>
         <Control>Files Panel</Control>
@@ -342,6 +362,11 @@
       <Hotkey>
         <Shortcut>Ctrl+Right</Shortcut>
         <Command>cm_TransferRight</Command>
+        <Control>Files Panel</Control>
+      </Hotkey>
+      <Hotkey>
+        <Shortcut>Shift+Tab</Shortcut>
+        <Command>cm_NextGroup</Command>
         <Control>Files Panel</Control>
       </Hotkey>
     </Form>

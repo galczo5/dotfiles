@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<doublecmd DCVersion="0.6.5 beta" ConfigVersion="7">
+<doublecmd DCVersion="0.7.2 beta" ConfigVersion="9">
   <Configuration Save="True" SortOrder="0">
     <UseConfigInProgramDir>False</UseConfigInProgramDir>
   </Configuration>
@@ -44,6 +44,12 @@
       <BackColor>16777215</BackColor>
       <UseGradient>True</UseGradient>
     </FreeSpaceIndicator>
+    <UseCursorBorder>False</UseCursorBorder>
+    <CursorBorderColor>-2147483635</CursorBorderColor>
+    <InactiveCursor>-2147483645</InactiveCursor>
+    <InactiveMark>128</InactiveMark>
+    <UseInactiveSelColor>False</UseInactiveSelColor>
+    <AllowOverColor>True</AllowOverColor>
   </Colors>
   <Plugins>
     <WlxPlugins>
@@ -58,12 +64,12 @@
       <WcxPlugin Enabled="True">
         <ArchiveExt>zip</ArchiveExt>
         <Path>%commander_path%/plugins/wcx/zip/zip.wcx</Path>
-        <Flags>607</Flags>
+        <Flags>735</Flags>
       </WcxPlugin>
       <WcxPlugin Enabled="True">
         <ArchiveExt>tar</ArchiveExt>
         <Path>%commander_path%/plugins/wcx/zip/zip.wcx</Path>
-        <Flags>95</Flags>
+        <Flags>223</Flags>
       </WcxPlugin>
       <WcxPlugin Enabled="True">
         <ArchiveExt>bz2</ArchiveExt>
@@ -108,7 +114,7 @@
       <WcxPlugin Enabled="True">
         <ArchiveExt>zipx</ArchiveExt>
         <Path>%commander_path%/plugins/wcx/zip/zip.wcx</Path>
-        <Flags>84</Flags>
+        <Flags>212</Flags>
       </WcxPlugin>
       <WcxPlugin Enabled="True">
         <ArchiveExt>cpio</ArchiveExt>
@@ -261,8 +267,12 @@
   </Language>
   <Behaviours>
     <GoToRoot>False</GoToRoot>
-    <RunInTerminal>xterm -e sh -c</RunInTerminal>
-    <RunTerminal>xfce4-terminal</RunTerminal>
+    <RunInTerminalStayOpenCmd>urxvt</RunInTerminalStayOpenCmd>
+    <RunInTerminalStayOpenParams/>
+    <RunInTerminalCloseCmd>urxvt</RunInTerminalCloseCmd>
+    <RunInTerminalCloseParams/>
+    <JustRunTerminal>urxvt</JustRunTerminal>
+    <JustRunTermParams/>
     <OnlyOneAppInstance>False</OnlyOneAppInstance>
     <LynxLike>True</LynxLike>
     <FileSizeFormat>0</FileSizeFormat>
@@ -277,10 +287,11 @@
     </Mouse>
     <AutoFillColumns>False</AutoFillColumns>
     <AutoSizeColumn>1</AutoSizeColumn>
+    <CustomColumnsChangeAllColumns>False</CustomColumnsChangeAllColumns>
     <BriefViewFileExtAligned>False</BriefViewFileExtAligned>
     <DateTimeFormat>dd/mm/yy</DateTimeFormat>
     <CutTextToColumnWidth>True</CutTextToColumnWidth>
-    <ShowSystemFiles>False</ShowSystemFiles>
+    <ShowSystemFiles>True</ShowSystemFiles>
     <ListFilesInThread>True</ListFilesInThread>
     <LoadIconsSeparately>True</LoadIconsSeparately>
     <DelayLoadingTabs>True</DelayLoadingTabs>
@@ -314,30 +325,41 @@
       <Name>default</Name>
       <Size>10</Size>
       <Style>1</Style>
+      <Quality>0</Quality>
     </Main>
     <Editor>
       <Name>Monospace</Name>
       <Size>14</Size>
       <Style>0</Style>
+      <Quality>0</Quality>
     </Editor>
     <Viewer>
       <Name>Monospace</Name>
       <Size>14</Size>
       <Style>0</Style>
+      <Quality>0</Quality>
     </Viewer>
     <Log>
       <Name>Monospace</Name>
       <Size>12</Size>
       <Style>0</Style>
+      <Quality>0</Quality>
     </Log>
     <ViewerBook>
       <Name>default</Name>
       <Size>16</Size>
       <Style>1</Style>
+      <Quality>0</Quality>
     </ViewerBook>
+    <Console>
+      <Name>Monospace</Name>
+      <Size>12</Size>
+      <Style>0</Style>
+      <Quality>0</Quality>
+    </Console>
   </Fonts>
   <ToolTips>
-    <ShowToolTipMode>1</ShowToolTipMode>
+    <ShowToolTipMode>True</ShowToolTipMode>
     <CustomFields/>
   </ToolTips>
   <Layout>
@@ -356,6 +378,7 @@
       <ShowFileSystem>True</ShowFileSystem>
       <ShowFreeSpace>True</ShowFreeSpace>
     </DrivesListButton>
+    <SeparateTree>False</SeparateTree>
     <DirectoryTabs>True</DirectoryTabs>
     <CurrentDirectory>True</CurrentDirectory>
     <TabHeader>True</TabHeader>
@@ -380,6 +403,18 @@
       <NewFilesPosition>2</NewFilesPosition>
       <UpdatedFilesPosition>2</UpdatedFilesPosition>
     </Sorting>
+    <ColumnsView>
+      <AutoSaveWidth>True</AutoSaveWidth>
+      <TitleStyle>1</TitleStyle>
+    </ColumnsView>
+    <BriefView>
+      <FileExtAligned>False</FileExtAligned>
+      <Columns>
+        <FixedWidth>100</FixedWidth>
+        <FixedCount>2</FixedCount>
+        <AutoSize>2</AutoSize>
+      </Columns>
+    </BriefView>
   </FilesViews>
   <Keyboard>
     <Typing>
@@ -425,10 +460,13 @@
       <CopyAttributes>True</CopyAttributes>
       <CopyTime>True</CopyTime>
       <CopyOwnership>True</CopyOwnership>
+      <CopyPermissions>False</CopyPermissions>
     </Options>
+    <HashBufferSize>8388608</HashBufferSize>
+    <SearchDefaultTemplate/>
   </FileOperations>
   <Tabs>
-    <Options>785</Options>
+    <Options>54033</Options>
     <CharacterLimit>32</CharacterLimit>
     <Position>0</Position>
     <OpenedTabs>
@@ -440,54 +478,47 @@
               <Entry Active="True">
                 <FileSource Type="FileSystem"/>
                 <Paths>
+                  <Path Filename="sizeTableDialogController.js">/home/kamil/Dev/kkbsport/src/main/resources/public/scripts/controllers/admin/</Path>
+                  <Path Filename="..">/media/</Path>
+                  <Path Filename="home">/</Path>
+                  <Path Filename="kamil">/home/</Path>
+                  <Path Filename=".config">/home/kamil/</Path>
+                  <Path Filename="cairo-compmgr">/home/kamil/.config/</Path>
+                  <Path Filename=".cache">/home/kamil/</Path>
+                  <Path Filename="gstreamer-1.0">/home/kamil/.cache/</Path>
+                  <Path Filename=".cache">/home/kamil/</Path>
+                  <Path Filename="..">/home/kamil/.cache/</Path>
+                  <Path Filename=".config">/home/kamil/</Path>
+                  <Path Filename="..">/home/kamil/.config/</Path>
+                  <Path Filename="">/home/kamil/</Path>
+                  <Path Filename=".android">./</Path>
+                  <Path Filename="Downloads">/home/kamil/</Path>
+                  <Path Filename="">/home/kamil/Downloads/</Path>
+                  <Path Filename=".android">./</Path>
+                  <Path Filename="Downloads">/home/kamil/</Path>
+                  <Path Filename="elementaryos-0.4-beta-amd64.20160613.iso">/home/kamil/Downloads/</Path>
                   <Path Filename="Dev">/home/kamil/</Path>
-                  <Path Filename="..">/home/kamil/Dev/</Path>
-                  <Path Filename="Dev">/home/kamil/</Path>
-                  <Path Filename="workspace-sts">/home/kamil/Dev/</Path>
-                  <Path Filename="GATI">/home/kamil/Dev/workspace-sts/</Path>
-                  <Path Filename="GATI">/home/kamil/Dev/workspace-sts/GATI/</Path>
-                  <Path Filename="src">/home/kamil/Dev/workspace-sts/GATI/GATI/</Path>
-                  <Path Filename="main">/home/kamil/Dev/workspace-sts/GATI/GATI/src/</Path>
-                  <Path Filename="java">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/</Path>
-                  <Path Filename="pl">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/java/</Path>
-                  <Path Filename="wat">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/java/pl/</Path>
-                  <Path Filename="gati">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/java/pl/wat/</Path>
-                  <Path Filename="..">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/java/pl/wat/gati/</Path>
-                  <Path Filename="..">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/java/pl/wat/</Path>
-                  <Path Filename="..">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/java/pl/</Path>
-                  <Path Filename="..">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/java/</Path>
-                  <Path Filename="webapp">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/</Path>
-                  <Path Filename="resources">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/webapp/</Path>
-                  <Path Filename="..">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/webapp/resources/</Path>
-                  <Path Filename="WEB-INF">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/webapp/</Path>
-                  <Path Filename="..">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/webapp/WEB-INF/</Path>
-                  <Path Filename="resources">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/webapp/</Path>
-                  <Path Filename="..">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/webapp/resources/</Path>
-                  <Path Filename="WEB-INF">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/webapp/</Path>
-                  <Path Filename="views">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/webapp/WEB-INF/</Path>
-                  <Path Filename="rolegroups">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/webapp/WEB-INF/views/</Path>
-                  <Path Filename="..">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/webapp/WEB-INF/views/rolegroups/</Path>
-                  <Path Filename="..">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/webapp/WEB-INF/views/</Path>
-                  <Path Filename="..">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/webapp/WEB-INF/</Path>
-                  <Path Filename="..">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/webapp/</Path>
-                  <Path Filename="resources">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/</Path>
-                  <Path Filename="..">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/resources/</Path>
-                  <Path Filename="java">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/</Path>
-                  <Path Filename="..">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/java/</Path>
-                  <Path Filename="..">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/</Path>
-                  <Path Filename="..">/home/kamil/Dev/workspace-sts/GATI/GATI/src/</Path>
-                  <Path Filename="..">/home/kamil/Dev/workspace-sts/GATI/GATI/</Path>
-                  <Path Filename="..">/home/kamil/Dev/workspace-sts/GATI/</Path>
-                  <Path Filename="GATI">/home/kamil/Dev/workspace-sts/</Path>
-                  <Path Filename="GATI">/home/kamil/Dev/workspace-sts/GATI/</Path>
-                  <Path Filename="target">/home/kamil/Dev/workspace-sts/GATI/GATI/</Path>
-                  <Path Filename="classes">/home/kamil/Dev/workspace-sts/GATI/GATI/target/</Path>
-                  <Path Filename="..">/home/kamil/Dev/workspace-sts/GATI/GATI/target/classes/</Path>
-                  <Path Filename="..">/home/kamil/Dev/workspace-sts/GATI/GATI/target/</Path>
-                  <Path Filename="src">/home/kamil/Dev/workspace-sts/GATI/GATI/</Path>
-                  <Path Filename="..">/home/kamil/Dev/workspace-sts/GATI/GATI/src/</Path>
-                  <Path Filename="..">/home/kamil/Dev/workspace-sts/GATI/GATI/</Path>
-                  <Path Filename="">/home/kamil/Dev/workspace-sts/GATI/</Path>
+                  <Path Filename="kkbsport">/home/kamil/Dev/</Path>
+                  <Path Filename="src">/home/kamil/Dev/kkbsport/</Path>
+                  <Path Filename="test">/home/kamil/Dev/kkbsport/src/</Path>
+                  <Path Filename="..">/home/kamil/Dev/kkbsport/src/test/</Path>
+                  <Path Filename="main">/home/kamil/Dev/kkbsport/src/</Path>
+                  <Path Filename="resources">/home/kamil/Dev/kkbsport/src/main/</Path>
+                  <Path Filename="public">/home/kamil/Dev/kkbsport/src/main/resources/</Path>
+                  <Path Filename="js">/home/kamil/Dev/kkbsport/src/main/resources/public/</Path>
+                  <Path Filename="..">/home/kamil/Dev/kkbsport/src/main/resources/public/js/</Path>
+                  <Path Filename="scripts">/home/kamil/Dev/kkbsport/src/main/resources/public/</Path>
+                  <Path Filename="..">/home/kamil/Dev/kkbsport/src/main/resources/public/scripts/</Path>
+                  <Path Filename="loginController.js">/home/kamil/Dev/kkbsport/src/main/resources/public/scripts/controllers/</Path>
+                  <Path Filename="controllers">/home/kamil/Dev/kkbsport/src/main/resources/public/scripts/</Path>
+                  <Path Filename="scripts">/home/kamil/Dev/kkbsport/src/main/resources/public/</Path>
+                  <Path Filename="public">/home/kamil/Dev/kkbsport/src/main/resources/</Path>
+                  <Path Filename="resources">/home/kamil/Dev/kkbsport/src/main/</Path>
+                  <Path Filename="main">/home/kamil/Dev/kkbsport/src/</Path>
+                  <Path Filename="src">/home/kamil/Dev/kkbsport/</Path>
+                  <Path Filename="kkbsport">/home/kamil/Dev/</Path>
+                  <Path Filename="">/home/kamil/</Path>
+                  <Path Filename="">./</Path>
                 </Paths>
               </Entry>
             </History>
@@ -495,9 +526,6 @@
               <ColumnsSet>Default</ColumnsSet>
             </ColumnsView>
           </FileView>
-          <Options>1</Options>
-          <LockPath>/home/kamil/Dev/workspace-sts/GATI/</LockPath>
-          <Title>GATI</Title>
         </Tab>
         <Tab>
           <FileView Type="columns">
@@ -505,56 +533,54 @@
               <Entry Active="True">
                 <FileSource Type="FileSystem"/>
                 <Paths>
-                  <Path Filename="controller">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/java/pl/wat/gati/</Path>
-                  <Path Filename="exception">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/java/pl/wat/gati/controller/</Path>
-                  <Path Filename="..">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/java/pl/wat/gati/controller/exception/</Path>
-                  <Path Filename="..">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/java/pl/wat/gati/controller/</Path>
-                  <Path Filename="controller">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/java/pl/wat/gati/</Path>
-                  <Path Filename="exception">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/java/pl/wat/gati/controller/</Path>
-                  <Path Filename="..">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/java/pl/wat/gati/controller/exception/</Path>
-                  <Path Filename="..">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/java/pl/wat/gati/controller/</Path>
-                  <Path Filename="utils">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/java/pl/wat/gati/</Path>
-                  <Path Filename="gati">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/java/pl/wat/</Path>
-                  <Path Filename="wat">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/java/pl/</Path>
-                  <Path Filename="pl">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/java/</Path>
-                  <Path Filename="java">/home/kamil/Dev/workspace-sts/GATI/GATI/src/main/</Path>
-                  <Path Filename="main">/home/kamil/Dev/workspace-sts/GATI/GATI/src/</Path>
-                  <Path Filename="src">/home/kamil/Dev/workspace-sts/GATI/GATI/</Path>
-                  <Path Filename="..">/home/kamil/Dev/workspace-sts/GATI/</Path>
-                  <Path Filename="..">/home/kamil/Dev/workspace-sts/</Path>
-                  <Path Filename="..">/home/kamil/Dev/</Path>
-                  <Path Filename="Dokumenty">/home/kamil/</Path>
-                  <Path Filename="..">/home/kamil/Dokumenty/</Path>
-                  <Path Filename="Dokumenty">/home/kamil/</Path>
-                  <Path Filename="..">/home/kamil/Dokumenty/</Path>
-                  <Path Filename="workbench.xmi">/home/kamil/</Path>
-                  <Path Filename="compiz">/home/kamil/.config/</Path>
-                  <Path Filename="..">/run/</Path>
+                  <Path Filename="scripts">/home/kamil/Dev/kkbsport/src/main/resources/public/</Path>
+                  <Path Filename="..">/home/kamil/Dev/kkbsport/src/main/resources/public/scripts/</Path>
+                  <Path Filename="loginController.js">/home/kamil/Dev/kkbsport/src/main/resources/public/scripts/controllers/</Path>
+                  <Path Filename="controllers">/home/kamil/Dev/kkbsport/src/main/resources/public/scripts/</Path>
+                  <Path Filename="scripts">/home/kamil/Dev/kkbsport/src/main/resources/public/</Path>
+                  <Path Filename="public">/home/kamil/Dev/kkbsport/src/main/resources/</Path>
+                  <Path Filename="resources">/home/kamil/Dev/kkbsport/src/main/</Path>
+                  <Path Filename="main">/home/kamil/Dev/kkbsport/src/</Path>
+                  <Path Filename="src">/home/kamil/Dev/kkbsport/</Path>
+                  <Path Filename="kkbsport">/home/kamil/Dev/</Path>
+                  <Path Filename="">/home/kamil/</Path>
+                  <Path Filename=".android">./</Path>
+                  <Path Filename="..">/home/kamil/Dev/kkbsport/src/main/resources/templates/</Path>
+                  <Path Filename="public">/home/kamil/Dev/kkbsport/src/main/resources/</Path>
+                  <Path Filename="views">/home/kamil/Dev/kkbsport/src/main/resources/public/</Path>
+                  <Path Filename="shared">/home/kamil/Dev/kkbsport/src/main/resources/public/views/</Path>
+                  <Path Filename="views">/home/kamil/Dev/kkbsport/src/main/resources/public/</Path>
+                  <Path Filename="public">/home/kamil/Dev/kkbsport/src/main/resources/</Path>
+                  <Path Filename="resources">/home/kamil/Dev/kkbsport/src/main/</Path>
+                  <Path Filename="main">/home/kamil/Dev/kkbsport/src/</Path>
+                  <Path Filename="src">/home/kamil/Dev/kkbsport/</Path>
+                  <Path Filename="kkbsport">/home/kamil/Dev/</Path>
+                  <Path Filename="Downloads">/home/kamil/</Path>
+                  <Path Filename="northern-lights-1250561.jpg">/home/kamil/Downloads/</Path>
+                  <Path Filename=".config">/home/kamil/</Path>
+                  <Path Filename="i3">/home/kamil/.config/</Path>
+                  <Path Filename="i3blocks.conf">/home/kamil/.config/i3/</Path>
+                  <Path Filename="i3">/home/kamil/.config/</Path>
+                  <Path Filename="Downloads">/home/kamil/</Path>
+                  <Path Filename="sky-992444.jpg">/home/kamil/Downloads/</Path>
+                  <Path Filename="Desktop">/home/kamil/</Path>
+                  <Path Filename="lqb6c738fced4fa6d51fdbf205ff2814a9.mp4">/home/kamil/Desktop/</Path>
+                  <Path Filename="Obrazy">/home/kamil/</Path>
+                  <Path Filename="backgrounds">/home/kamil/Obrazy/</Path>
+                  <Path Filename="..">/home/kamil/Obrazy/backgrounds/</Path>
+                  <Path Filename="..">/home/kamil/Obrazy/</Path>
+                  <Path Filename="Downloads">/home/kamil/</Path>
+                  <Path Filename="..">/home/kamil/Downloads/</Path>
+                  <Path Filename="dbus">/run/</Path>
                   <Path Filename="home">/</Path>
                   <Path Filename="kamil">/home/</Path>
-                  <Path Filename="Pobrane">/home/kamil/</Path>
-                  <Path Filename="..">/home/kamil/Pobrane/</Path>
-                  <Path Filename="Pobrane">/home/kamil/</Path>
-                  <Path Filename="..">/home/kamil/Pobrane/</Path>
-                  <Path Filename="Dropbox">/home/kamil/</Path>
-                  <Path Filename="CV">/home/kamil/Dropbox/</Path>
-                  <Path Filename="cv.tex">/home/kamil/Dropbox/CV/</Path>
-                  <Path Filename="CV">/home/kamil/Dropbox/</Path>
-                  <Path Filename="cv.pdf">/home/kamil/Dropbox/CV/</Path>
-                  <Path Filename="CV">/home/kamil/Dropbox/</Path>
-                  <Path Filename="Dropbox">/home/kamil/</Path>
-                  <Path Filename="kamil">/home/</Path>
-                  <Path Filename="run">/</Path>
-                  <Path Filename="dmeventd-client">/run/</Path>
-                  <Path Filename="run">/</Path>
-                  <Path Filename="laptop-mode-tools">/run/</Path>
-                  <Path Filename="..">/run/laptop-mode-tools/</Path>
-                  <Path Filename="mount">/run/</Path>
-                  <Path Filename="..">/run/mount/</Path>
-                  <Path Filename="..">/run/</Path>
-                  <Path Filename="home">/</Path>
-                  <Path Filename="kamil">/home/</Path>
-                  <Path Filename="workbench.xmi">/home/kamil/</Path>
+                  <Path Filename="Desktop">/home/kamil/</Path>
+                  <Path Filename="..">/home/kamil/Desktop/</Path>
+                  <Path Filename="Downloads">/home/kamil/</Path>
+                  <Path Filename="Me.Before.You.2016.720p.HC.WEBRip.x264.AAC2.0-STUTTERSHIT[EtHD]">/home/kamil/Downloads/</Path>
+                  <Path Filename="..">/home/kamil/Downloads/Me.Before.You.2016.720p.HC.WEBRip.x264.AAC2.0-STUTTERSHIT[EtHD]/</Path>
+                  <Path Filename="Me.Before.You.2016.720p.HC.WEBRip.x264.AAC2.0-STUTTERSHIT[EtHD]">/home/kamil/Downloads/</Path>
+                  <Path Filename=".vim">/home/kamil/</Path>
                 </Paths>
               </Entry>
             </History>
@@ -578,33 +604,32 @@
               <Entry Active="True">
                 <FileSource Type="FileSystem"/>
                 <Paths>
-                  <Path Filename="NetworkManager">/run/</Path>
+                  <Path Filename="kkbsport">/home/kamil/Dev/</Path>
+                  <Path Filename="target">/home/kamil/Dev/kkbsport/</Path>
+                  <Path Filename="..">/home/kamil/Dev/kkbsport/target/</Path>
+                  <Path Filename="src">/home/kamil/Dev/kkbsport/</Path>
+                  <Path Filename="main">/home/kamil/Dev/kkbsport/src/</Path>
+                  <Path Filename="resources">/home/kamil/Dev/kkbsport/src/main/</Path>
+                  <Path Filename="templates">/home/kamil/Dev/kkbsport/src/main/resources/</Path>
+                  <Path Filename="..">/home/kamil/Dev/kkbsport/src/main/resources/templates/</Path>
+                  <Path Filename="templates">/home/kamil/Dev/kkbsport/src/main/resources/</Path>
+                  <Path Filename="resources">/home/kamil/Dev/kkbsport/src/main/</Path>
+                  <Path Filename="main">/home/kamil/Dev/kkbsport/src/</Path>
+                  <Path Filename="src">/home/kamil/Dev/kkbsport/</Path>
+                  <Path Filename="kkbsport">/home/kamil/Dev/</Path>
+                  <Path Filename="Obrazy">/home/kamil/</Path>
+                  <Path Filename="backgrounds">/home/kamil/Obrazy/</Path>
+                  <Path Filename="..">/home/kamil/Obrazy/backgrounds/</Path>
+                  <Path Filename="..">/run/</Path>
                   <Path Filename="home">/</Path>
                   <Path Filename="kamil">/home/</Path>
-                  <Path Filename="Pobrane">/home/kamil/</Path>
-                  <Path Filename="..">/home/kamil/Pobrane/</Path>
                   <Path Filename="Obrazy">/home/kamil/</Path>
-                  <Path Filename="..">/home/kamil/Obrazy/</Path>
-                  <Path Filename="Obrazy">/home/kamil/</Path>
-                  <Path Filename="wallpapers">/home/kamil/Obrazy/</Path>
-                  <Path Filename="xenlism-wildfire-2560x1600.png">/home/kamil/Obrazy/wallpapers/</Path>
-                  <Path Filename="logo.svg">/home/kamil/Obrazy/</Path>
-                  <Path Filename="..">/home/kamil/</Path>
-                  <Path Filename="..">/home/</Path>
-                  <Path Filename="home">/</Path>
-                  <Path Filename="kamil">/home/</Path>
-                  <Path Filename="Desktop">/home/kamil/</Path>
-                  <Path Filename="..">/home/kamil/Desktop/</Path>
-                  <Path Filename="Dev">/home/kamil/</Path>
-                  <Path Filename="workspace-sts">/home/kamil/Dev/</Path>
-                  <Path Filename="eclimd.log">/home/kamil/Dev/workspace-sts/</Path>
-                  <Path Filename="workspace-sts">/home/kamil/Dev/</Path>
-                  <Path Filename="Dev">/home/kamil/</Path>
-                  <Path Filename="kamil">/home/</Path>
-                  <Path Filename="Pobrane">/home/kamil/</Path>
-                  <Path Filename="Baśka robi API do aplikacji - How not to make API [Polish].srt">/home/kamil/Pobrane/</Path>
-                  <Path Filename="Obrazy">/home/kamil/</Path>
-                  <Path Filename="linux-gnu-2052x1540-wallpaper-629739.jpg">/home/kamil/Obrazy/</Path>
+                  <Path Filename="rFdkHdI.jpg">/home/kamil/Obrazy/</Path>
+                  <Path Filename="..">/run/</Path>
+                  <Path Filename="..">/usr/lib/doublecmd/</Path>
+                  <Path Filename="nscd">/run/</Path>
+                  <Path Filename="Downloads">/home/kamil/</Path>
+                  <Path Filename="Wells Jaye - cykl Sabine Kane   Watt-Evans L. - cykl Legendy Ethshar mobi epub pdf.rar">/home/kamil/Downloads/</Path>
                 </Paths>
               </Entry>
             </History>
@@ -615,6 +640,7 @@
         </Tab>
       </Right>
     </OpenedTabs>
+    <ActionOnDoubleClick>1</ActionOnDoubleClick>
   </Tabs>
   <Log Enabled="False" LogFileWithDateInName="False">
     <FileName>/home/kamil/.config/doublecmd/doublecmd.log</FileName>
@@ -634,6 +660,7 @@
   </QuickSearch>
   <QuickFilter>
     <AutoHide>True</AutoHide>
+    <SaveSessionModifications>False</SaveSessionModifications>
   </QuickFilter>
   <Miscellaneous>
     <GridVertLine>False</GridVertLine>
@@ -688,6 +715,8 @@
     <BackgroundColor>0</BackgroundColor>
     <FontColor>16777215</FontColor>
     <TextPosition>0</TextPosition>
+    <ImageStretchLargeOnly>False</ImageStretchLargeOnly>
+    <ImageCenter>True</ImageCenter>
   </Viewer>
   <SyncDirs>
     <Subdirs>False</Subdirs>
@@ -708,8 +737,8 @@
   <LastUsedPacker>zip</LastUsedPacker>
   <UseShellForFileOperations>False</UseShellForFileOperations>
   <SearchTemplates/>
-  <ColumnsSets>
-    <ColumnsSet>
+  <ColumnsSets DefaultTitleHash="0">
+    <ColumnsSet UseFrameCursor="False">
       <Name>Default</Name>
       <CustomView>False</CustomView>
       <CursorBorder Enabled="False">
@@ -719,20 +748,25 @@
         <Column>
           <Title>Nazwa</Title>
           <FuncString>[DC().GETFILENAMENOEXT{}]</FuncString>
-          <Width>250</Width>
+          <Width>436</Width>
           <Align>0</Align>
           <Font>
             <Name>default</Name>
             <Size>10</Size>
             <Style>1</Style>
+            <Quality>0</Quality>
           </Font>
-          <Overcolor>True</Overcolor>
           <TextColor>-2147483640</TextColor>
           <Background>-2147483643</Background>
           <Background2>-2147483643</Background2>
           <MarkColor>255</MarkColor>
           <CursorColor>-2147483635</CursorColor>
           <CursorText>-2147483634</CursorText>
+          <InactiveCursorColor>-2147483645</InactiveCursorColor>
+          <InactiveMarkColor>128</InactiveMarkColor>
+          <UseInvertedSelection>False</UseInvertedSelection>
+          <UseInactiveSelColor>False</UseInactiveSelColor>
+          <Overcolor>True</Overcolor>
         </Column>
         <Column>
           <Title>Rozsz.</Title>
@@ -743,14 +777,19 @@
             <Name>default</Name>
             <Size>10</Size>
             <Style>1</Style>
+            <Quality>0</Quality>
           </Font>
-          <Overcolor>True</Overcolor>
           <TextColor>-2147483640</TextColor>
           <Background>-2147483643</Background>
           <Background2>-2147483643</Background2>
           <MarkColor>255</MarkColor>
           <CursorColor>-2147483635</CursorColor>
           <CursorText>-2147483634</CursorText>
+          <InactiveCursorColor>-2147483645</InactiveCursorColor>
+          <InactiveMarkColor>128</InactiveMarkColor>
+          <UseInvertedSelection>False</UseInvertedSelection>
+          <UseInactiveSelColor>False</UseInactiveSelColor>
+          <Overcolor>True</Overcolor>
         </Column>
         <Column>
           <Title>Rozmiar</Title>
@@ -761,14 +800,19 @@
             <Name>default</Name>
             <Size>10</Size>
             <Style>1</Style>
+            <Quality>0</Quality>
           </Font>
-          <Overcolor>True</Overcolor>
           <TextColor>-2147483640</TextColor>
           <Background>-2147483643</Background>
           <Background2>-2147483643</Background2>
           <MarkColor>255</MarkColor>
           <CursorColor>-2147483635</CursorColor>
           <CursorText>-2147483634</CursorText>
+          <InactiveCursorColor>-2147483645</InactiveCursorColor>
+          <InactiveMarkColor>128</InactiveMarkColor>
+          <UseInvertedSelection>False</UseInvertedSelection>
+          <UseInactiveSelColor>False</UseInactiveSelColor>
+          <Overcolor>True</Overcolor>
         </Column>
         <Column>
           <Title>Data</Title>
@@ -779,26 +823,56 @@
             <Name>default</Name>
             <Size>10</Size>
             <Style>1</Style>
+            <Quality>0</Quality>
           </Font>
-          <Overcolor>True</Overcolor>
           <TextColor>-2147483640</TextColor>
           <Background>-2147483643</Background>
           <Background2>-2147483643</Background2>
           <MarkColor>255</MarkColor>
           <CursorColor>-2147483635</CursorColor>
           <CursorText>-2147483634</CursorText>
+          <InactiveCursorColor>-2147483645</InactiveCursorColor>
+          <InactiveMarkColor>128</InactiveMarkColor>
+          <UseInvertedSelection>False</UseInvertedSelection>
+          <UseInactiveSelColor>False</UseInactiveSelColor>
+          <Overcolor>True</Overcolor>
         </Column>
       </Columns>
     </ColumnsSet>
   </ColumnsSets>
   <MainWindow>
     <Position>
-      <Left>2134</Left>
-      <Top>258</Top>
-      <Width>1131</Width>
-      <Height>657</Height>
-      <Maximized>True</Maximized>
+      <Left>0</Left>
+      <Top>30</Top>
+      <Width>1920</Width>
+      <Height>1050</Height>
+      <Maximized>False</Maximized>
       <Splitter>50</Splitter>
     </Position>
   </MainWindow>
+  <Editor>
+    <SynEditOptions>856075</SynEditOptions>
+  </Editor>
+  <InternalAssociations>
+    <OfferToAddNewFileType>False</OfferToAddNewFileType>
+    <LastCustomAction>Custom action</LastCustomAction>
+    <ExpandedContextMenu>False</ExpandedContextMenu>
+    <ExecuteViaShell>False</ExecuteViaShell>
+    <OpenSystemWithTerminalClose>False</OpenSystemWithTerminalClose>
+    <OpenSystemWithTerminalStayOpen>False</OpenSystemWithTerminalStayOpen>
+    <IncludeFileAssociation>False</IncludeFileAssociation>
+  </InternalAssociations>
+  <FavoriteTabsOptions>
+    <FavoriteTabsUseRestoreExtraOptions>False</FavoriteTabsUseRestoreExtraOptions>
+    <WhereToAdd>1</WhereToAdd>
+    <Expand>True</Expand>
+    <GotoConfigAftSav>False</GotoConfigAftSav>
+    <GotoConfigAftReSav>False</GotoConfigAftReSav>
+    <DfltLeftGoTo>0</DfltLeftGoTo>
+    <DfltRightGoTo>1</DfltRightGoTo>
+    <DfltKeep>5</DfltKeep>
+    <DfltSaveDirHistory>False</DfltSaveDirHistory>
+    <FavTabsLastUniqueID>{B7B09369-AE66-4E2E-BAD9-BE83E49E0909}</FavTabsLastUniqueID>
+  </FavoriteTabsOptions>
+  <LastDoAnyCommand>cm_Refresh</LastDoAnyCommand>
 </doublecmd>
