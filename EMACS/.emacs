@@ -13,7 +13,7 @@
                      multiple-cursors
                      web-mode
                      yasnippet
-                     emacs-eclim
+                     ;;emacs-eclim
                      company
                      project-explorer
                      minimap
@@ -35,6 +35,8 @@
                      aggressive-indent ;; auto indent
                      indent-guide ;; crazy indent line
                      impatient-mode ;; html live reload
+                     pastelmac-theme
+                     mark-multiple
                      ))
 
 (dolist (package package-list)
@@ -68,7 +70,7 @@
 
 (global-visual-line-mode 1)
 
-(load-theme 'spolsky t)
+(load-theme 'brin t)
 (set-default-font "Source Code Pro")
 
 (global-set-key (kbd "C-x k") 'kill-buffer-and-window)
@@ -110,16 +112,23 @@
 (require 'emmet-mode)
 (global-set-key (kbd "C-e") 'emmet-expand-line)
 
+(require 'inline-string-rectangle)
+(global-set-key (kbd "C-c C-r") 'rename-sgml-tag)
+
 ;;Web mode
 (require 'web-mode)
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
+;;(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+;;(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+;;(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+;;(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+;;(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+;;(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+;;(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+;;(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+(require 'js2-mode)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
 (require 'yasnippet)
 (yas-global-mode 1)
@@ -129,21 +138,6 @@
 ;;    (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
 (add-hook 'sql-mode-hook 'sqlup-mode)
-
-;;Eclim
-;;Installation instruction can be found in other file
-(require 'eclim)
-(global-eclim-mode)
-
-(require 'eclimd)
-(custom-set-variables
- '(eclimd-default-workspace "~/Dev/workspace/"))
-
-(global-set-key [f9] 'eclim-maven-run)
-
-;;(setq help-at-pt-display-when-idle t)
-;;(setq help-at-pt-timer-delay 0.1)
-;;(help-at-pt-set-timer)
 
 (require 'company)
 (require 'company-emacs-eclim)
@@ -195,3 +189,11 @@
 (indent-guide-global-mode)
 
 (require 'impatient-mode)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("9b59e147dbbde5e638ea1cde5ec0a358d5f269d27bd2b893a0947c4a867e14c1" "0c29db826418061b40564e3351194a3d4a125d182c6ee5178c237a7364f0ff12" "705f3f6154b4e8fac069849507fd8b660ece013b64a0a31846624ca18d6cf5e1" default))))
