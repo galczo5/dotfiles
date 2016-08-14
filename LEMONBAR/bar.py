@@ -12,7 +12,7 @@ def get_workspaces():
     workspaces = prepare_workspaces_data()
     result = ""
     for workspace in workspaces:
-        if workspace["urgent"]:
+        if workspace["visible"]:
             result += '%{F#e8586e}'
         elif workspace["focused"]:
             result += '%{F#616161}'

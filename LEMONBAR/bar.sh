@@ -11,7 +11,7 @@ function workspace {
 }
 
 while [ true ] ; do
-	  echo -n "%{c} $(workspace)"
+	  echo -n "    $(workspace) %{r}$(date +%Y-%m-%d)    " 
 	  echo    ' '
 	  sleep .5
 done
