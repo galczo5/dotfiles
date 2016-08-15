@@ -13,11 +13,9 @@
                      multiple-cursors
                      web-mode
                      yasnippet
-                     ;;emacs-eclim
                      company
                      project-explorer
                      minimap
-                     ;;ace-jump-mode - nice, but for me useless
                      sqlup-mode
                      expand-region
                      monokai-theme
@@ -26,7 +24,6 @@
                      aurora-theme
                      latex-preview-pane
                      flyspell-popup
-                     ;;helm - looks nice but I don't like it
                      smex ;; ido-mode for M-x
                      js2-mode ;; better mode for javascript
                      emmet-mode
@@ -37,6 +34,10 @@
                      impatient-mode ;; html live reload
                      pastelmac-theme
                      mark-multiple
+                     cider
+                     clojure-cheatsheet
+                     clojure-snippets
+                     paredit
                      ))
 
 (dolist (package package-list)
@@ -58,7 +59,7 @@
 ;;Hide all bars
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
-;; (menu-bar-mode -1) ;;Sometimes it's usefull
+;;(menu-bar-mode -1) ;;Sometimes it's usefull
 
 (set-face-attribute 'default nil :height 90)
 
@@ -70,7 +71,7 @@
 
 (global-visual-line-mode 1)
 
-(load-theme 'brin t)
+(load-theme 'spolsky t)
 (set-default-font "Source Code Pro")
 
 (global-set-key (kbd "C-x k") 'kill-buffer-and-window)
@@ -99,9 +100,12 @@
 (require 'autopair)
 (autopair-global-mode)
 
+(require 'auto-complete)
+(global-auto-complete-mode 1)
+
 (require 'multiple-cursors)
-    (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-    (global-set-key (kbd "C-n") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C-n") 'mc/mark-next-like-this)
 
 ;;Better buffer menu
 (global-set-key (kbd "C-x C-b") 'buffer-menu)
@@ -189,11 +193,3 @@
 (indent-guide-global-mode)
 
 (require 'impatient-mode)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("9b59e147dbbde5e638ea1cde5ec0a358d5f269d27bd2b893a0947c4a867e14c1" "0c29db826418061b40564e3351194a3d4a125d182c6ee5178c237a7364f0ff12" "705f3f6154b4e8fac069849507fd8b660ece013b64a0a31846624ca18d6cf5e1" default))))
