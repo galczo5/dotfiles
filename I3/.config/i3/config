@@ -132,27 +132,31 @@
   set $inactive-workspace   #ffffff55
 
   # configure rofi
-  bindsym $alt+space exec rofi -show run -color-enabled -eh 2 -lines 5 -font "Source Sans Pro 14" -regex -separator-style none -opacity 100
+  # bindsym $alt+space exec rofi -show run -color-enabled -eh 2 -lines 5 -font "Source Sans Pro 14" -regex -separator-style none -opacity 100
 
+  bindsym $alt+space exec dmenu_run -h 35 -w 900 -x 510 -y 10 -fn 'Source Snas Pro-10' -s DP-1
+  
   bindsym $alt+Tab exec rofi -show window -color-enabled -eh 2 -lines 5 -font "Source Sans Pro 14" -regex -separator-style none -opacity 100
     
   bar {
+    mode hide   
+    hidden_state hide
+    modifier $win
+  
     tray_output DP-1
-    i3bar_command i3bar -t
+    i3bar_command i3bar
   
     position top
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
-    height 30
-    #strip_workspace_numbers yes
+    height 35
     
     colors {
-      separator   	  #00000055
-      background  	  #00000055
-      statusline  	  #00000055
-      focused_workspace   #00000055 #00000055 #00FF59
-      active_workspace    #00000055 #00000055 #00FF59
-      inactive_workspace  #00000055 #00000055 #ffffff
-      urgent_workspace    #00000055 #00000055 #ffffff
+      separator   	  #000000
+      background  	  #000000
+      focused_workspace   #000000 #000000 #ffffff
+      active_workspace    #000000 #000000 #ffffff
+      inactive_workspace  #000000 #000000 #aaaaaa
+      urgent_workspace    #000000 #000000 #aaaaaa
     }
   }
 
@@ -162,10 +166,10 @@
   client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color $bg-color
   client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $bg-color
 
-  gaps inner 5
-  gaps outer 30
-  smart_gaps on
-  smart_borders on
+  gaps inner 20
+  gaps outer 35
+  #smart_gaps on
+  #smart_borders on
   
   exec --no-startup-id compton --config ~/.config/i3/compton.conf
   exec --no-startup-id redshift
