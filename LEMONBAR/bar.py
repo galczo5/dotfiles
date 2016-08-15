@@ -12,10 +12,10 @@ def get_workspaces():
     workspaces = prepare_workspaces_data()
     result = ""
     for workspace in workspaces:
-        if workspace["visible"]:
-            result += '%{F#e8586e}'
-        elif workspace["focused"]:
-            result += '%{F#616161}'
+        #if workspace["visible"]:
+        #    result += '%{F#e8586e}'
+        #elif workspace["focused"]:
+        #    result += '%{F#616161}'
 
         result += workspace["name"] + " "
 
