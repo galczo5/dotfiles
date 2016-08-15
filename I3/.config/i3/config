@@ -134,7 +134,7 @@
   # configure rofi
   # bindsym $alt+space exec rofi -show run -color-enabled -eh 2 -lines 5 -font "Source Sans Pro 14" -regex -separator-style none -opacity 100
 
-  bindsym $alt+space exec dmenu_run -h 35 -w 900 -x 510 -y 10 -fn 'Source Snas Pro-10' -s DP-1
+  bindsym $alt+space exec dmenu_run -h 35 -w 900 -x 510 -y 10 -o 0.6 -fn 'Source Snas Pro-10' -s DP-1
   
   bindsym $alt+Tab exec rofi -show window -color-enabled -eh 2 -lines 5 -font "Source Sans Pro 14" -regex -separator-style none -opacity 100
     
