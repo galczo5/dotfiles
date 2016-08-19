@@ -58,8 +58,8 @@
   # workspace names
   set $workspace1  "1. web_"
   set $workspace2  "2. web_"
-  set $workspace3  "3. dev_"
-  set $workspace4  "4. dev_"
+  set $workspace3  "3. development_"
+  set $workspace4  "4. development_"
   set $workspace5  "5. tools_"
   set $workspace6  "6. tools_"
   set $workspace7  "7. tools_"
@@ -92,13 +92,13 @@
   bindsym $mod+Shift+0 move container to workspace $workspace10
 
   # set workspace output
-  workspace $workspace1 output DP-1
-  workspace $workspace2 output DP-2
-  workspace $workspace3 output DP-1
-  workspace $workspace4 output DP-2
-  workspace $workspace5 output DP-1
-  workspace $workspace6 output DP-2
-  workspace $workspace9 output DP-1
+  workspace $workspace1  output DP-1
+  workspace $workspace2  output DP-2
+  workspace $workspace3  output DP-1
+  workspace $workspace4  output DP-2
+  workspace $workspace5  output DP-1
+  workspace $workspace6  output DP-2
+  workspace $workspace9  output DP-1
   workspace $workspace10 output DP-2
 
   # reload the configuration file
@@ -119,60 +119,36 @@
   }
 
   bindsym $mod+r mode "resize"
-
-  # define colors
-  set $bg-color 	    #2f343f
-  set $inactive-bg-color    #2f343f
-  set $text-color           #f3f4f5
-  set $inactive-text-color  #676E7D
-  set $urgent-bg-color      #2f343f
-  
-  set $transparent-color    #ffffff00
-  set $active-workspace     #2CB8F3
-  set $inactive-workspace   #ffffff55
-
-  # configure rofi
-  # bindsym $alt+space exec rofi -show run -color-enabled -eh 2 -lines 5 -font "Source Sans Pro 14" -regex -separator-style none -opacity 100
-
-  bindsym $alt+space exec dmenu_run -h 35 -w 900 -x 510 -y 10 -o 0.6 -fn 'Source Snas Pro-10' -s DP-1
-  
-  bindsym $alt+Tab exec rofi -show window -color-enabled -eh 2 -lines 5 -font "Source Sans Pro 14" -regex -separator-style none -opacity 100
+  bindsym $alt+space exec dmenu_run -h 25 -w 920 -x 500 -fn 'Source Snas Pro-10' -nb "#000000" -nf "#ffffff"
     
   bar {
-    mode hide   
-    hidden_state hide
-    modifier $win
-  
     tray_output DP-1
-    i3bar_command i3bar
+    i3bar_command i3bar -t
   
     position top
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
-    height 35
+    height 25
     
     colors {
-      separator   	  #000000
-      background  	  #000000
-      focused_workspace   #000000 #000000 #ffffff
-      active_workspace    #000000 #000000 #ffffff
-      inactive_workspace  #000000 #000000 #aaaaaa
-      urgent_workspace    #000000 #000000 #aaaaaa
+      separator   	      #00000000
+      background  	      #00000000
+      focused_workspace   #ffffff   #ffffff   #000000
+      active_workspace    #00000000 #00000000 #ffffff
+      inactive_workspace  #00000000 #00000000 #aaaaaa
+      urgent_workspace    #00000000 #00000000 #aaaaaa
     }
   }
 
 
-  client.focused          $bg-color           $bg-color          $text-color          $bg-color
-  client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color $bg-color
-  client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color $bg-color
-  client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          $bg-color
+  client.focused           #161A1F #161A1F #ffffff
+  client.unfocused         #161A1F #161A1F #888888
+  client.focused_inactive  #161A1F #161A1F #888888
 
-  gaps inner 20
-  gaps outer 35
-  #smart_gaps on
-  #smart_borders on
+  gaps inner 25
   
   exec --no-startup-id compton --config ~/.config/i3/compton.conf
   exec --no-startup-id redshift
   exec --no-startup-id nitrogen --restore
   exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
   exec --no-startup-id setxkbmap pl
+  exec --no-startup-id wicd-gtk -t
