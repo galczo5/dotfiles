@@ -38,6 +38,7 @@
                      clojure-cheatsheet
                      clojure-snippets
                      paredit
+                     smart-mode-line
                      ))
 
 (dolist (package package-list)
@@ -61,18 +62,25 @@
 (tool-bar-mode -1)
 ;;(menu-bar-mode -1) ;;Sometimes it's usefull
 
-(set-face-attribute 'default nil :height 90)
+(set-face-attribute 'default nil :height 80)
 
 (global-set-key [f7] 'linum-mode)
 (setq linum-format " %4d ")
 
 ;;Uncomment for line highlighting
-;;(global-hl-line-mode 1)
+(global-hl-line-mode 1)
 
 (global-visual-line-mode 1)
 
-(load-theme 'spolsky t)
+
+(setq sml/no-confirm-load-theme t)
+
+
+(load-theme 'atom-one-dark t)
 (set-default-font "Source Code Pro")
+
+(smart-mode-line-enable)
+(ws-butler-global-mode)
 
 (global-set-key (kbd "C-x k") 'kill-buffer-and-window)
 
@@ -122,14 +130,14 @@
 ;;Web mode
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
-;;(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-;;(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-;;(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
-;;(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-;;(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-;;(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-;;(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-;;(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 
 (require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
@@ -193,3 +201,11 @@
 (indent-guide-global-mode)
 
 (require 'impatient-mode)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("705f3f6154b4e8fac069849507fd8b660ece013b64a0a31846624ca18d6cf5e1" "c697b65591ba1fdda42fae093563867a95046466285459bd4e686dc95a819310" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default))))

@@ -56,16 +56,16 @@
   bindsym $mod+a focus parent
 
   # workspace names
-  set $workspace1  "1. web_"
-  set $workspace2  "2. web_"
-  set $workspace3  "3. development_"
-  set $workspace4  "4. development_"
-  set $workspace5  "5. tools_"
-  set $workspace6  "6. tools_"
-  set $workspace7  "7. tools_"
-  set $workspace8  "8. tools_"
-  set $workspace9  "9. tools_"
-  set $workspace10 "10. tools_"
+  set $workspace1  "  1  "
+  set $workspace2  "  2  "
+  set $workspace3  "  3  "
+  set $workspace4  "  4  "
+  set $workspace5  "  5  "
+  set $workspace6  "  6  "
+  set $workspace7  "  7  "
+  set $workspace8  "  8  "
+  set $workspace9  "  9  "
+  set $workspace10 "  10  "
 
   # switch to workspace
   bindsym $mod+1 workspace $workspace1
@@ -90,7 +90,7 @@
   bindsym $mod+Shift+8 move container to workspace $workspace8
   bindsym $mod+Shift+9 move container to workspace $workspace9
   bindsym $mod+Shift+0 move container to workspace $workspace10
-
+  
   # set workspace output
   workspace $workspace1  output DP-1
   workspace $workspace2  output DP-2
@@ -119,32 +119,22 @@
   }
 
   bindsym $mod+r mode "resize"
-  bindsym $alt+space exec dmenu_run -h 25 -w 920 -x 500 -fn 'Source Snas Pro-10' -nb "#000000" -nf "#ffffff"
-    
-  bar {
-    tray_output DP-1
-    i3bar_command i3bar -t
-  
-    position top
-    status_command i3blocks -c ~/.config/i3/i3blocks.conf
-    height 25
-    
-    colors {
-      separator   	      #00000000
-      background  	      #00000000
-      focused_workspace   #ffffff   #ffffff   #000000
-      active_workspace    #00000000 #00000000 #ffffff
-      inactive_workspace  #00000000 #00000000 #aaaaaa
-      urgent_workspace    #00000000 #00000000 #aaaaaa
-    }
-  }
+  bindsym $alt+space exec dmenu_run -h 30 -w 920 -x 500 -fn 'Source Snas Pro-10' -nb "#ffffff" -nf '#888888'
 
+  bindsym XF86AudioRaiseVolume exec amixer -q sset Master 3%+
+  bindsym XF86AudioLowerVolume exec amixer -q sset Master 3%-
+
+  bindsym XF86MonBrightnessUp exec xbacklight -inc 20
+  bindsym XF86MonBrightnessDown exec xbacklight -dec 20
 
   client.focused           #161A1F #161A1F #ffffff
   client.unfocused         #161A1F #161A1F #888888
   client.focused_inactive  #161A1F #161A1F #888888
 
-  gaps inner 25
+  gaps inner 10
+  gaps outer 20
+  #smart_gaps on
+  #smart_borders on
   
   exec --no-startup-id compton --config ~/.config/i3/compton.conf
   exec --no-startup-id redshift
@@ -152,3 +142,6 @@
   exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
   exec --no-startup-id setxkbmap pl
   exec --no-startup-id wicd-gtk -t
+  exec --no-startup-id synclient TapButton1=1
+  exec --no-startup-id synclient TapButton2=3
+  exec --no-startup-id xfce4-panel
