@@ -1,0 +1,15 @@
+//Append this to common.css
+
+button.vivaldi {
+    display: none !important;
+}
+
+#tabs-container {
+    padding-top: 0px !important;
+    padding-left: 0px !important;
+}
+
+.trash {
+   display: none !important;
+}
+
