@@ -5,7 +5,7 @@
 
   # set font
 
-  font pango: Source Sans Pro 10
+  font pango: San Francisco Display Regular 9
 
   floating_modifier $mod
   hide_edge_borders both
@@ -96,10 +96,13 @@
   # set workspace output
   workspace $workspace1  output DP-1
   workspace $workspace2  output DP-2
+
   workspace $workspace3  output DP-1
   workspace $workspace4  output DP-2
+
   workspace $workspace5  output DP-1
   workspace $workspace6  output DP-2
+
   workspace $workspace9  output DP-1
   workspace $workspace10 output DP-2
 
@@ -111,10 +114,10 @@
 
   # resize window (you can also use the mouse for that)
   mode "resize" {
-          bindsym Left resize shrink width 10 px or 10 ppt
-          bindsym Down resize grow height 10 px or 10 ppt
-          bindsym Up resize shrink height 10 px or 10 ppt
-          bindsym Right resize grow width 10 px or 10 ppt
+          bindsym Left resize shrink width  10 px or 10 ppt
+          bindsym Down resize grow   height 10 px or 10 ppt
+          bindsym Up resize shrink   height 10 px or 10 ppt
+          bindsym Right resize grow  width  10 px or 10 ppt
 
           bindsym Return mode "default"
           bindsym Escape mode "default"
@@ -129,30 +132,30 @@
   bindsym XF86MonBrightnessUp exec xbacklight -inc 20
   bindsym XF86MonBrightnessDown exec xbacklight -dec 20
 
-
   gaps inner 10
   gaps outer 20
   #smart_gaps on
   #smart_borders on
 
-  #                       border              background         text                 indicator
-  client.focused          #2f343f             #2f343f            #f3f4f5              #2f343f
-  client.unfocused        #2f343f             #2f343f            #676E7D              #2f343f
-  client.focused_inactive #2f343f             #2f343f            #676E7D              #2f343f
-  client.urgent           #E53935             #E53935            #f3f4f5              #2f343f
+  #                        border              background         text                 indicator
+  client.focused          #2f343f             #2f343f            #f5f5f5              #2f343f
+  client.unfocused        #2f343f             #2f343f            #a0a0a0              #2f343f
+  client.focused_inactive #2f343f             #2f343f            #a0a0a0              #2f343f
+  client.urgent           #E53935             #E53935            #a0a0a0              #2f343f
 
   bar {
     i3bar_command i3bar -t
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
     position top
-    tray_output DP-1
+    tray_output none
     height 30
     strip_workspace_numbers yes
 
     colors {
       background         #2f343f00
       separator          #2f343f00
-      focused_workspace  #2f343f00          #2f343f00          #f3f4f5
+      focused_workspace  #2f343f00          #2f343f00          #000000
+      active_workspace   #2f343f00          #2f343f00          #000000
       inactive_workspace #2f343f00          #2f343f00          #676E7D
       urgent_workspace   #E5393500          #E5393500          #f3f4f5
     }
