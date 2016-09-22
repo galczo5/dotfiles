@@ -13,3 +13,21 @@ button.vivaldi {
    display: none !important;
 }
 
+.tab-strip {
+    background: #ccc !important;
+}
+
+.button-toolbar.rewind,
+.button-toolbar.next,
+.button-toolbar.home,
+{
+    display: none !important;
+}
+
+.startpage-navigation {
+    display: none !important;
+}
+
+.searchfield {
+    display: none !important;
+}
