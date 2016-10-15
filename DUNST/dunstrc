@@ -1,0 +1,58 @@
+[global]
+    font = Source Sans Pro 10
+    allow_markup = yes
+
+    format = "<b>%a:</b> %s\n%b"
+    sort = yes
+    indicate_hidden = yes
+    alignment = left
+    bounce_freq = 0
+    show_age_threshold = 60
+    word_wrap = yes
+
+    ignore_newline = no
+    geometry = "350x5-0+30"
+    transparency = 0
+    idle_threshold = 120
+
+    monitor = 0
+    follow = keyboard
+    sticky_history = yes
+    line_height = 0
+
+    separator_height = 0
+
+    # padding between text and separator
+    padding = 10
+
+    # horizontal padding
+    horizontal_padding = 10
+
+    separator_color = frame
+    startup_notification = true
+
+    dmenu = /usr/bin/dmenu -p dunst:
+
+    # browser for opening urls in context menu
+    browser = vivaldi-stable
+
+[frame]
+    width = 0
+    color = "#000000"
+
+[urgency_low]
+    # IMPORTANT: colors have to be defined in quotation marks.
+    # Otherwise the '#' and following  would be interpreted as a comment.
+    background = "#222222"
+    foreground = "#888888"
+    timeout = 10
+
+[urgency_normal]
+    background = "#285577"
+    foreground = "#ffffff"
+    timeout = 10
+
+[urgency_critical]
+    background = "#900000"
+    foreground = "#ffffff"
+    timeout = 0
