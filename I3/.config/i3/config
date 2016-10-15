@@ -5,11 +5,11 @@
 
   # set font
 
-  font pango: San Francisco Display Regular 9
+  font pango: Source Sans Pro Regular 9
 
   floating_modifier $mod
   hide_edge_borders both
-  new_window pixel 1
+  new_window pixel 0
   new_float normal 1
 
   for_window [class="xfce4-panel"] floating enable
@@ -94,16 +94,16 @@
   bindsym $mod+Shift+0 move container to workspace $workspace10
   
   # set workspace output
-  workspace $workspace1  output DP-1
+  workspace $workspace1  output DP-0
   workspace $workspace2  output DP-2
 
-  workspace $workspace3  output DP-1
+  workspace $workspace3  output DP-0
   workspace $workspace4  output DP-2
 
-  workspace $workspace5  output DP-1
+  workspace $workspace5  output DP-0
   workspace $workspace6  output DP-2
 
-  workspace $workspace9  output DP-1
+  workspace $workspace9  output DP-0
   workspace $workspace10 output DP-2
 
   # reload the configuration file
@@ -124,7 +124,7 @@
   }
 
   bindsym $mod+r mode "resize"
-  bindsym $alt+space exec dmenu_run -h 30 -w 920 -x 1000 -fn 'Source Snas Pro-10' -nb "#2f343f" -nf '#f3f4f5' -sb "#f3f4f5" -sf "#2f343f"
+  bindsym $alt+space exec dmenu_run -h 30 -w 700 -x 1220 -fn 'Source Snas Pro-10' -nb "#000000" -nf '#f3f4f5' -sb "#f3f4f5" -sf "#2f343f"
 
   bindsym XF86AudioRaiseVolume exec amixer -q sset Master 3%+
   bindsym XF86AudioLowerVolume exec amixer -q sset Master 3%-
@@ -138,30 +138,31 @@
   #smart_borders on
 
   #                        border              background         text                 indicator
-  client.focused          #2f343f             #2f343f            #f5f5f5              #2f343f
+  client.focused          #2f343f             #3E4554            #f5f5f5              #3E4554
   client.unfocused        #2f343f             #2f343f            #a0a0a0              #2f343f
   client.focused_inactive #2f343f             #2f343f            #a0a0a0              #2f343f
   client.urgent           #E53935             #E53935            #a0a0a0              #2f343f
 
   bar {
+    workspace_buttons yes
     i3bar_command i3bar -t
     status_command i3blocks -c ~/.config/i3/i3blocks.conf
     position top
-    tray_output none
+    tray_output DP-0
     height 30
     strip_workspace_numbers yes
 
     colors {
       background         #2f343f00
       separator          #2f343f00
-      focused_workspace  #2f343f00          #2f343f00          #000000
-      active_workspace   #2f343f00          #2f343f00          #000000
+      focused_workspace  #2f343f00          #2f343f00          #9BA5BD
+      active_workspace   #2f343f00          #2f343f00          #676E7D
       inactive_workspace #2f343f00          #2f343f00          #676E7D
       urgent_workspace   #E5393500          #E5393500          #f3f4f5
     }
   }
 
-  exec --no-startup-id compton --config ~/.config/i3/compton.conf
+  exec --no-startup-id compton --backend glx --paint-on-overlay --vsync opengl-swc 
   exec --no-startup-id redshift
   exec --no-startup-id nitrogen --restore
   exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -169,3 +170,4 @@
   exec --no-startup-id wicd-gtk -t
   exec --no-startup-id synclient TapButton1=1
   exec --no-startup-id synclient TapButton2=3
+  exec --no-startup-id nm-applet
