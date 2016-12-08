@@ -15,7 +15,7 @@
   for_window [class="xfce4-panel"] floating enable
 
   # start a terminal
-  bindsym $mod+Return exec urxvt
+  bindsym $win+Return exec urxvt
 
   # kill focused window
   bindsym $mod+Shift+q kill
@@ -167,7 +167,6 @@
   exec --no-startup-id nitrogen --restore
   exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
   exec --no-startup-id setxkbmap pl
-  exec --no-startup-id wicd-gtk -t
   exec --no-startup-id synclient TapButton1=1
   exec --no-startup-id synclient TapButton2=3
   exec --no-startup-id nm-applet
