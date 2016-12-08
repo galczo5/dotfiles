@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: ES6 Class
+# key: cl
+# --
+class $1 {
+      constructor($2) {
+
+      }
+}

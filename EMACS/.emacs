@@ -26,17 +26,18 @@
                      smex ;; ido-mode for M-x
                      js2-mode ;; better mode for javascript
                      emmet-mode
-                     sublime-themes
+                     ;; sublime-themes
                      auto-yasnippet
                      aggressive-indent ;; auto indent
                      indent-guide ;; crazy indent line
                      impatient-mode ;; html live reload
                      pastelmac-theme
                      mark-multiple
-                     cider
-                     clojure-cheatsheet
-                     clojure-snippets
-                     paredit
+                     ;; Uncomment if planning to start adventure with clojure
+                     ;; cider
+                     ;; clojure-cheatsheet
+                     ;; clojure-snippets
+                     ;; paredit
                      smart-mode-line
                      ws-butler
                      undo-tree
@@ -45,6 +46,10 @@
                      switch-window
                      visual-regexp
                      focus
+                     firebelly-theme
+                     company-web
+                     buffer-move
+                     helm-google
                      ))
 
 (dolist (package package-list)
@@ -69,12 +74,14 @@
 ;;Hide all bars
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
-;;(menu-bar-mode -1) ;;Sometimes it's usefull
+(menu-bar-mode -1) ;;Sometimes it's usefull
 
 ;;Linum mode - line numbers
 (global-linum-mode 1)
 (global-set-key [f7] 'linum-mode)
 (setq linum-format " %4d ")
+
+(show-paren-mode 1)
 
 ;;Uncomment for line highlighting
 (global-hl-line-mode 1)
@@ -114,8 +121,9 @@
 (require 'autopair)
 (autopair-global-mode)
 
-(require 'auto-complete)
-(global-auto-complete-mode 1)
+;; Disabled when company mode is enabled
+;;(require 'auto-complete)
+;;(global-auto-complete-mode 1)
 
 ;;Kill multiple-cursors mode with C-g
 (require 'multiple-cursors)
@@ -146,18 +154,21 @@
 
 (require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-hook 'js2-mode-hook 'ac-js2-mode)
 
 (add-hook 'css-mode-hook 'rainbow-mode)
 
 (require 'yasnippet)
 (yas-global-mode 1)
 (global-set-key (kbd "C-q") 'company-yasnippet)
+(global-set-key (kbd "C-c C-s") 'yas-insert-snippet)
 
 (add-hook 'sql-mode-hook 'sqlup-mode)
 
 (require 'company)
 (global-company-mode t)
 (global-set-key (kbd "C-SPC") 'company-complete-common)
+(add-to-list 'company-backends 'company-web-html)
 
 (require 'org)
 (setq org-log-done t)
@@ -185,3 +196,24 @@
 (indent-guide-global-mode)
 
 (require 'impatient-mode)
+
+(global-set-key (kbd "<C-M-up>")     'buf-move-up)
+(global-set-key (kbd "<C-M-down>")   'buf-move-down)
+(global-set-key (kbd "<C-M-left>")   'buf-move-left)
+(global-set-key (kbd "<C-M-right>")  'buf-move-right)
+
+(global-set-key (kbd "C-x ;") 'comment-line)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (helm-google evil sr-speedbar zenburn-theme zenburn ws-butler web-mode visual-regexp undo-tree switch-window sublime-themes sqlup-mode solarized-theme smex smart-mode-line reykjavik-theme rainbow-mode rainbow-delimiters project-explorer powerline pastelmac-theme paredit oceanic-theme multiple-cursors monokai-theme minimap meacupla-theme markdown-mode mark-multiple latex-preview-pane js3-mode irony indent-guide impatient-mode heroku-theme focus flyspell-popup firebelly-theme expand-region emmet-mode darcula-theme company-web color-theme-sanityinc-tomorrow clues-theme clojure-snippets clojure-cheatsheet buffer-move autopair auto-yasnippet auto-complete aurora-theme atom-one-dark-theme atom-dark-theme ample-zen-theme aggressive-indent ac-js2))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

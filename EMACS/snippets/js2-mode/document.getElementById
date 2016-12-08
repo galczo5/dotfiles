@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: getElementById
+# key: get
+# --
+document.getElementById('$1')
