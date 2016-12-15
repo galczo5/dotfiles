@@ -26,7 +26,6 @@
                      smex ;; ido-mode for M-x
                      js2-mode ;; better mode for javascript
                      emmet-mode
-                     ;; sublime-themes
                      auto-yasnippet
                      aggressive-indent ;; auto indent
                      indent-guide ;; crazy indent line
@@ -38,7 +37,6 @@
                      ;; clojure-cheatsheet
                      ;; clojure-snippets
                      ;; paredit
-                     smart-mode-line
                      ws-butler
                      undo-tree
                      solarized-theme
@@ -50,6 +48,10 @@
                      company-web
                      buffer-move
                      helm-google
+                     cheatsheet
+                     org-bullets
+                     ox-twbs
+                     alpha
                      ))
 
 (dolist (package package-list)
@@ -77,23 +79,20 @@
 (menu-bar-mode -1) ;;Sometimes it's usefull
 
 ;;Linum mode - line numbers
-(global-linum-mode 1)
+;; (global-linum-mode 1)
 (global-set-key [f7] 'linum-mode)
 (setq linum-format " %4d ")
 
 (show-paren-mode 1)
+(column-number-mode 1)
+(set-default 'cursor-type 'hbar)
 
 ;;Uncomment for line highlighting
 (global-hl-line-mode 1)
 (global-visual-line-mode 1)
 
-;;Smart mode line
-;;(setq sml/no-confirm-load-theme t)
-;;(sml/setup)
-;;(smart-mode-line-enable )
-
 ;;Theme load
-(load-theme 'solarized-dark t)
+(load-theme 'spolsky t)
 
 (global-set-key (kbd "C-x k") 'kill-buffer-and-window)
 
@@ -203,17 +202,29 @@
 (global-set-key (kbd "<C-M-right>")  'buf-move-right)
 
 (global-set-key (kbd "C-x ;") 'comment-line)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (helm-google evil sr-speedbar zenburn-theme zenburn ws-butler web-mode visual-regexp undo-tree switch-window sublime-themes sqlup-mode solarized-theme smex smart-mode-line reykjavik-theme rainbow-mode rainbow-delimiters project-explorer powerline pastelmac-theme paredit oceanic-theme multiple-cursors monokai-theme minimap meacupla-theme markdown-mode mark-multiple latex-preview-pane js3-mode irony indent-guide impatient-mode heroku-theme focus flyspell-popup firebelly-theme expand-region emmet-mode darcula-theme company-web color-theme-sanityinc-tomorrow clues-theme clojure-snippets clojure-cheatsheet buffer-move autopair auto-yasnippet auto-complete aurora-theme atom-one-dark-theme atom-dark-theme ample-zen-theme aggressive-indent ac-js2))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
+(require 'cheatsheet)
+
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
+(require 'alpha)
+(set-frame-parameter (selected-frame) 'alpha '(85 . 50))
+(add-to-list 'default-frame-alist '(alpha . (85 . 50)))
+
+
+(cheatsheet-add :group 'Buffers
+                :key "C-M-left"
+                :description "Buffer move left")
+
+(cheatsheet-add :group 'Buffers
+                :key "C-M-right"
+                :description "Buffer move right")
+
+(cheatsheet-add :group 'Buffers
+                :key "C-M-up"
+                :description "Buffer move up")
+
+(cheatsheet-add :group 'Buffers
+                :key "C-M-down"
+                :description "Buffer move down")
