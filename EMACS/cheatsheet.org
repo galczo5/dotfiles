@@ -1,0 +1,71 @@
+* Buffers
+#+begin_src emacs-lisp :tangle yes
+(cheatsheet-add :group 'Buffers
+                :key "C-x C-b"
+                :description "Buffer menu")
+
+(cheatsheet-add :group 'Buffers
+                :key "C-x o"
+                :description "Switch buffer")
+
+(cheatsheet-add :group 'Buffers
+                :key "C-x k"
+                :description "Kill buffer and window")
+
+(cheatsheet-add :group 'Buffers
+                :key "C-M-left"
+                :description "Buffer move left")
+
+(cheatsheet-add :group 'Buffers
+                :key "C-M-right"
+                :description "Buffer move right")
+
+(cheatsheet-add :group 'Buffers
+                :key "C-M-up"
+                :description "Buffer move up")
+
+(cheatsheet-add :group 'Buffers
+                :key "C-M-down"
+                :description "Buffer move down")
+#+end_src
+
+* Editor
+#+begin_src emacs-lisp :tangle yes
+(cheatsheet-add :group 'Editor
+                :key "C-x ;"
+                :description "Comment/Uncomment")
+
+(cheatsheet-add :group 'Editor
+                :key "C-x ;"
+                :description "Comment/Uncomment")
+
+(cheatsheet-add :group 'Editor
+                :key "C-c r"
+                :description "Visual replace")
+
+(cheatsheet-add :group 'Editor
+                :key "C-="
+                :description "Expand region")
+(cheatsheet-add :group 'Editor
+                :key "C-n"
+                :description "Multiple cursors")
+
+(cheatsheet-add :group 'Editor
+                :key "C-e"
+                :description "Emmet expand line")
+
+(cheatsheet-add :group 'Editor
+                :key "C-SPC"
+                :description "Autocomplete")
+#+end_src
+
+* Snippets
+#+begin_src emacs-lisp :tangle yes
+(cheatsheet-add :group 'Snippets
+                :key "C-q"
+                :description "Snippet popup")
+
+(cheatsheet-add :group 'Snippets
+                :key "C-c C-s"
+                :description "Insert snippet")
+#+end_src

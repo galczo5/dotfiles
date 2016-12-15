@@ -85,6 +85,7 @@
 
 (show-paren-mode 1)
 (column-number-mode 1)
+(column-enforce-mode 1)
 (set-default 'cursor-type 'hbar)
 
 ;;Uncomment for line highlighting
@@ -126,7 +127,6 @@
 
 ;;Kill multiple-cursors mode with C-g
 (require 'multiple-cursors)
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C-n") 'mc/mark-next-like-this)
 
 ;;Better buffer menu
@@ -174,7 +174,6 @@
 
 (require 'ispell)
 (flyspell-mode t)
-(define-key flyspell-mode-map (kbd "C-t") 'flyspell-popup-correct)
 
 (add-to-list 'ispell-local-dictionary-alist '("pl_PL"
                                               "[[:alpha:]]"
@@ -213,18 +212,4 @@
 (add-to-list 'default-frame-alist '(alpha . (85 . 50)))
 
 
-(cheatsheet-add :group 'Buffers
-                :key "C-M-left"
-                :description "Buffer move left")
-
-(cheatsheet-add :group 'Buffers
-                :key "C-M-right"
-                :description "Buffer move right")
-
-(cheatsheet-add :group 'Buffers
-                :key "C-M-up"
-                :description "Buffer move up")
-
-(cheatsheet-add :group 'Buffers
-                :key "C-M-down"
-                :description "Buffer move down")
+(org-babel-load-file "~/.emacs.d/cheatsheet.org")
