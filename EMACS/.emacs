@@ -1,62 +1,77 @@
 ;;init.el
 ;;Sometimes auto-installing not working, to investigate
 (require 'package)
-(push '("marmalade" . "http://marmalade-repo.org/packages/")
-      package-archives )
-(push '("melpa" . "http://melpa.milkbox.net/packages/")
-      package-archives)
+
+;; (push '("marmalade" . "http://marmalade-repo.org/packages/")
+;;       package-archives )
+;; (push '("melpa" . "http://melpa.milkbox.net/packages/")
+;;       package-archives)
+
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/")
+             t)
+
+(add-to-list 'package-archives
+             ''("marmalade" . "http://marmalade-repo.org/packages/")
+             t)
 
 (package-initialize)
 
-(setq package-list '(auto-complete
-                     autopair
-                     multiple-cursors
-                     web-mode
-                     yasnippet
-                     company
-                     project-explorer
-                     sqlup-mode
-                     expand-region
-                     monokai-theme
-                     rainbow-mode ;; Color hexcodes
-                     atom-one-dark-theme
-                     aurora-theme
-                     latex-preview-pane
-                     flyspell-popup
-                     smex ;; ido-mode for M-x
-                     js2-mode ;; better mode for javascript
-                     emmet-mode
-                     auto-yasnippet
-                     aggressive-indent ;; auto indent
-                     indent-guide ;; crazy indent line
-                     impatient-mode ;; html live reload
-                     pastelmac-theme
-                     mark-multiple
-                     ;; Uncomment if planning to start adventure with clojure
-                     ;; cider
-                     ;; clojure-cheatsheet
-                     ;; clojure-snippets
-                     ;; paredit
-                     ws-butler
-                     undo-tree
-                     solarized-theme
-                     rainbow-delimiters
-                     switch-window
-                     visual-regexp
-                     focus
-                     firebelly-theme
-                     company-web
-                     buffer-move
-                     helm-google
-                     cheatsheet
-                     org-bullets
-                     ox-twbs
-                     alpha
-                     ))
+(defvar package-list '(auto-complete
+                       autopair
+                       multiple-cursors
+                       web-mode
+                       yasnippet
+                       company
+                       project-explorer
+                       sqlup-mode
+                       expand-region
+                       monokai-theme
+                       rainbow-mode ;; Color hexcodes
+                       atom-one-dark-theme
+                       aurora-theme
+                       latex-preview-pane
+                       flyspell-popup
+                       smex ;; ido-mode for M-x
+                       js2-mode ;; better mode for javascript
+                       emmet-mode
+                       auto-yasnippet
+                       aggressive-indent ;; auto indent
+                       indent-guide ;; crazy indent line
+                       impatient-mode ;; html live reload
+                       pastelmac-theme
+                       mark-multiple
+                       ;; Uncomment if planning to start adventure with clojure
+                       ;; cider
+                       ;; clojure-cheatsheet
+                       ;; clojure-snippets
+                       ;; paredit
+                       ws-butler
+                       undo-tree
+                       solarized-theme
+                       rainbow-delimiters
+                       switch-window
+                       visual-regexp
+                       focus
+                       firebelly-theme
+                       company-web
+                       buffer-move
+                       helm-google
+                       cheatsheet
+                       org-bullets
+                       ox-twbs
+                       alpha
+                       column-enforce-mode
+                       ac-html-bootstrap
+                       ))
 
-(dolist (package package-list)
-  (unless (package-installed-p package)
-    (package-install package)))
+;; (dolist (package package-list)
+;;   (unless (package-installed-p package)
+;;     (package-install package)))
+
+(mapc (lambda (p)
+        (package-install p))
+      package-list)
 
 (setq user-mail-address "kamil.galek@gmail.com"
       user-full-name    "Kamil Gałek")
@@ -87,6 +102,7 @@
 (column-number-mode 1)
 (column-enforce-mode 1)
 (set-default 'cursor-type 'hbar)
+(setq fringes-outside-margins t)
 
 ;;Uncomment for line highlighting
 (global-hl-line-mode 1)
@@ -151,6 +167,9 @@
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode))
 
+(add-hook 'web-mode-hook 'company-web-bootstrap+)
+(add-hook 'web-mode-hook 'company-web-fa+)
+
 (require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-hook 'js2-mode-hook 'ac-js2-mode)
@@ -168,6 +187,7 @@
 (global-company-mode t)
 (global-set-key (kbd "C-SPC") 'company-complete-common)
 (add-to-list 'company-backends 'company-web-html)
+(add-to-list 'company-backends 'company-web-bootstrap+)
 
 (require 'org)
 (setq org-log-done t)
@@ -203,6 +223,7 @@
 (global-set-key (kbd "C-x ;") 'comment-line)
 
 (require 'cheatsheet)
+(global-set-key (kbd "C-c ?") 'cheatsheet-show)
 
 (require 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
@@ -213,3 +234,20 @@
 
 
 (org-babel-load-file "~/.emacs.d/cheatsheet.org")
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("3eb93cd9a0da0f3e86b5d932ac0e3b5f0f50de7a0b805d4eb1f67782e9eb67a4" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "06dbcfac3705aaaa79e1a3264c6fd44ef0cf86ef5ed67930e4007e63a8c1e8ee" "ef479623c75026d8ba1de98a8cb74198f6f3eedc6fca509990ac2559ba830675" default)))
+ '(package-selected-packages
+   (quote
+    (airline-themes powerline-evil doom-themes ac-html-bootstrap ac-html undo-tree js2-mode company yasnippet zenburn-theme zenburn ws-butler web-mode visual-regexp switch-window sublime-themes sr-speedbar sqlup-mode solarized-theme smex smart-mode-line reykjavik-theme rainbow-mode rainbow-delimiters project-explorer powerline pastelmac-theme paredit ox-twbs org-bullets oceanic-theme multiple-cursors monokai-theme minimap meacupla-theme markdown-mode mark-multiple latex-preview-pane js3-mode irony indent-guide impatient-mode heroku-theme helm-google focus flyspell-popup firebelly-theme expand-region evil emmet-mode darcula-theme company-web column-enforce-mode color-theme-sanityinc-tomorrow clues-theme clojure-snippets clojure-cheatsheet cheatsheet buffer-move autopair auto-yasnippet auto-complete aurora-theme atom-one-dark-theme atom-dark-theme ample-zen-theme alpha aggressive-indent ac-js2))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
