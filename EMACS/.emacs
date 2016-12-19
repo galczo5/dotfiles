@@ -1,18 +1,10 @@
-;;init.el
-;;Sometimes auto-installing not working, to investigate
 (require 'package)
-
-;; (push '("marmalade" . "http://marmalade-repo.org/packages/")
-;;       package-archives )
-;; (push '("melpa" . "http://melpa.milkbox.net/packages/")
-;;       package-archives)
-
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/")
              t)
 
 (add-to-list 'package-archives
-             ''("marmalade" . "http://marmalade-repo.org/packages/")
+             '("marmalade" . "http://marmalade-repo.org/packages/")
              t)
 
 (package-initialize)
@@ -63,11 +55,11 @@
                        alpha
                        column-enforce-mode
                        ac-html-bootstrap
+                       doom-themes
+                       git-gutter-fringe+
+                       flycheck
+                       xref-js2
                        ))
-
-;; (dolist (package package-list)
-;;   (unless (package-installed-p package)
-;;     (package-install package)))
 
 (mapc (lambda (p)
         (package-install p))
@@ -77,6 +69,7 @@
       user-full-name    "Kamil Gałek")
 
 ;;Do not show welcome message
+(setq vc-follow-symlinks t)
 (setq inhibit-startup-message t)
 (setq make-backup-files nil)
 
@@ -85,7 +78,7 @@
 (setq indent-line-function 'insert-tab)
 
 ;;Fonts
-(set-default-font "Source Code Pro")
+(set-frame-font "Source Code Pro")
 (set-face-attribute 'default nil :height 100)
 
 ;;Hide all bars
@@ -96,7 +89,7 @@
 ;;Linum mode - line numbers
 ;; (global-linum-mode 1)
 (global-set-key [f7] 'linum-mode)
-(setq linum-format " %4d ")
+;;(setq linum-format " %4d ")
 
 (show-paren-mode 1)
 (column-number-mode 1)
@@ -109,12 +102,15 @@
 (global-visual-line-mode 1)
 
 ;;Theme load
-(load-theme 'spolsky t)
+(load-theme 'doom-one t)
 
 (global-set-key (kbd "C-x k") 'kill-buffer-and-window)
 
 ;;Trim white space at the end of line
 (ws-butler-global-mode)
+
+(require 'flycheck)
+(global-flycheck-mode)
 
 (require 'switch-window)
 (global-set-key (kbd "C-x o") 'switch-window)
@@ -156,6 +152,7 @@
 
 ;;Web mode
 (require 'web-mode)
+
 (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
@@ -169,10 +166,12 @@
 
 (add-hook 'web-mode-hook 'company-web-bootstrap+)
 (add-hook 'web-mode-hook 'company-web-fa+)
+(add-hook 'web-mode-hook 'superword-mode)
 
 (require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-hook 'js2-mode-hook 'ac-js2-mode)
+(add-hook 'js2-mode-hook 'subword-mode)
 
 (add-hook 'css-mode-hook 'rainbow-mode)
 
@@ -239,12 +238,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("3eb93cd9a0da0f3e86b5d932ac0e3b5f0f50de7a0b805d4eb1f67782e9eb67a4" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "06dbcfac3705aaaa79e1a3264c6fd44ef0cf86ef5ed67930e4007e63a8c1e8ee" "ef479623c75026d8ba1de98a8cb74198f6f3eedc6fca509990ac2559ba830675" default)))
  '(package-selected-packages
    (quote
-    (airline-themes powerline-evil doom-themes ac-html-bootstrap ac-html undo-tree js2-mode company yasnippet zenburn-theme zenburn ws-butler web-mode visual-regexp switch-window sublime-themes sr-speedbar sqlup-mode solarized-theme smex smart-mode-line reykjavik-theme rainbow-mode rainbow-delimiters project-explorer powerline pastelmac-theme paredit ox-twbs org-bullets oceanic-theme multiple-cursors monokai-theme minimap meacupla-theme markdown-mode mark-multiple latex-preview-pane js3-mode irony indent-guide impatient-mode heroku-theme helm-google focus flyspell-popup firebelly-theme expand-region evil emmet-mode darcula-theme company-web column-enforce-mode color-theme-sanityinc-tomorrow clues-theme clojure-snippets clojure-cheatsheet cheatsheet buffer-move autopair auto-yasnippet auto-complete aurora-theme atom-one-dark-theme atom-dark-theme ample-zen-theme alpha aggressive-indent ac-js2))))
+    (ox-twiki xref-js2 beacon neotree flycheck undo-tree company yasnippet web-mode ws-butler web-mode-edit-element visual-regexp switch-window sublime-themes sqlup-mode sourcerer-theme solarized-theme smex smartparens smart-mode-line rainbow-mode rainbow-delimiters project-explorer pastelmac-theme paredit ox-twbs org-bullets octicons multiple-cursors monokai-theme material-theme mark-multiple latex-preview-pane js2-mode indent-guide impatient-mode helm-google git-gutter-fringe+ git-gutter focus flyspell-popup flycheck-clangcheck firebelly-theme expand-region evil emmet-mode doom-themes company-web column-enforce-mode clojure-snippets clojure-cheatsheet cheatsheet buffer-move autopair auto-yasnippet auto-complete aurora-theme atom-one-dark-theme alpha aggressive-indent ac-html-bootstrap))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -32,6 +32,10 @@
 * Editor
 #+begin_src emacs-lisp :tangle yes
 (cheatsheet-add :group 'Editor
+                :key "C-x SPC;"
+                :description "Block mark")
+
+(cheatsheet-add :group 'Editor
                 :key "C-x ;"
                 :description "Comment/Uncomment")
 
