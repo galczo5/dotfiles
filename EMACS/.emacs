@@ -59,6 +59,7 @@
                        git-gutter-fringe+
                        flycheck
                        xref-js2
+                       magit
                        ))
 
 (mapc (lambda (p)
@@ -102,7 +103,9 @@
 (global-visual-line-mode 1)
 
 ;;Theme load
-(load-theme 'doom-one t)
+
+(if window-system
+    (load-theme 'doom-one t))
 
 (global-set-key (kbd "C-x k") 'kill-buffer-and-window)
 
@@ -138,7 +141,7 @@
 ;;(global-auto-complete-mode 1)
 
 ;;Kill multiple-cursors mode with C-g
-(require 'multiple-cursors)
+;;(require 'multiple-cursors)
 (global-set-key (kbd "C-n") 'mc/mark-next-like-this)
 
 ;;Better buffer menu
@@ -240,10 +243,10 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (ox-twiki xref-js2 beacon neotree flycheck undo-tree company yasnippet web-mode ws-butler web-mode-edit-element visual-regexp switch-window sublime-themes sqlup-mode sourcerer-theme solarized-theme smex smartparens smart-mode-line rainbow-mode rainbow-delimiters project-explorer pastelmac-theme paredit ox-twbs org-bullets octicons multiple-cursors monokai-theme material-theme mark-multiple latex-preview-pane js2-mode indent-guide impatient-mode helm-google git-gutter-fringe+ git-gutter focus flyspell-popup flycheck-clangcheck firebelly-theme expand-region evil emmet-mode doom-themes company-web column-enforce-mode clojure-snippets clojure-cheatsheet cheatsheet buffer-move autopair auto-yasnippet auto-complete aurora-theme atom-one-dark-theme alpha aggressive-indent ac-html-bootstrap))))
+    (magit undo-tree js2-mode company yasnippet auto-complete zenburn-theme zenburn xref-js2 ws-butler web-mode visual-regexp switch-window sublime-themes sr-speedbar sqlup-mode solarized-theme smex smart-mode-line reykjavik-theme rainbow-mode rainbow-delimiters project-explorer powerline-evil pastelmac-theme paredit ox-twbs org-bullets oceanic-theme multiple-cursors monokai-theme minimap meacupla-theme markdown-mode mark-multiple latex-preview-pane js3-mode irony indent-guide impatient-mode heroku-theme helm-google git-gutter-fringe+ focus flyspell-popup flycheck firebelly-theme expand-region emmet-mode doom-themes darcula-theme company-web column-enforce-mode color-theme-sanityinc-tomorrow clues-theme clojure-snippets clojure-cheatsheet cheatsheet buffer-move autopair auto-yasnippet aurora-theme atom-one-dark-theme atom-dark-theme ample-zen-theme alpha airline-themes aggressive-indent ac-js2 ac-html-bootstrap ac-html))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:background nil)))))
