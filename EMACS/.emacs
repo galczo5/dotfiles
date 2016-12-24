@@ -9,61 +9,9 @@
 
 (package-initialize)
 
-(defvar package-list '(auto-complete
-                       autopair
-                       multiple-cursors
-                       web-mode
-                       yasnippet
-                       company
-                       project-explorer
-                       sqlup-mode
-                       expand-region
-                       monokai-theme
-                       rainbow-mode ;; Color hexcodes
-                       atom-one-dark-theme
-                       aurora-theme
-                       latex-preview-pane
-                       flyspell-popup
-                       smex ;; ido-mode for M-x
-                       js2-mode ;; better mode for javascript
-                       emmet-mode
-                       auto-yasnippet
-                       aggressive-indent ;; auto indent
-                       indent-guide ;; crazy indent line
-                       impatient-mode ;; html live reload
-                       pastelmac-theme
-                       mark-multiple
-                       ;; Uncomment if planning to start adventure with clojure
-                       ;; cider
-                       ;; clojure-cheatsheet
-                       ;; clojure-snippets
-                       ;; paredit
-                       ws-butler
-                       undo-tree
-                       solarized-theme
-                       rainbow-delimiters
-                       switch-window
-                       visual-regexp
-                       focus
-                       firebelly-theme
-                       company-web
-                       buffer-move
-                       helm-google
-                       cheatsheet
-                       org-bullets
-                       ox-twbs
-                       alpha
-                       column-enforce-mode
-                       ac-html-bootstrap
-                       doom-themes
-                       git-gutter-fringe+
-                       flycheck
-                       xref-js2
-                       ))
-
-(mapc (lambda (p)
-        (package-install p))
-      package-list)
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
 (setq user-mail-address "kamil.galek@gmail.com"
       user-full-name    "Kamil Gałek")
@@ -85,15 +33,17 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (menu-bar-mode -1) ;;Sometimes it's usefull
+(ido-mode t)
 
 ;;Linum mode - line numbers
 ;; (global-linum-mode 1)
 (global-set-key [f7] 'linum-mode)
+(global-set-key (kbd "C-x C-b") 'buffer-menu)
 ;;(setq linum-format " %4d ")
 
 (show-paren-mode 1)
 (column-number-mode 1)
-(column-enforce-mode 1)
+
 (set-default 'cursor-type 'hbar)
 (setq fringes-outside-margins t)
 
@@ -101,149 +51,206 @@
 (global-hl-line-mode 1)
 (global-visual-line-mode 1)
 
-;;Theme load
-(load-theme 'doom-one t)
-
 (global-set-key (kbd "C-x k") 'kill-buffer-and-window)
-
-;;Trim white space at the end of line
-(ws-butler-global-mode)
-
-(require 'flycheck)
-(global-flycheck-mode)
-
-(require 'switch-window)
-(global-set-key (kbd "C-x o") 'switch-window)
-
-(require 'visual-regexp)
-(define-key global-map (kbd "C-c r") 'vr/replace)
-
-(require 'expand-region)
-(global-set-key (kbd "C-=") 'er/expand-region)
-
-;;Classic
-(require 'ido)
-(ido-mode t)
-
-;;Ido like for M-x
-(require 'smex)
-(smex-initialize)
-(global-set-key (kbd "M-x") 'smex)
-
-(require 'autopair)
-(autopair-global-mode)
-
-;; Disabled when company mode is enabled
-;;(require 'auto-complete)
-;;(global-auto-complete-mode 1)
-
-;;Kill multiple-cursors mode with C-g
-(require 'multiple-cursors)
-(global-set-key (kbd "C-n") 'mc/mark-next-like-this)
-
-;;Better buffer menu
-(global-set-key (kbd "C-x C-b") 'buffer-menu)
-
-(require 'project-explorer)
-(global-set-key [f8] 'project-explorer-toggle)
-
-(require 'emmet-mode)
-(global-set-key (kbd "C-e") 'emmet-expand-line)
-
-;;Web mode
-(require 'web-mode)
-
-(add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode))
-
-(add-hook 'web-mode-hook 'company-web-bootstrap+)
-(add-hook 'web-mode-hook 'company-web-fa+)
-(add-hook 'web-mode-hook 'superword-mode)
-
-(require 'js2-mode)
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(add-hook 'js2-mode-hook 'ac-js2-mode)
-(add-hook 'js2-mode-hook 'subword-mode)
-
-(add-hook 'css-mode-hook 'rainbow-mode)
-
-(require 'yasnippet)
-(yas-global-mode 1)
-(global-set-key (kbd "C-q") 'company-yasnippet)
-(global-set-key (kbd "C-c C-s") 'yas-insert-snippet)
-
-(add-hook 'sql-mode-hook 'sqlup-mode)
-
-(require 'company)
-(global-company-mode t)
-(global-set-key (kbd "C-SPC") 'company-complete-common)
-(add-to-list 'company-backends 'company-web-html)
-(add-to-list 'company-backends 'company-web-bootstrap+)
-
-(require 'org)
-(setq org-log-done t)
-
-(require 'ispell)
-(flyspell-mode t)
-
-(add-to-list 'ispell-local-dictionary-alist '("pl_PL"
-                                              "[[:alpha:]]"
-                                              "[^[:alpha:]]"
-                                              "[']"
-                                              t
-                                              ("-d" "pl_PL")
-                                              nil
-                                              utf-8))
-
-(setq ispell-program-name "hunspell"
-      ispell-dictionary   "pl_PL")
-
-(require 'auto-yasnippet)
-(global-aggressive-indent-mode 1)
-
-(require 'indent-guide)
-(indent-guide-global-mode)
-
-(require 'impatient-mode)
-
-(global-set-key (kbd "<C-M-up>")     'buf-move-up)
-(global-set-key (kbd "<C-M-down>")   'buf-move-down)
-(global-set-key (kbd "<C-M-left>")   'buf-move-left)
-(global-set-key (kbd "<C-M-right>")  'buf-move-right)
-
 (global-set-key (kbd "C-x ;") 'comment-line)
 
-(require 'cheatsheet)
-(global-set-key (kbd "C-c ?") 'cheatsheet-show)
+(use-package "doom-themes"
+  :ensure t
+  :config (load-theme 'doom-one t))
 
-(require 'org-bullets)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+(use-package "column-enforce-mode"
+  :ensure t
+  :config (column-enforce-mode 1))
 
-(require 'alpha)
-(set-frame-parameter (selected-frame) 'alpha '(85 . 50))
-(add-to-list 'default-frame-alist '(alpha . (85 . 50)))
+(use-package "helm-swoop"
+  :ensure t
+  :config (global-set-key (kbd "C-s") 'helm-swoop))
 
+(use-package "ws-butler"
+  :ensure t
+  :config (ws-butler-global-mode))
+
+(use-package "flycheck"
+  :ensure t
+  :config (global-flycheck-mode))
+
+(use-package "switch-window"
+  :ensure t
+  :config (global-set-key (kbd "C-x o") 'switch-window))
+
+(use-package "visual-regexp"
+  :ensure t
+  :config (define-key global-map (kbd "C-c r") 'vr/replace))
+
+(use-package "expand-region"
+  :ensure t
+  :config (global-set-key (kbd "C-=") 'er/expand-region))
+
+(use-package "smex"
+  :ensure t
+  :init (smex-initialize)
+  :config (global-set-key (kbd "M-x") 'smex))
+
+(use-package "autopair"
+  :ensure t
+  :config (autopair-global-mode))
+
+(use-package "multiple-cursors"
+  :ensure t
+  :config (global-set-key (kbd "C-n") 'mc/mark-next-like-this))
+
+(use-package "project-explorer"
+  :ensure t
+  :config (global-set-key [f8] 'project-explorer-toggle))
+
+(use-package "emmet-mode"
+  :ensure t
+  :config (global-set-key (kbd "C-e") 'emmet-expand-line))
+
+(use-package "web-mode"
+  :ensure t
+  :init
+  (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode))
+  :config (add-hook 'web-mode-hook 'superword-mode)
+  )
+
+(use-package "company-web"
+  :ensure t
+  :config
+  (add-hook 'web-mode-hook 'company-web-bootstrap+)
+  (add-hook 'web-mode-hook 'company-web-fa+))
+
+(use-package "company"
+  :ensure t
+  :config
+  (global-company-mode 1)
+  (global-set-key (kbd "C-SPC") 'company-complete-common)
+  (add-to-list 'company-backends 'company-web-html)
+  (add-to-list 'company-backends 'company-web-bootstrap+))
+
+(use-package "auto-complete"
+  :ensure t)
+
+(use-package "ac-html-bootstrap"
+  :ensure t)
+
+(use-package "js2-mode"
+  :ensure t
+  :init (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+  :config
+  (add-hook 'js2-mode-hook 'ac-js2-mode)
+  (add-hook 'js2-mode-hook 'subword-mode))
+
+(use-package "rainbow-mode"
+  :ensure t
+  :config (add-hook 'css-mode-hook 'rainbow-mode))
+
+(use-package "yasnippet"
+  :ensure t
+  :config
+  (yas-global-mode t)
+  (global-set-key (kbd "C-q") 'company-yasnippet)
+  (global-set-key (kbd "C-c C-s") 'yas-insert-snippet))
+
+(use-package "sqlup-mode"
+  :ensure t
+  :config (add-hook 'sql-mode-hook 'sqlup-mode))
+
+(use-package "org"
+  :ensure t
+  :config (setq org-log-done t))
+
+(use-package "org-bullets"
+  :ensure t
+  :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+(use-package "ox-twbs"
+  :ensure t)
+
+(use-package "ispell"
+  :ensure t
+  :config
+  (add-to-list 'ispell-local-dictionary-alist '("pl_PL"
+                                                "[[:alpha:]]"
+                                                "[^[:alpha:]]"
+                                                "[']"
+                                                t
+                                                ("-d" "pl_PL")
+                                                nil
+                                                utf-8))
+
+  (setq ispell-program-name "hunspell"
+        ispell-dictionary   "pl_PL"))
+
+(use-package "flyspell-popup"
+  :ensure t)
+
+(flyspell-mode t)
+
+(use-package "auto-yasnippet"
+  :ensure t)
+
+(use-package "aggressive-indent"
+  :ensure t
+  :config (global-aggressive-indent-mode 1))
+
+(use-package "indent-guide"
+  :ensure t
+  :config (indent-guide-global-mode))
+
+(use-package "buffer-move"
+  :ensure t
+  :config
+  (global-set-key (kbd "<C-M-up>")     'buf-move-up)
+  (global-set-key (kbd "<C-M-down>")   'buf-move-down)
+  (global-set-key (kbd "<C-M-left>")   'buf-move-left)
+  (global-set-key (kbd "<C-M-right>")  'buf-move-right))
+
+
+(use-package "cheatsheet"
+  :ensure t
+  :config (global-set-key (kbd "C-c ?") 'cheatsheet-show))
+
+(use-package "alpha"
+  :ensure t
+  :config
+  (set-frame-parameter (selected-frame) 'alpha '(85 . 50))
+  (add-to-list 'default-frame-alist '(alpha . (85 . 50))))
+
+(use-package "latex-preview-pane"
+  :ensure t)
+
+(use-package "undo-tree"
+  :ensure t)
+
+(use-package "rainbow-delimiters"
+  :ensure t)
+
+(use-package "focus"
+  :ensure t)
+
+(use-package "helm-google"
+  :ensure t)
+
+(use-package "git-gutter-fringe+"
+  :ensure t)
+
+(use-package "xref-js2"
+  :ensure t)
+
+(use-package "helm-css-scss"
+  :ensure t)
+
+(use-package "magit"
+  :ensure t)
 
 (org-babel-load-file "~/.emacs.d/cheatsheet.org")
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (ox-twiki xref-js2 beacon neotree flycheck undo-tree company yasnippet web-mode ws-butler web-mode-edit-element visual-regexp switch-window sublime-themes sqlup-mode sourcerer-theme solarized-theme smex smartparens smart-mode-line rainbow-mode rainbow-delimiters project-explorer pastelmac-theme paredit ox-twbs org-bullets octicons multiple-cursors monokai-theme material-theme mark-multiple latex-preview-pane js2-mode indent-guide impatient-mode helm-google git-gutter-fringe+ git-gutter focus flyspell-popup flycheck-clangcheck firebelly-theme expand-region evil emmet-mode doom-themes company-web column-enforce-mode clojure-snippets clojure-cheatsheet cheatsheet buffer-move autopair auto-yasnippet auto-complete aurora-theme atom-one-dark-theme alpha aggressive-indent ac-html-bootstrap))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
