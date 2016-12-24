@@ -31,3 +31,11 @@ button.vivaldi {
 .searchfield {
     display: none !important;
 }
+
+#panels #switch {
+    display: none;
+}
+
+.panel#downloads header {
+    display: none;
+}
