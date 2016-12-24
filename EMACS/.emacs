@@ -1,3 +1,4 @@
+;; Add melpa and marmelade repos to repo list and install use-package if not installed
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/")
@@ -10,53 +11,52 @@
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
-  (package-refresh-contents)
+  (package-refresh-contenets)
   (package-install 'use-package))
 
+;; Personal info
 (setq user-mail-address "kamil.galek@gmail.com"
       user-full-name    "Kamil Gałek")
 
-;;Do not show welcome message
 (setq vc-follow-symlinks t)
 (setq inhibit-startup-message t)
 (setq make-backup-files nil)
 
+(setq-default fringes-outside-margins t)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
 (setq indent-line-function 'insert-tab)
 
-;;Fonts
 (set-frame-font "Source Code Pro")
 (set-face-attribute 'default nil :height 100)
 
-;;Hide all bars
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
-(menu-bar-mode -1) ;;Sometimes it's usefull
-(ido-mode t)
-
-;;Linum mode - line numbers
-;; (global-linum-mode 1)
-(global-set-key [f7] 'linum-mode)
-(global-set-key (kbd "C-x C-b") 'buffer-menu)
-;;(setq linum-format " %4d ")
+(menu-bar-mode -1)
 
 (show-paren-mode 1)
 (column-number-mode 1)
 
 (set-default 'cursor-type 'hbar)
-(setq fringes-outside-margins t)
 
-;;Uncomment for line highlighting
 (global-hl-line-mode 1)
 (global-visual-line-mode 1)
 
 (global-set-key (kbd "C-x k") 'kill-buffer-and-window)
 (global-set-key (kbd "C-x ;") 'comment-line)
+(global-set-key (kbd "C-x C-b") 'buffer-menu)
+
+(global-set-key [f7] 'linum-mode)
+(setq linum-format " %4d | ")
+
+(ido-mode t)
 
 (use-package "doom-themes"
   :ensure t
-  :config (load-theme 'doom-one t))
+  :config
+  (load-theme 'doom-one t)
+  (add-hook 'minibuffer-setup-hook 'doom-brighten-minibuffer)
+  (setq doom-enable-brighter-comments t))
 
 (use-package "column-enforce-mode"
   :ensure t
@@ -71,8 +71,7 @@
   :config (ws-butler-global-mode))
 
 (use-package "flycheck"
-  :ensure t
-  :config (global-flycheck-mode))
+  :ensure t)
 
 (use-package "switch-window"
   :ensure t
@@ -120,8 +119,7 @@
   (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode))
-  :config (add-hook 'web-mode-hook 'superword-mode)
-  )
+  :config (add-hook 'web-mode-hook 'superword-mode))
 
 (use-package "company-web"
   :ensure t
@@ -187,7 +185,6 @@
                                                 ("-d" "pl_PL")
                                                 nil
                                                 utf-8))
-
   (setq ispell-program-name "hunspell"
         ispell-dictionary   "pl_PL"))
 
@@ -241,8 +238,18 @@
 (use-package "helm-google"
   :ensure t)
 
-(use-package "git-gutter-fringe+"
-  :ensure t)
+(use-package "git-gutter-fringe"
+  :ensure t
+  :config
+  (define-fringe-bitmap 'git-gutter-fr:added
+    [224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224]
+    nil nil 'center)
+  (define-fringe-bitmap 'git-gutter-fr:modified
+    [224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224 224]
+    nil nil 'center)
+  (define-fringe-bitmap 'git-gutter-fr:deleted
+    [0 0 0 0 0 0 0 0 0 0 0 0 0 128 192 224 240 248]
+    nil nil 'center))
 
 (use-package "xref-js2"
   :ensure t)
