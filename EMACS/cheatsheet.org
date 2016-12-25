@@ -1,5 +1,5 @@
 * Buffers
-#+begin_src emacs-lisp :tangle yes
+#+begin_src emacs-lisp
 (cheatsheet-add :group 'Buffers
                 :key "C-x C-b"
                 :description "Buffer menu")
@@ -31,36 +31,46 @@
 
 * Editor
 #+begin_src emacs-lisp :tangle yes
-(cheatsheet-add :group 'Editor
-                :key "C-x SPC;"
-                :description "Block mark")
+  (cheatsheet-add :group 'Editor
+                  :key "C-x SPC;"
+                  :description "Block mark")
 
-(cheatsheet-add :group 'Editor
-                :key "C-x ;"
-                :description "Comment/Uncomment")
+  (cheatsheet-add :group 'Editor
+                  :key "C-x ;"
+                  :description "Comment/Uncomment")
 
-(cheatsheet-add :group 'Editor
-                :key "C-x ;"
-                :description "Comment/Uncomment")
+  (cheatsheet-add :group 'Editor
+                  :key "C-x ;"
+                  :description "Comment/Uncomment")
 
-(cheatsheet-add :group 'Editor
-                :key "C-c r"
-                :description "Visual replace")
+  (cheatsheet-add :group 'Editor
+                  :key "C-c r"
+                  :description "Visual replace")
 
-(cheatsheet-add :group 'Editor
-                :key "C-="
-                :description "Expand region")
-(cheatsheet-add :group 'Editor
-                :key "C-n"
-                :description "Multiple cursors")
+  (cheatsheet-add :group 'Editor
+                  :key "C-="
+                  :description "Expand region")
 
-(cheatsheet-add :group 'Editor
-                :key "C-e"
-                :description "Emmet expand line")
+  (cheatsheet-add :group 'Editor
+                  :key "C-n"
+                  :description "Multiple cursors")
 
-(cheatsheet-add :group 'Editor
-                :key "C-SPC"
-                :description "Autocomplete")
+  (cheatsheet-add :group 'Editor
+                  :key "C-e"
+                  :description "Emmet expand line")
+
+  (cheatsheet-add :group 'Editor
+                  :key "C-SPC"
+                  :description "Autocomplete")
+
+  (cheatsheet-add :group 'Editor
+                  :key "F7"
+                  :description "Toggle line numbers")
+
+  (cheatsheet-add :group 'Editor
+                  :key "F8"
+                  :description "Toggle project file explorer")
+
 #+end_src
 
 * Snippets
@@ -72,4 +82,31 @@
 (cheatsheet-add :group 'Snippets
                 :key "C-c C-s"
                 :description "Insert snippet")
+#+end_src
+* Commands
+#+begin_src emacs-lisp :tangle yes
+
+  (cheatsheet-add :group 'Commands
+                  :key "focus-mode"
+                  :description "Highlighting of current code block")
+
+  (cheatsheet-add :group 'Commands
+                  :key "git-gutter-mode"
+                  :description "Display marks of git line status (added/deleted/changed)")
+
+  (cheatsheet-add :group 'Commands
+                  :key "helm-google"
+                  :description "Find in google")
+
+  (cheatsheet-add :group 'Commands
+                  :key "magit-status"
+                  :description "Git tool, display status of files")
+
+  (cheatsheet-add :group 'Commands
+                  :key "org-twbs-export-as-html"
+                  :description "Export org file as bootstrap html page")
+
+  (cheatsheet-add :group 'Commands
+                  :key "helm-css-scss"
+                  :description "Find in css files")
 #+end_src
