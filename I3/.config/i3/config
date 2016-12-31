@@ -4,7 +4,6 @@
   set $win Mod4
 
   # set font
-
   font pango: Source Sans Pro Regular 9
 
   floating_modifier $mod
@@ -12,10 +11,9 @@
   new_window pixel 0
   new_float normal 1
 
-  for_window [class="xfce4-panel"] floating enable
-
   # start a terminal
   bindsym $win+Return exec urxvt
+  bindsym $win+e exec emacsclient -c
 
   # kill focused window
   bindsym $mod+Shift+q kill
@@ -58,16 +56,16 @@
   bindsym $mod+a focus parent
 
   # workspace names
-  set $workspace1  "1  "
-  set $workspace2  "2  "
-  set $workspace3  "3  "
-  set $workspace4  "4  "
-  set $workspace5  "5  "
-  set $workspace6  "6  "
-  set $workspace7  "7  "
-  set $workspace8  "8  "
-  set $workspace9  "9  "
-  set $workspace10 "10  "
+  set $workspace1  "1:  "
+  set $workspace2  "2:  "
+  set $workspace3  "3:  "
+  set $workspace4  "4:  "
+  set $workspace5  "5:  "
+  set $workspace6  "6:  "
+  set $workspace7  "7:  "
+  set $workspace8  "8:  "
+  set $workspace9  "9:  "
+  set $workspace10 "10:  "
 
   # switch to workspace
   bindsym $mod+1 workspace $workspace1
@@ -124,7 +122,8 @@
   }
 
   bindsym $mod+r mode "resize"
-  bindsym $alt+space exec dmenu_run -h 30 -w 700 -x 1220 -fn 'Source Snas Pro-10' -nb "#000000" -nf '#f3f4f5' -sb "#f3f4f5" -sf "#2f343f"
+  bindsym $alt+space exec rofi -show combi -modi combi
+
 
   bindsym XF86AudioRaiseVolume exec amixer -q sset Master 3%+
   bindsym XF86AudioLowerVolume exec amixer -q sset Master 3%-
@@ -133,7 +132,7 @@
   bindsym XF86MonBrightnessDown exec xbacklight -dec 20
 
   gaps inner 10
-  gaps outer 20
+  gaps outer 30
   #smart_gaps on
   #smart_borders on
 
@@ -143,24 +142,27 @@
   client.focused_inactive #2f343f             #2f343f            #a0a0a0              #2f343f
   client.urgent           #E53935             #E53935            #a0a0a0              #2f343f
 
-  bar {
-    workspace_buttons yes
-    i3bar_command i3bar -t
-    status_command i3blocks -c ~/.config/i3/i3blocks.conf
-    position top
-    tray_output DP-0
-    height 30
-    strip_workspace_numbers yes
+  # Replaced with polybar
+  # bar {
+  #   workspace_buttons yes
+  #   i3bar_command i3bar -t
+  #   status_command i3blocks -c ~/.config/i3/i3blocks.conf
+  #   position top
+  #   tray_output DP-0
+  #   height 30
+  #   strip_workspace_numbers yes
 
-    colors {
-      background         #2f343f00
-      separator          #2f343f00
-      focused_workspace  #2f343f00          #2f343f00          #9BA5BD
-      active_workspace   #2f343f00          #2f343f00          #676E7D
-      inactive_workspace #2f343f00          #2f343f00          #676E7D
-      urgent_workspace   #E5393500          #E5393500          #f3f4f5
-    }
-  }
+  #   colors {
+  #     background         #2f343f00
+  #     separator          #2f343f00
+  #     focused_workspace  #2f343f00          #2f343f00          #9BA5BD
+  #     active_workspace   #2f343f00          #2f343f00          #676E7D
+  #     inactive_workspace #2f343f00          #2f343f00          #676E7D
+  #     urgent_workspace   #E5393500          #E5393500          #f3f4f5
+  #   }
+  # }
+
+  exec --on-startup-id run_polybar.sh
 
   exec --no-startup-id compton --backend glx --paint-on-overlay --vsync opengl-swc 
   exec --no-startup-id redshift
@@ -170,3 +172,4 @@
   exec --no-startup-id synclient TapButton1=1
   exec --no-startup-id synclient TapButton2=3
   exec --no-startup-id nm-applet
+  exec --no-startup-id emacs --daemon
