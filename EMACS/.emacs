@@ -11,7 +11,6 @@
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
-  (package-refresh-contenets)
   (package-install 'use-package))
 
 ;; Personal info
@@ -171,6 +170,9 @@
   :ensure t
   :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
+(use-package "htmlize"
+  :ensure t)
+
 (use-package "ox-twbs"
   :ensure t)
 
@@ -261,3 +263,17 @@
   :ensure t)
 
 (org-babel-load-file "~/.emacs.d/cheatsheet.org")
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (htmlize helm-css-scss git-gutter-fringe helm-swoop use-package zenburn-theme zenburn xref-js2 ws-butler web-mode visual-regexp switch-window sublime-themes sr-speedbar sqlup-mode solarized-theme smex smart-mode-line reykjavik-theme rainbow-mode rainbow-delimiters project-explorer powerline-evil pastelmac-theme paredit ox-twbs org-bullets oceanic-theme multiple-cursors monokai-theme minimap meacupla-theme markdown-mode mark-multiple magit latex-preview-pane js3-mode irony indent-guide impatient-mode heroku-theme helm-google git-gutter-fringe+ focus flyspell-popup flycheck firebelly-theme expand-region emmet-mode doom-themes darcula-theme company-web column-enforce-mode color-theme-sanityinc-tomorrow clues-theme clojure-snippets clojure-cheatsheet cheatsheet buffer-move autopair auto-yasnippet aurora-theme atom-one-dark-theme atom-dark-theme ample-zen-theme alpha airline-themes aggressive-indent ac-js2 ac-html-bootstrap ac-html))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
