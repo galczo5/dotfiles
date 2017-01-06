@@ -162,7 +162,7 @@
   #   }
   # }
 
-  exec --on-startup-id run_polybar.sh
+  exec --no-startup-id run_polybar.sh
 
   exec --no-startup-id compton --backend glx --paint-on-overlay --vsync opengl-swc 
   exec --no-startup-id redshift
