@@ -10,6 +10,8 @@
 
 (package-initialize)
 
+(package-refresh-contents)
+
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
@@ -264,8 +266,8 @@
 (use-package "magit"
   :ensure t)
 
-;; (use-package "evil"
-;;   :ensure t
-;;   :config (evil-mode 1))
+(use-package "tramp"
+  :ensure t
+  :config (tramp-default-method "ssh"))
 
 (org-babel-load-file "~/.emacs.d/cheatsheet.org")
