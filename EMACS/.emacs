@@ -38,7 +38,7 @@
 (show-paren-mode 1)
 (column-number-mode 1)
 
-(set-default 'cursor-type 'hbar)
+(set-default 'cursor-type 'box)
 
 (global-hl-line-mode 1)
 (global-visual-line-mode 1)
@@ -48,7 +48,7 @@
 (global-set-key (kbd "C-x C-b") 'buffer-menu)
 
 (global-set-key [f7] 'linum-mode)
-(setq linum-format " %4d | ")
+(setq linum-format " %4d  |  ")
 
 (ido-mode t)
 
@@ -58,12 +58,15 @@
   (load-theme 'doom-one t)
   (add-hook 'minibuffer-setup-hook 'doom-brighten-minibuffer)
   (setq doom-enable-brighter-comments t)
-  (set-face-background 'mode-line "#314485")
-  (set-face-foreground 'mode-line "#BBC2CF"))
+  (set-face-background 'mode-line "#000000")
+  (set-face-foreground 'mode-line "#ffffff"))
 
 (use-package "column-enforce-mode"
   :ensure t
   :config (column-enforce-mode 1))
+
+(use-package "aggressive-indent"
+  :ensure t)
 
 (use-package "helm-swoop"
   :ensure t
@@ -122,7 +125,9 @@
   (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode))
-  :config (add-hook 'web-mode-hook 'superword-mode))
+  :config
+  (add-hook 'web-mode-hook 'superword-mode)
+  (add-hook 'web-mode-hook 'aggressive-indent-mode))
 
 (use-package "company-web"
   :ensure t
@@ -191,20 +196,22 @@
                                                 ("-d" "pl_PL")
                                                 nil
                                                 utf-8))
+  (add-to-list 'ispell-local-dictionary-alist '("en_US"
+                                              "[[:alpha:]]"
+                                              "[^[:alpha:]]"
+                                              "[']"
+                                              t
+                                              ("-d" "en_US")
+                                              nil
+                                              iso-8859-1))
   (setq ispell-program-name "hunspell"
         ispell-dictionary   "pl_PL"))
 
 (use-package "flyspell-popup"
   :ensure t)
 
-(flyspell-mode t)
-
 (use-package "auto-yasnippet"
   :ensure t)
-
-(use-package "aggressive-indent"
-  :ensure t
-  :config (global-aggressive-indent-mode 1))
 
 (use-package "indent-guide"
   :ensure t
@@ -226,8 +233,8 @@
 (use-package "alpha"
   :ensure t
   :config
-  (set-frame-parameter (selected-frame) 'alpha '(85 . 50))
-  (add-to-list 'default-frame-alist '(alpha . (85 . 50))))
+  (set-frame-parameter (selected-frame) 'alpha '(90 . 90))
+  (add-to-list 'default-frame-alist '(alpha . (90 . 90))))
 
 (use-package "latex-preview-pane"
   :ensure t)
@@ -266,8 +273,41 @@
 (use-package "magit"
   :ensure t)
 
-(use-package "tramp"
+(use-package "irony"
   :ensure t
-  :config (tramp-default-method "ssh"))
+  :config
+  (add-hook 'c++-mode-hook 'irony-mode)
+  (add-hook 'c-mode-hook 'irony-mode)
+
+  (defun my-irony-mode-hook ()
+    (define-key irony-mode-map [remap completion-at-point]
+      'irony-completion-at-point-async)
+    (define-key irony-mode-map [remap complete-symbol]
+      'irony-completion-at-point-async))
+  (add-hook 'irony-mode-hook 'my-irony-mode-hook)
+  (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+
+  (add-hook 'c-mode-common-hook 'linum-mode)
+  (add-hook 'c-mode-common-hook 'flycheck-mode)
+  (add-hook 'c-mode-common-hook 'aggressive-indent-mode)
+
+  (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+  (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11"))))
+
+(use-package "company-irony"
+  :ensure t
+  :init (add-to-list 'company-backends 'company-irony))
+
+(use-package "company-c-headers"
+  :ensure t
+  :init (add-to-list 'company-backends 'company-c-headers))
+
+(use-package "google-c-style"
+  :ensure t
+  :config (add-hook 'c-mode-common-hook 'google-set-c-style))
+
+(use-package "function-args"
+  :ensure t
+  :config (fa-config-default))
 
 (org-babel-load-file "~/.emacs.d/cheatsheet.org")
