@@ -58,7 +58,7 @@
   (load-theme 'doom-one t)
   (add-hook 'minibuffer-setup-hook 'doom-brighten-minibuffer)
   (setq doom-enable-brighter-comments t)
-  (set-face-background 'mode-line "#000000")
+  (set-face-background 'mode-line "#2E4D4D")
   (set-face-foreground 'mode-line "#ffffff"))
 
 (use-package "column-enforce-mode"
@@ -288,11 +288,20 @@
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 
   (add-hook 'c-mode-common-hook 'linum-mode)
-  (add-hook 'c-mode-common-hook 'flycheck-mode)
   (add-hook 'c-mode-common-hook 'aggressive-indent-mode)
 
   (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
-  (add-hook 'c++-mode-hook (lambda () (setq flycheck-gcc-language-standard "c++11"))))
+  (add-hook 'c-mode-common-hook (lambda ()
+                                  (setq flycheck-gcc-language-standard "c++11")))
+  (add-hook 'c-mode-common-hook 'flycheck-mode)
+  (add-hook 'c++-mode-hook (lambda ()
+                             (setq irony-additional-clang-options '("-std=c++14")))))
+
+(use-package "flycheck-irony"
+  :ensure t
+  :init
+  (eval-after-load 'flycheck
+      '(add-hook 'flycheck-mode-hook 'flycheck-irony-setup)))
 
 (use-package "company-irony"
   :ensure t
@@ -304,10 +313,35 @@
 
 (use-package "google-c-style"
   :ensure t
-  :config (add-hook 'c-mode-common-hook 'google-set-c-style))
+  :config
+  (add-hook 'c-mode-common-hook 'google-set-c-style)
+  (add-hook 'c-mode-common-hook 'google-make-newline-indent))
 
 (use-package "function-args"
   :ensure t
   :config (fa-config-default))
 
+(use-package "smooth-scrolling"
+  :ensure t
+  :config (smooth-scrolling-mode 1))
+
+;; try selectric-mode
+
 (org-babel-load-file "~/.emacs.d/cheatsheet.org")
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("15348febfa2266c4def59a08ef2846f6032c0797f001d7b9148f30ace0d08bcf" default)))
+ '(package-selected-packages
+   (quote
+    (flatui-theme smooth-scrolling iedit flycheck-irony scala-mode function-args google-c-style company-c-headers company-irony irony xref-js2 ws-butler web-mode visual-regexp use-package switch-window sqlup-mode smex rainbow-mode rainbow-delimiters project-explorer ox-twbs org-bullets org nlinum multiple-cursors magit lineno leuven-theme latex-preview-pane indent-guide htmlize helm-swoop helm-google helm-css-scss github-theme git-gutter-fringe git-gutter-fringe+ focus flyspell-popup flycheck expand-region evil emmet-mode doom-themes company-web column-enforce-mode cheatsheet buffer-move autopair auto-yasnippet auto-complete alpha aggressive-indent ac-html-bootstrap))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
