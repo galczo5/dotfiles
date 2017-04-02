@@ -21,7 +21,7 @@ offset-y = 5
 bottom = true
 
 background = #00000000
-foreground = #555555
+foreground = #888888
 
 spacing = 1
 padding-left = 4
@@ -56,7 +56,7 @@ offset-y = 5
 
 bottom = true
 background = #00000000
-foreground = #555555
+foreground = #888888
 
 spacing = 1
 padding-left = 4
@@ -89,14 +89,14 @@ padding-right = 2
 background = #00000000
 foreground = #888888
 
-font-0 = hack:pixelsize=12;1
+font-0 = Source Sans Pro:pixelsize=14;1
 font-1 = unifont:size=6:heavy:fontformat=truetype;-2
 font-2 = siji:pixelsize=10;0
 font-3 = FontAwesome:pixelsize=14;0
 
 modules-left =
 modules-center = date
-modules-right = volume
+modules-right = wireless-network temperature cpu memory volume
 
 override-redirect = true
 
@@ -111,14 +111,14 @@ padding-right = 2
 background = #00000000
 foreground = #888888
 
-font-0 = hack:pixelsize=12;1
+font-0 = Source Sans Pro:pixelsize=14;1
 font-1 = unifont:size=6:heavy:fontformat=truetype;-2
 font-2 = siji:pixelsize=10;0
 font-3 = FontAwesome:pixelsize=14;0
 
 modules-left =
 modules-center = date
-modules-right = volume
+modules-right = wireless-network temperature cpu memory volume
 
 override-redirect = true
 
@@ -133,7 +133,7 @@ pin-workspaces = true
 label-mode-padding = 5
 label-mode-foreground = #ffffff
 
-label-unfocused-foreground = #555555
+label-unfocused-foreground = #888888
 label-unfocused-padding = 1
 
 label-visible-foregroud = #888888
@@ -180,4 +180,37 @@ bar-volume-fill = ─
 bar-volume-fill-font = 2
 bar-volume-empty = ─
 bar-volume-empty-font = 2
-bar-volume-empty-foreground = 
+bar-volume-empty-foreground =
+
+[module/wireless-network]
+type = internal/network
+interface = wlp0s20f0u1
+
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+format-packetloss = <animation-packetloss> <label-connected>
+
+label-connected = %essid% %downspeed:9%
+label-connected-foreground = #eefafafa
+;label-connected-padding = 10
+
+label-disconnected = not connected
+label-disconnected-foreground = #66ffffff
+
+[module/memory]
+type = internal/memory
+label = %gb_used%/%gb_free%
+label-padding = 10
+
+[module/cpu]
+type = internal/cpu
+format = <label>
+label = CPU %percentage%
+
+[module/temperature]
+type = internal/temperature
+interval = 0.5
+thermal-zone = 0
+warn-temperature = 60
+label = TEMP %temperature%
+label-padding = 10
