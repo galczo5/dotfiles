@@ -1,5 +1,5 @@
-*background: #002b36
-*foreground: #657b83
+*background: #1C1B1A
+*foreground: #998F84
 *fadeColor: #002b36
 *cursorColor: #93a1a1
 *pointerColorBackground: #586e75
@@ -37,4 +37,4 @@ URxvt*scrollBar_right:     true
 URxvt*scrollColor:         #000000
 URxvt.internalBorder:      15
 URxvt*depth: 32
-URxvt*background: rgba:0000/0000/0200/c800
+URxvt*background: rgba:1c00/1b00/1a00/ea00

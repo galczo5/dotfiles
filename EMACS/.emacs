@@ -54,12 +54,17 @@
 
 (use-package "doom-themes"
   :ensure t
-  :config
-  (load-theme 'doom-one t)
-  (add-hook 'minibuffer-setup-hook 'doom-brighten-minibuffer)
-  (setq doom-enable-brighter-comments t)
-  (set-face-background 'mode-line "#2E4D4D")
-  (set-face-foreground 'mode-line "#ffffff"))
+  ;; :config
+  ;; (load-theme 'doom-one t)
+  ;; (add-hook 'minibuffer-setup-hook 'doom-brighten-minibuffer)
+  ;; (setq doom-enable-brighter-comments t)
+  ;; (set-face-background 'mode-line "#2E4D4D")
+  ;; (set-face-foreground 'mode-line "#ffffff")
+  )
+
+(use-package "badwolf-theme"
+  :ensure t
+  :config (load-theme 'badwolf t))
 
 (use-package "column-enforce-mode"
   :ensure t
@@ -324,8 +329,6 @@
 (use-package "smooth-scrolling"
   :ensure t
   :config (smooth-scrolling-mode 1))
-
-;; try selectric-mode
 
 (org-babel-load-file "~/.emacs.d/cheatsheet.org")
 (custom-set-variables
