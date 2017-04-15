@@ -52,8 +52,15 @@
 
 (ido-mode t)
 
-(use-package "doom-themes"
+(use-package "hlinum"
   :ensure t
+  :config
+  (hlinum-activate)
+  (add-hook 'linum-mode-hook (lambda () (set-face-background 'linum-highlight-face (face-background 'default))
+(set-face-foreground 'linum-highlight-face "#ffffff"))))
+
+(use-package "doom-themes"
+  ;; :ensure t
   ;; :config
   ;; (load-theme 'doom-one t)
   ;; (add-hook 'minibuffer-setup-hook 'doom-brighten-minibuffer)
@@ -331,20 +338,3 @@
   :config (smooth-scrolling-mode 1))
 
 (org-babel-load-file "~/.emacs.d/cheatsheet.org")
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("15348febfa2266c4def59a08ef2846f6032c0797f001d7b9148f30ace0d08bcf" default)))
- '(package-selected-packages
-   (quote
-    (flatui-theme smooth-scrolling iedit flycheck-irony scala-mode function-args google-c-style company-c-headers company-irony irony xref-js2 ws-butler web-mode visual-regexp use-package switch-window sqlup-mode smex rainbow-mode rainbow-delimiters project-explorer ox-twbs org-bullets org nlinum multiple-cursors magit lineno leuven-theme latex-preview-pane indent-guide htmlize helm-swoop helm-google helm-css-scss github-theme git-gutter-fringe git-gutter-fringe+ focus flyspell-popup flycheck expand-region evil emmet-mode doom-themes company-web column-enforce-mode cheatsheet buffer-move autopair auto-yasnippet auto-complete alpha aggressive-indent ac-html-bootstrap))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
