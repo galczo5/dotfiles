@@ -59,6 +59,12 @@
   (add-hook 'linum-mode-hook (lambda () (set-face-background 'linum-highlight-face (face-background 'default))
 (set-face-foreground 'linum-highlight-face "#ffffff"))))
 
+(use-package "fill-column-indicator"
+  :ensure t
+  :config
+  (setq fci-rule-column 80)
+  (setq fci-rule-use-dashes 1))
+
 (use-package "doom-themes"
   ;; :ensure t
   ;; :config
@@ -70,8 +76,16 @@
   )
 
 (use-package "badwolf-theme"
+  ;; :ensure t
+  ;; :config (load-theme 'badwolf t)
+  )
+
+(use-package "kaolin-theme"
   :ensure t
-  :config (load-theme 'badwolf t))
+  :config
+  (load-theme 'kaolin t)
+  (set-face-background 'mode-line "#282828")
+  (set-face-attribute 'mode-line nil :box nil))
 
 (use-package "column-enforce-mode"
   :ensure t
@@ -274,7 +288,8 @@
     nil nil 'center)
   (define-fringe-bitmap 'git-gutter-fr:deleted
     [0 0 0 0 0 0 0 0 0 0 0 0 0 128 192 224 240 248]
-    nil nil 'center))
+    nil nil 'center)
+  (global-git-gutter-mode))
 
 (use-package "xref-js2"
   :ensure t)
@@ -338,3 +353,20 @@
   :config (smooth-scrolling-mode 1))
 
 (org-babel-load-file "~/.emacs.d/cheatsheet.org")
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("495dcee2aeb839dcb2d505905b95747703072e8f6ed211288c43108de62d1326" default)))
+ '(package-selected-packages
+   (quote
+    (kaolin-theme spaceline fill-column-indicator xref-js2 ws-butler web-mode visual-regexp use-package switch-window sqlup-mode smooth-scrolling smex scala-mode rainbow-mode rainbow-delimiters project-explorer ox-twbs org-bullets org nlinum nasm-mode multiple-cursors magit lineno leuven-theme latex-preview-pane indent-guide iedit htmlize hlinum helm-swoop helm-google helm-css-scss google-c-style github-theme git-gutter-fringe git-gutter-fringe+ function-args focus flyspell-popup flycheck-irony flatui-theme expand-region evil emmet-mode doom-themes company-web company-irony company-c-headers column-enforce-mode cheatsheet buffer-move badwolf-theme autopair auto-yasnippet auto-complete alpha aggressive-indent ac-html-bootstrap))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
