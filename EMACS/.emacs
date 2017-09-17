@@ -29,7 +29,7 @@
 (setq indent-line-function 'insert-tab)
 
 (set-frame-font "Source Code Pro")
-(set-face-attribute 'default nil :height 100)
+(set-face-attribute 'default nil :height 125)
 
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
@@ -251,11 +251,6 @@
   (global-set-key (kbd "<C-M-left>")   'buf-move-left)
   (global-set-key (kbd "<C-M-right>")  'buf-move-right))
 
-
-(use-package "cheatsheet"
-  :ensure t
-  :config (global-set-key (kbd "C-c ?") 'cheatsheet-show))
-
 (use-package "alpha"
   :ensure t
   :config
@@ -291,9 +286,6 @@
     nil nil 'center)
   (global-git-gutter-mode))
 
-(use-package "xref-js2"
-  :ensure t)
-
 (use-package "helm-css-scss"
   :ensure t)
 
@@ -314,6 +306,7 @@
   (add-hook 'irony-mode-hook 'my-irony-mode-hook)
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 
+  ;; (add-hook 'c-mode-common-hook 'auto-complete-mode)
   (add-hook 'c-mode-common-hook 'linum-mode)
   (add-hook 'c-mode-common-hook 'aggressive-indent-mode)
 
@@ -323,6 +316,15 @@
   (add-hook 'c-mode-common-hook 'flycheck-mode)
   (add-hook 'c++-mode-hook (lambda ()
                              (setq irony-additional-clang-options '("-std=c++14")))))
+
+(use-package "rtags"
+  :ensure t
+  :config
+  (rtags-enable-standard-keybindings)
+  (setq rtags-autostart-diagnostics t)
+  (rtags-diagnostics)
+  (setq rtags-completions-enabled t)
+  (rtags-start-process-unless-running))
 
 (use-package "flycheck-irony"
   :ensure t

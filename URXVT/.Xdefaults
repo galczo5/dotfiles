@@ -37,11 +37,15 @@
 
 
 URxvt*geometry:            112x22  
-URxvt*font:                xft:Source Code Pro:size=10
+URxvt*font:                xft:Source Code Pro:size=12
 URxvt*urlLauncher:         vivaldi-stable
 URxvt*scrollBar:           false
 URxvt*scrollBar_right:     true
 URxvt*scrollColor:         #000000
 URxvt.internalBorder:      15
-URxvt*depth: 32
-URxvt*background: rgba:1c00/1b00/1a00/ea00
+!URxvt*depth: 32
+
+!URxvt*.transparent: true
+!URxvt*.shading: 50
+!URxvt*blurRadius: 15
+URxvt*background: rgb:1c00/1b00/1a00
