@@ -28,8 +28,8 @@
 (setq-default tab-width 2)
 (setq indent-line-function 'insert-tab)
 
-(set-frame-font "Source Code Pro")
-(set-face-attribute 'default nil :height 100)
+(set-frame-font "Hack")
+(set-face-attribute 'default nil :height 120)
 
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
