@@ -1,6 +1,6 @@
 ! special
-*.foreground:   #dddddd
-*.background:   #151515
+*.foreground:   #757664
+*.background:   #052621
 *.cursorColor:  #dddddd
 
 ! black
@@ -37,11 +37,16 @@
 
 
 URxvt*geometry:            112x22  
-URxvt*font:                xft:Source Code Pro:size=10
+URxvt*font:                xft:Source Code Pro:size=12
 URxvt*urlLauncher:         vivaldi-stable
 URxvt*scrollBar:           false
 URxvt*scrollBar_right:     true
 URxvt*scrollColor:         #000000
 URxvt.internalBorder:      15
 URxvt*depth: 32
-URxvt*background: rgba:1c00/1b00/1a00/ea00
+
+URxvt*background: rgba:0500/2600/2100/E500
+
+Xft*dpi:                96
+Xft*antialias:          true
+Xft*hinting:            full

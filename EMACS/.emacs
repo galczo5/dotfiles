@@ -28,8 +28,8 @@
 (setq-default tab-width 2)
 (setq indent-line-function 'insert-tab)
 
-(set-frame-font "Hack")
-(set-face-attribute 'default nil :height 120)
+(set-frame-font "Source Code Pro")
+(set-face-attribute 'default nil :height 125)
 
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
@@ -85,7 +85,9 @@
   :config
   (load-theme 'kaolin t)
   (set-face-background 'mode-line "#282828")
-  (set-face-attribute 'mode-line nil :box nil))
+  (set-face-attribute 'mode-line nil :box nil)
+  (set-background-color "#052621")
+  (set-face-attribute 'fringe nil :background nil))
 
 (use-package "column-enforce-mode"
   :ensure t
@@ -251,11 +253,6 @@
   (global-set-key (kbd "<C-M-left>")   'buf-move-left)
   (global-set-key (kbd "<C-M-right>")  'buf-move-right))
 
-
-(use-package "cheatsheet"
-  :ensure t
-  :config (global-set-key (kbd "C-c ?") 'cheatsheet-show))
-
 (use-package "alpha"
   :ensure t
   :config
@@ -291,9 +288,6 @@
     nil nil 'center)
   (global-git-gutter-mode))
 
-(use-package "xref-js2"
-  :ensure t)
-
 (use-package "helm-css-scss"
   :ensure t)
 
@@ -314,6 +308,7 @@
   (add-hook 'irony-mode-hook 'my-irony-mode-hook)
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 
+  ;; (add-hook 'c-mode-common-hook 'auto-complete-mode)
   (add-hook 'c-mode-common-hook 'linum-mode)
   (add-hook 'c-mode-common-hook 'aggressive-indent-mode)
 
@@ -323,6 +318,15 @@
   (add-hook 'c-mode-common-hook 'flycheck-mode)
   (add-hook 'c++-mode-hook (lambda ()
                              (setq irony-additional-clang-options '("-std=c++14")))))
+
+(use-package "rtags"
+  :ensure t
+  :config
+  (rtags-enable-standard-keybindings)
+  (setq rtags-autostart-diagnostics t)
+  (rtags-diagnostics)
+  (setq rtags-completions-enabled t)
+  (rtags-start-process-unless-running))
 
 (use-package "flycheck-irony"
   :ensure t
@@ -353,20 +357,3 @@
   :config (smooth-scrolling-mode 1))
 
 (org-babel-load-file "~/.emacs.d/cheatsheet.org")
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("495dcee2aeb839dcb2d505905b95747703072e8f6ed211288c43108de62d1326" default)))
- '(package-selected-packages
-   (quote
-    (kaolin-theme spaceline fill-column-indicator xref-js2 ws-butler web-mode visual-regexp use-package switch-window sqlup-mode smooth-scrolling smex scala-mode rainbow-mode rainbow-delimiters project-explorer ox-twbs org-bullets org nlinum nasm-mode multiple-cursors magit lineno leuven-theme latex-preview-pane indent-guide iedit htmlize hlinum helm-swoop helm-google helm-css-scss google-c-style github-theme git-gutter-fringe git-gutter-fringe+ function-args focus flyspell-popup flycheck-irony flatui-theme expand-region evil emmet-mode doom-themes company-web company-irony company-c-headers column-enforce-mode cheatsheet buffer-move badwolf-theme autopair auto-yasnippet auto-complete alpha aggressive-indent ac-html-bootstrap))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
