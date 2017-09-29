@@ -37,12 +37,13 @@
 
 
 URxvt*geometry:            112x22  
-URxvt*font:                xft:Source Code Pro:size=12
-URxvt*urlLauncher:         vivaldi-stable
+URxvt*font:                xft:Menlo for Powerline:size=12
+URxvt*urlLauncher:         google-chrome 
 URxvt*scrollBar:           false
 URxvt*scrollBar_right:     true
 URxvt*scrollColor:         #000000
-URxvt.internalBorder:      15
+URxvt.internalBorder:      1
+URxvt.letterSpace: -1
 URxvt*depth: 32
 
 URxvt*background: rgba:0500/2600/2100/E500
