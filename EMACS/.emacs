@@ -134,7 +134,9 @@
 
 (use-package "project-explorer"
   :ensure t
-  :config (global-set-key [f8] 'project-explorer-toggle))
+  :config
+  ;;(global-set-key [f8] 'project-explorer-toggle)
+  )
 
 (use-package "emmet-mode"
   :ensure t
@@ -294,6 +296,10 @@
 (use-package "magit"
   :ensure t)
 
+(defun git ()
+  (interactive)
+  (magit-status))
+
 (use-package "irony"
   :ensure t
   :config
@@ -309,6 +315,9 @@
   (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 
   ;; (add-hook 'c-mode-common-hook 'auto-complete-mode)
+  (setq gdb-many-windows t
+        gdb-show-main t)
+
   (add-hook 'c-mode-common-hook 'linum-mode)
   (add-hook 'c-mode-common-hook 'aggressive-indent-mode)
 
@@ -319,14 +328,28 @@
   (add-hook 'c++-mode-hook (lambda ()
                              (setq irony-additional-clang-options '("-std=c++14")))))
 
-(use-package "rtags"
+(use-package "sr-speedbar"
   :ensure t
   :config
-  (rtags-enable-standard-keybindings)
-  (setq rtags-autostart-diagnostics t)
-  (rtags-diagnostics)
-  (setq rtags-completions-enabled t)
-  (rtags-start-process-unless-running))
+  (setq speedbar-show-unknown-files t)
+  (setq sr-speedbar-right-side nil)
+  (setq sr-speedbar-max-width 35)
+  (setq sr-speedbar-width 35)
+  (global-set-key [f8] 'sr-speedbar-toggle))
+
+(use-package "srefactor"
+  :ensure t
+  :config (semantic-mode 1))
+
+(defun header ()
+  (interactive)
+  (find-file-existing
+   (concat (file-name-sans-extension (buffer-file-name)) ".h")))
+
+(defun source ()
+  (interactive)
+  (find-file-existing
+   (concat (file-name-sans-extension (buffer-file-name)) ".cpp")))
 
 (use-package "flycheck-irony"
   :ensure t
