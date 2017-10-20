@@ -90,6 +90,5 @@ alias vi="nvim"
 alias vim="nvim"
 alias neo="nvim"
 # don't do this
-alias porn="mpv 'https://pornhub.com/random'"
 
 TERM=xterm-256color
