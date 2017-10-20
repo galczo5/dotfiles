@@ -38,12 +38,14 @@ bindsym $win+l exec ~/.config/i3/i3lock-fancy-multimonitor/lock
 
 # start a terminal
 bindsym $mod+Return exec urxvt
+bindsym $mod+Shift+v exec st -e "nvim"
+#bindsym $mod+Return+t exec urxvt -c "zsh -c '. torsocks on'"
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+m exec rofi -show combi -modi combi  -lines 10 -matching fuzzy -color-enabled
+bindsym $mod+space exec rofi -show combi -modi combi  -lines 10 -matching fuzzy -color-enabled
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -91,7 +93,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+#bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -99,16 +101,16 @@ bindsym $mod+a focus parent
 # focus the child container
 bindsym $mod+d focus child
 
-set $workspace1  "1: I "
-set $workspace2  "2: II "
-set $workspace3  "3: III "
-set $workspace4  "4: IV "
-set $workspace5  "5: V "
-set $workspace6  "6: VI "
-set $workspace7  "7: VII "
-set $workspace8  "8: VII "
-set $workspace9  "9: IX "
-set $workspace10 "10: X "
+#set $workspace1  " I "
+#set $workspace2  " II "
+#set $workspace3  " III "
+#set $workspace4  " IV "
+#set $workspace5  " V "
+#set $workspace6  " VI "
+#set $workspace7  " VII "
+#set $workspace8  " VII "
+#set $workspace9  " IX "
+#set $workspace10 ": X "
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -167,11 +169,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-bar {
-  status_command polybar traybar
-    status_command polybar topbar1
 
-}
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -193,8 +191,9 @@ gaps outer 30
 new_window 1pixel
 
 
-#exec --no-startup-id ~/run_polybar.sh
+exec --no-startup-id bash -c ~/run_polybar.sh
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id nm-applet
 exec --no-startup-id compton --backend glx --paint-on-overlay --vsync opengl-swc -o 0
 exec --no-startup -d syndaemon -i 1 -K -dp
+exec --no-startup-id /bin/sh -c "/home/ajmwagar/etc/disabletouchpad.sh"

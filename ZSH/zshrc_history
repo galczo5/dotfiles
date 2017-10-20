@@ -6070,3 +6070,35 @@ t instal tor-chat
 : 1507434502:0;clear
 : 1507434509:0;cd ~/etc
 : 1507434512:0;git add .
+: 1507434519:0;git commit -m "added zsh"
+: 1507434522:0;git push
+: 1507435478:0;clear
+: 1507435483:0;vis
+: 1507437249:0;sudo apt-get instal pywal
+: 1507437256:0;sudo apt-get install pywal
+: 1507437379:0;vim
+: 1507446631:0;:q
+: 1507446636:0;?
+: 1507446638:0;?>
+: 1507446665:0;clear
+: 1507446827:0;vi
+: 1507446912:0;clear
+: 1507446916:0;vim.tiny
+: 1507446927:0;clear
+: 1507447047:0;vim ~/.vim/bundle/vim-deus/colors/deus.vim
+: 1507448503:0;vim
+: 1507450036:0;sudo pip3 install pywal
+: 1507450049:0;sudo apt-get install pip3
+: 1507450056:0;sudo pip install pywal
+: 1507450128:0;pip install --user pywal
+: 1507451845:0;cp ./.tmux.conf ~/etc/
+: 1507451855:0;mkdir ~/etc/TMUX
+: 1507451864:0;cp ./.tmux.conf ~/etc/TMUX/tmux.conf
+: 1507451870:0;rm ./.tmux.conf
+: 1507451889:0;ln ~/etc/TMUX/tmux.conf ~/.tmux.conf
+: 1507451901:0;vim ~/etc/TMUX/tmux.conf
+: 1507451930:0;vim
+: 1507451952:0;bash
+: 1507451957:0;clear
+: 1507451960:0;vim
+: 1507452092:0;exit
