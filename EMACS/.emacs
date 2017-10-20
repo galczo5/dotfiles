@@ -379,4 +379,13 @@
   :ensure t
   :config (smooth-scrolling-mode 1))
 
-(org-babel-load-file "~/.emacs.d/cheatsheet.org")
+(use-package "rust-mode"
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode)))
+
+(use-package "racer"
+  :ensure t
+  :config
+  (add-hook 'rust-mode-hook #'racer-mode)
+  (add-hook 'racer-mode-hook #'eldoc-mode))
