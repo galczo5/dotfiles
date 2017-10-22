@@ -40,7 +40,9 @@ padding-right = 5
 padding-left = 5
 
 background = #00fffff
-foreground = #07322B
+;foreground = #07322B
+fg = ${xrdb:color7}
+;bg = ${xrdb:color2}
 
 font-0 = Source Sans Pro:pixelsize=12;1
 font-1 = unifont:size=6:heavy:fontformat=truetype;-2
