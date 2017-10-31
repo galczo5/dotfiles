@@ -1,3 +1,3 @@
 #!/bin/sh/
 
-wal -i ~/etc/I3/wallpaper10.jpg -a 70
+wal -i /home/ajmwagar/etc/I3/wallpaper10.jpg -a 70

@@ -37,8 +37,8 @@ new_float normal 1
 bindsym $win+l exec ~/.config/i3/i3lock-fancy-multimonitor/lock
 
 # start a terminal
-bindsym $mod+Return exec urxvt
-bindsym $mod+Shift+v exec st -e "nvim"
+bindsym $mod+Return exec urxvt -e tmux
+#bindsym $mod+Shift+v exec st -e "nvim"
 #bindsym $mod+Return+t exec urxvt -c "zsh -c '. torsocks on'"
 
 # kill focused window
@@ -182,18 +182,15 @@ bindsym $mod+comma exec amixer -q sset Master 3%-
 
 
 # Setup gaps
-
-
-#gap_size 30
 gaps inner 10
 gaps outer 30
 
 new_window 1pixel
 
-
-exec --no-startup-id bash -c ~/run_polybar.sh
+# Auto start
 exec --no-startup-id nitrogen --restore
+exec --no-startup-id bash -c ~/run_polybar.sh
 exec --no-startup-id nm-applet
 exec --no-startup-id compton --backend glx --paint-on-overlay --vsync opengl-swc -o 0
 exec --no-startup -d syndaemon -i 1 -K -dp
-exec --no-startup-id /bin/sh -c "/home/ajmwagar/etc/disabletouchpad.sh"
+#exec --no-startup-id /bin/sh -c "/home/ajmwagar/etc/disabletouchpad.sh"
