@@ -188,8 +188,10 @@ gaps outer 30
 new_window 1pixel
 
 # Auto start
-exec --no-startup-id nitrogen --restore
-exec --no-startup-id bash -c ~/run_polybar.sh
+#exec --no-startup-id nitrogen --restore
+exec wal -i ~/etc/I3/wallpaper12.png -a 70
+exec killall polybar
+exec zsh -c /home/ajmwagar/run_polybar.sh
 exec --no-startup-id nm-applet
 exec --no-startup-id compton --backend glx --paint-on-overlay --vsync opengl-swc -o 0
 exec --no-startup -d syndaemon -i 1 -K -dp
