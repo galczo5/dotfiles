@@ -1,0 +1,51 @@
+2017-10-30 21:58:22	-->	ajmwagar (~ajmwagar@71-212-18-193.tukw.qwest.net) has joined #AnonHell
+2017-10-30 21:58:22	--	Mode #AnonHell [+ns] by hobana.freenode.net
+2017-10-30 21:58:22	--	Channel #AnonHell: 1 nick (1 op, 0 voices, 0 normals)
+2017-10-30 21:58:24	--	Channel created on Mon, 30 Oct 2017 21:58:22
+2017-10-30 22:09:06	--	Mode #AnonHell [+I $a:Jergo] by ajmwagar
+2017-10-30 22:09:15	--	irc: disconnected from server
+2017-10-30 22:12:57	-->	ajmwagar (~ajmwagar@71-212-18-193.tukw.qwest.net) has joined #AnonHell
+2017-10-30 22:12:57	--	Channel #AnonHell: 2 nicks (1 op, 0 voices, 1 normal)
+2017-10-30 22:12:58	ajmwagar	hi
+2017-10-30 22:12:58	--	Channel created on Mon, 30 Oct 2017 22:10:22
+2017-10-30 22:13:02	@jergo	Hello
+2017-10-30 22:13:04	@jergo	OK FIrst
+2017-10-30 22:13:07	ajmwagar	wait
+2017-10-30 22:13:09	@jergo	NO TALKING ABOUT VINEYARD
+2017-10-30 22:13:17	ajmwagar	this is not yet secure.
+2017-10-30 22:13:20	@jergo	Not until I deduce a safe communication method
+2017-10-30 22:13:29	ajmwagar	please run /script install otr.py
+2017-10-30 22:14:10	@jergo	I ran that command but I didn't notice a change
+2017-10-30 22:15:10	ajmwagar	run this
+2017-10-30 22:15:48	ajmwagar	run this: /set weechat.bar.status.items "[time],[buffer_last_number],[buffer_plugin],buffer_number+:+buffer_name+(buffer_modes)+{buffer_nicklist_count}+buffer_zoom+buffer_filter,scroll,[lag],[hotlist],completion,[otr]" 
+2017-10-30 22:16:32	ajmwagar	ok
+2017-10-30 22:18:34	ajmwagar	dude run /otr start
+2017-10-30 22:18:43	ajmwagar	nvm
+2017-10-30 22:18:50	ajmwagar	run /query ajmwagar hi
+2017-10-30 22:19:42	@jergo	Oh ok
+2017-10-30 22:19:42	@jergo	Interseting 
+2017-10-30 22:20:15	@jergo	OTR start is not working 
+2017-10-30 22:26:11	<--	ajmwagar (~ajmwagar@71-212-18-193.tukw.qwest.net) has left #AnonHell ("WeeChat 1.9.1")
+2017-10-30 22:26:21	-->	ajmwagar (~ajmwagar@71-212-18-193.tukw.qwest.net) has joined #AnonHell
+2017-10-30 22:26:21	--	Channel #AnonHell: 2 nicks (1 op, 0 voices, 1 normal)
+2017-10-30 22:26:23	--	Channel created on Mon, 30 Oct 2017 22:10:22
+2017-10-30 22:29:04	@jergo	is there a clear function?
+2017-10-30 22:29:23	ajmwagar	no
+2017-10-30 22:29:27	@jergo	kms
+2017-10-30 22:29:30	ajmwagar	lol
+2017-10-30 22:29:38	ajmwagar	do /otr start in buffer 3
+2017-10-30 22:29:56	@jergo	Nothing
+2017-10-30 22:30:16	ajmwagar	do /script install otr.py
+2017-10-30 22:30:22	ajmwagar	in wee chat buffer 1
+2017-10-30 22:30:29	ajmwagar	or is this ur buffer one?
+2017-10-30 22:31:08	--	irc: disconnected from server
+2017-10-30 22:32:07	-->	ajmwagar (~ajmwagar@71-212-18-193.tukw.qwest.net) has joined #AnonHell
+2017-10-30 22:32:08	--	Channel #AnonHell: 2 nicks (1 op, 0 voices, 1 normal)
+2017-10-30 22:32:09	--	Channel created on Mon, 30 Oct 2017 22:10:22
+2017-10-30 22:32:11	ajmwagar	hi
+2017-10-30 22:34:28	<--	jergo (~jergo@2601:602:8480:67bb::9b65) has quit (Ping timeout: 240 seconds)
+2017-10-31 10:29:04	“”	ajmwagar1 has joined #AnonHell
+2017-10-31 10:29:04	ℹ 	Mode #AnonHell [+ns] by karatkievich.freenode.net
+2017-10-31 10:29:04	ℹ 	Channel #AnonHell: 1 nick (1 op, 0 voices, 0 normals)
+2017-10-31 10:29:07	ℹ 	Channel created on Tue, 31 Oct 2017 10:29:03
+2017-10-31 10:29:56	<—”	ajmwagar1 has left #AnonHell ("WeeChat 1.9.1")

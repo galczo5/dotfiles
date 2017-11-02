@@ -39,8 +39,8 @@ offset-y = 5
 padding-right = 5
 padding-left = 5
 
-background = #00fffff
-;foreground = #07322B
+background = #000000
+;foreground = #ffffff
 fg = ${xrdb:color7}
 ;bg = ${xrdb:color2}
 
@@ -51,7 +51,7 @@ font-3 = FontAwesome:pixelsize=14;0
 
 modules-left = i3 title
 modules-center = date
-modules-right = wireless-network battery temperature cpu memory volume
+modules-right = battery temperature cpu memory volume
 
 override-redirect = true
 wm-restack = i3
@@ -68,17 +68,17 @@ offset-y = 5
 padding-right = 5
 padding-left = 5
 
-background = #00ffffff
-foreground = #07322B
+background = #1100000
+foreground = #ffffff
 
 font-0 = Source Sans Pro:pixelsize=12;1
 font-1 = unifont:size=6:heavy:fontformat=truetype;-2
 font-2 = siji:pixelsize=10;0
 font-3 = FontAwesome:pixelsize=14;0
 
-modules-left = i3 title
-modules-center = date
-modules-right = wireless-network temperature cpu memory volume
+;modules-left = i3 title
+;modules-center = date
+;modules-right = wireless-network temperature cpu memory volume
 
 override-redirect = true
 wm-restack = i3
