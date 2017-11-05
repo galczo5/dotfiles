@@ -1,51 +1,35 @@
 ! special
-*.foreground:   #757664
-*.background:   #052621
-*.cursorColor:  #dddddd
+*background:     #1C1E1F
+*foreground:     #bdbdb3
+*cursorColor:    #fb8512
+*colorUL:        #cc8512
+*underlineColor: #baba36
+*color0:         #0a0a0a
+*color1:         #CC5542
+*color2:         #6aa350
+*color3:         #bdbc61
+*color4:         #5180b3
+*color5:         #DC8CC3
+*color6:         #6a7550
+*color7:         #9b9b9b
+*color8:         #4c4c4c
+*color9:         #dd5542
+*color10:        #6abd50
+*color11:        #bdbc61
+*color12:        #528fd1
+*color13:        #5C888B
+*color14:        #6380b3
+*color15:        #c9c9c9
 
-! black
-*.color0:       #151515
-*.color8:       #555555
-
-! red
-*.color1:       #9e4a4d
-*.color9:       #9e4a4d
-
-! green
-*.color2:       #cb484d
-*.color10:      #cb484d
-
-! yellow
-*.color3:       #a1cfce
-*.color11:      #a1cfce
-
-! blue
-*.color4:       #9e7374
-*.color12:      #9e7374
-
-! magenta
-*.color5:       #d6a04d
-*.color13:      #d6a04d
-
-! cyan
-*.color6:       #fd9d9f
-*.color14:      #fda0a0
-
-! white
-*.color7:       #f5deb3
-*.color15:      #ffffff
-
-
-URxvt*geometry:            112x22  
-URxvt*font:                xft:Source Code Pro:size=12
+! URxvt*geometry:            112x22
+URxvt*font:                xft:Iosevka:size=14
 URxvt*urlLauncher:         vivaldi-stable
 URxvt*scrollBar:           false
-URxvt*scrollBar_right:     true
-URxvt*scrollColor:         #000000
+URxvt*scrollBar_right:     false
 URxvt.internalBorder:      15
 URxvt*depth: 32
 
-URxvt*background: rgba:0500/2600/2100/E500
+! URxvt*background: rgba:0500/2600/2100/E500
 
 Xft*dpi:                96
 Xft*antialias:          true

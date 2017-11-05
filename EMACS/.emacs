@@ -1,4 +1,3 @@
-;; Add melpa and marmelade repos to repo list and install use-package if not installed
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/")
@@ -28,8 +27,8 @@
 (setq-default tab-width 2)
 (setq indent-line-function 'insert-tab)
 
-(set-frame-font "Source Code Pro")
-(set-face-attribute 'default nil :height 125)
+(set-frame-font "Iosevka")
+(set-face-attribute 'default nil :height 140)
 
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
@@ -66,11 +65,10 @@
   (setq fci-rule-use-dashes 1))
 
 (use-package "doom-themes"
-  ;; :ensure t
-  ;; :config
-  ;; (load-theme 'doom-one t)
-  ;; (add-hook 'minibuffer-setup-hook 'doom-brighten-minibuffer)
-  ;; (setq doom-enable-brighter-comments t)
+  :ensure t
+  :config
+  ;; (load-theme 'doom-molokai t)
+  ;; (set-face-attribute 'fringe nil :background nil)
   ;; (set-face-background 'mode-line "#2E4D4D")
   ;; (set-face-foreground 'mode-line "#ffffff")
   )
@@ -82,12 +80,31 @@
 
 (use-package "kaolin-theme"
   :ensure t
+  ;; :config
+  ;; (load-theme 'kaolin t)
+  ;; (set-face-background 'mode-line "#052621")
+  ;; (set-face-attribute 'mode-line nil :box nil)
+  ;; (set-background-color "#052621")
+  ;; (set-face-attribute 'fringe nil :background nil)
+  )
+
+(use-package "ample-zen-theme"
+  :ensure t
   :config
-  (load-theme 'kaolin t)
-  (set-face-background 'mode-line "#282828")
+  (load-theme 'ample-zen t)
+  (set-background-color "#1C1E1F")
+
+  (set-face-attribute 'fringe nil :background nil)
   (set-face-attribute 'mode-line nil :box nil)
-  (set-background-color "#052621")
-  (set-face-attribute 'fringe nil :background nil))
+
+  (set-face-background 'linum "#1C1E1F")
+  (set-face-background 'linum-highlight-face "#2E2E2E")
+
+
+  (set-face-attribute 'vertical-border
+                      nil
+                      :foreground "#1C1E1F")
+  )
 
 (use-package "column-enforce-mode"
   :ensure t
@@ -258,8 +275,9 @@
 (use-package "alpha"
   :ensure t
   :config
-  (set-frame-parameter (selected-frame) 'alpha '(90 . 90))
-  (add-to-list 'default-frame-alist '(alpha . (90 . 90))))
+  ;; (set-frame-parameter (selected-frame) 'alpha '(90 . 90))
+  ;; (add-to-list 'default-frame-alist '(alpha . (90 . 90)))
+  )
 
 (use-package "latex-preview-pane"
   :ensure t)
