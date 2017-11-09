@@ -9,7 +9,6 @@
 margin-top = 5
 margin-bottom = 5
 format-background = #0d000000
-font-0 = Menlo for Powerline:pixelsize=12;0
 
 [bar/traybar]
 monitor = ${env:MONITOR:eDP1}
@@ -43,8 +42,8 @@ padding-left = 5
 font-0 = Menlo for Powerline:pixelsize=12;0
 
 background = #00ffffff
-;foreground = #ffffff
-foreground = ${xrdb:color7}
+foreground = #F4D669
+;foreground = ${xrdb:color7}
 ;background = ${xrdb:color16}
 
 
@@ -147,7 +146,7 @@ label-focused-padding = 2
 ;   %index%
 ; Default: %icon%  %name%
 label-unfocused = %index%
-label-unfocused-padding = 4
+label-unfocused-padding = 2
 
 ; Available tokens:
 ;   %name%
@@ -156,7 +155,7 @@ label-unfocused-padding = 4
 ; Default: %icon%  %name%
 label-visible = %index%
 label-visible-underline = #555555
-label-visible-padding = 4
+label-visible-padding = 2
 
 ; Available tokens:
 ;   %name%
@@ -164,15 +163,13 @@ label-visible-padding = 4
 ;   %index%
 ; Default: %icon%  %name%
 label-urgent = %index%
-label-urgent-foreground = #000000
-label-urgent-background = #bd2c40
-label-urgent-padding = 4
+label-urgent-padding = 2
 
 [module/date]
 type = internal/date
 interval = 5
 
-date = "%d/%m/%y"
+date = "%m/%d/%y"
 date-alt = " %d"
 
 time = " %H:%M"
@@ -217,7 +214,7 @@ label-padding = 2
 
 [module/title]
 type = internal/xwindow
-label-maxlen = 50
+label-maxlen = 20
 format-padding = 2
 format-foregroud = #4F5B47
 

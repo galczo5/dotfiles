@@ -46,6 +46,7 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+space exec rofi -show combi -modi combi  -lines 10 -matching fuzzy -color-enabled
+bindsym $mod+o exec rofi -show drun  -modi drun  -lines 10 -matching fuzzy -color-enabled -show-icons
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -177,6 +178,7 @@ bindsym $mod+r mode "resize"
 bindsym $mod+period exec amixer -q sset Master 3%+
 bindsym $mod+comma exec amixer -q sset Master 3%-
 
+bindsym $mod+x exec bash -c blurlock 
 #bindsym 2 exec xbacklight -inc 20
 #bindsym 1 exec xbacklight -dec 20
 
@@ -185,14 +187,17 @@ bindsym $mod+comma exec amixer -q sset Master 3%-
 gaps inner 10
 gaps outer 30
 
+
 new_window 1pixel
 
 # Auto start
 #exec --no-startup-id nitrogen --restore
 exec wal -i ~/etc/I3/wallpaper12.png -a 70
-exec killall polybar
 exec zsh -c /home/ajmwagar/run_polybar.sh
 exec --no-startup-id nm-applet
+exec --no-startup-id dunst
 exec --no-startup-id compton --backend glx --paint-on-overlay --vsync opengl-swc -o 0
 exec --no-startup -d syndaemon -i 1 -K -dp
+exec telegram-desktop
+exec slack
 #exec --no-startup-id /bin/sh -c "/home/ajmwagar/etc/disabletouchpad.sh"
