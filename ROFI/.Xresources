@@ -3,3 +3,5 @@ rofi.color-window: #07322B, #07322B, #07322B
 rofi.color-normal: #07322B, #747661, #07322B, #747661, #07322B
 rofi.color-active: #07322B, #929D7F, #07322B, #929D7F, #07322B
 rofi.color-urgent: #07322B, #747661, #07322B, #747661, #07322B
+
+URxvt*.termName: rxvt-unicode-256color

@@ -33,11 +33,10 @@ hide_edge_borders both
 new_window pixel 0
 new_float normal 1
 
-#Locking
-bindsym $win+l exec ~/.config/i3/i3lock-fancy-multimonitor/lock
 
 # start a terminal
-bindsym $mod+Return exec urxvt -e tmux
+bindsym $mod+Return exec urxvt -e tmux -2
+bindsym $mod+Shift+s exec urxvt -e ssh ajmwagar@ajmwagar-desktop
 #bindsym $mod+Shift+v exec st -e "nvim"
 #bindsym $mod+Return+t exec urxvt -c "zsh -c '. torsocks on'"
 
@@ -152,10 +151,10 @@ mode "resize" {
 # Pressing right will grow the window’s width.
 # Pressing up will shrink the window’s height.
 # Pressing down will grow the window’s height.
-  bindsym j resize shrink width 10 px or 10 ppt
-    bindsym k resize grow height 10 px or 10 ppt
-    bindsym l resize shrink height 10 px or 10 ppt
-    bindsym semicolon resize grow width 10 px or 10 ppt
+  bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
 
 # same bindings, but for the arrow keys
     bindsym Left resize shrink width 10 px or 10 ppt
@@ -193,7 +192,7 @@ new_window 1pixel
 # Auto start
 #exec --no-startup-id nitrogen --restore
 exec wal -i ~/etc/I3/wallpaper12.png -a 70
-exec zsh -c /home/ajmwagar/run_polybar.sh
+exec zsh -c sh ~/run_polybar.sh
 exec --no-startup-id nm-applet
 exec --no-startup-id dunst
 exec --no-startup-id compton --backend glx --paint-on-overlay --vsync opengl-swc -o 0

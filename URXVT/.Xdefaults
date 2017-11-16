@@ -37,7 +37,11 @@
 
 
 URxvt*geometry:            112x22  
-URxvt*font:                xft:Menlo for Powerline:size=12
+!URxvt.font:                xft:Menlo for Powerline:style=Book:pixelsize=14
+!URxvt*font:                xft:Hasklig Nerd Font Complete Mono.tff:size=12
+!URxvt.font: xft:Droid Sans Mono for Powerline Plus Nerd File Types Mono:pixelsize=16:antialias=true:hinting=true
+!URxvt*font:                xft:Anonymice Nerd Font Complete Mono:pixelsize=14
+URxvt*font:                 xft:DejaVuSansMonoForPowerline Nerd Font:pixelsize=16
 URxvt*urlLauncher:         google-chrome 
 URxvt*scrollBar:           false
 URxvt*scrollBar_right:     true
