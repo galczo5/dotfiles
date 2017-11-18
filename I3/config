@@ -35,10 +35,10 @@ new_float normal 1
 
 
 # start a terminal
-bindsym $mod+Return exec urxvt -e tmux -2
-bindsym $mod+Shift+s exec urxvt -e ssh ajmwagar@ajmwagar-desktop
+bindsym $mod+Return exec termite -e tmux
+bindsym $mod+Shift+s exec termite -e ssh ajmwagar@ajmwagar-desktop
 #bindsym $mod+Shift+v exec st -e "nvim"
-#bindsym $mod+Return+t exec urxvt -c "zsh -c '. torsocks on'"
+#bindsym $mod+Return+t exec termite -c "zsh -c '. torsocks on'"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -191,8 +191,9 @@ new_window 1pixel
 
 # Auto start
 #exec --no-startup-id nitrogen --restore
-exec wal -i ~/etc/I3/wallpaper12.png -a 70
-exec zsh -c ~/run_polybar.sh
+#exec wal -i ~/etc/I3/wallpaper12.png -a 70 -t
+exec wal -R -t
+exec sh ~/run_polybar.sh
 exec --no-startup-id nm-applet
 exec --no-startup-id dunst
 exec --no-startup-id compton --backend glx --paint-on-overlay --vsync opengl-swc -o 0

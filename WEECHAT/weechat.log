@@ -1,56 +1,22 @@
-[2017-10-31 15:30:34] WeeChat 1.9.1 (compiled on Sep 23 2017 19:44:10)
-[2017-10-31 15:30:34] Writing configuration file sec.conf (default options)
-[2017-10-31 15:30:34] Reading configuration file sec.conf
-[2017-10-31 15:30:34] Writing configuration file weechat.conf (default options)
-[2017-10-31 15:30:34] Reading configuration file weechat.conf
-[2017-10-31 15:30:35] Writing configuration file plugins.conf (default options)
-[2017-10-31 15:30:35] Reading configuration file plugins.conf
-[2017-10-31 15:30:35] Writing configuration file charset.conf (default options)
-[2017-10-31 15:30:35] Reading configuration file charset.conf
-[2017-10-31 15:30:35] Writing configuration file logger.conf (default options)
-[2017-10-31 15:30:35] Reading configuration file logger.conf
-[2017-10-31 15:30:35] Writing configuration file exec.conf (default options)
-[2017-10-31 15:30:35] Reading configuration file exec.conf
-[2017-10-31 15:30:35] Writing configuration file trigger.conf (default options)
-[2017-10-31 15:30:35] Reading configuration file trigger.conf
-[2017-10-31 15:30:35] Writing configuration file aspell.conf (default options)
-[2017-10-31 15:30:35] Reading configuration file aspell.conf
-[2017-10-31 15:30:35] Writing configuration file alias.conf (default options)
-[2017-10-31 15:30:35] Reading configuration file alias.conf
-[2017-10-31 15:30:35] Writing configuration file buflist.conf (default options)
-[2017-10-31 15:30:35] Reading configuration file buflist.conf
-[2017-10-31 15:30:35] Writing configuration file fifo.conf (default options)
-[2017-10-31 15:30:35] Reading configuration file fifo.conf
-[2017-10-31 15:30:35] Writing configuration file xfer.conf (default options)
-[2017-10-31 15:30:35] Reading configuration file xfer.conf
-[2017-10-31 15:30:35] Writing configuration file irc.conf (default options)
-[2017-10-31 15:30:35] Reading configuration file irc.conf
-[2017-10-31 15:30:35] Writing configuration file relay.conf (default options)
-[2017-10-31 15:30:35] Reading configuration file relay.conf
-[2017-10-31 15:30:35] Writing configuration file colorize_nicks.conf (default options)
-[2017-10-31 15:30:35] Reading configuration file colorize_nicks.conf
-[2017-10-31 15:30:35] Writing configuration file autosort.conf (default options)
-[2017-10-31 15:30:35] Reading configuration file autosort.conf
-[2017-10-31 15:30:35] Writing configuration file autosort.conf
-[2017-10-31 15:30:35] Writing configuration file otr.conf (default options)
-[2017-10-31 15:30:35] Reading configuration file otr.conf
-[2017-10-31 15:30:35] Writing configuration file script.conf (default options)
-[2017-10-31 15:30:35] Reading configuration file script.conf
-[2017-10-31 15:33:27] Writing configuration file plugins.conf
-[2017-10-31 15:33:27] Writing configuration file exec.conf
-[2017-10-31 15:33:27] Writing configuration file irc.conf
-[2017-10-31 15:33:27] Writing configuration file script.conf
-[2017-10-31 15:33:27] Writing configuration file xfer.conf
-[2017-10-31 15:33:27] Writing configuration file trigger.conf
-[2017-10-31 15:33:27] Writing configuration file logger.conf
-[2017-10-31 15:33:27] Writing configuration file charset.conf
-[2017-10-31 15:33:27] Writing configuration file autosort.conf
-[2017-10-31 15:33:27] Writing configuration file colorize_nicks.conf
-[2017-10-31 15:33:27] Writing configuration file otr.conf
-[2017-10-31 15:33:27] Writing configuration file relay.conf
-[2017-10-31 15:33:27] Writing configuration file buflist.conf
-[2017-10-31 15:33:27] Writing configuration file fifo.conf
-[2017-10-31 15:33:27] Writing configuration file aspell.conf
-[2017-10-31 15:33:27] Writing configuration file alias.conf
-[2017-10-31 15:33:27] Writing configuration file weechat.conf
-[2017-10-31 15:33:27] Writing configuration file sec.conf
+[2017-11-13 16:15:36] WeeChat 1.9.1 (compiled on Sep 23 2017 19:44:10)
+[2017-11-13 16:15:36] Reading configuration file sec.conf
+[2017-11-13 16:15:36] Reading configuration file weechat.conf
+[2017-11-13 16:15:36] Reading configuration file plugins.conf
+[2017-11-13 16:15:36] Reading configuration file charset.conf
+[2017-11-13 16:15:36] Reading configuration file logger.conf
+[2017-11-13 16:15:36] Reading configuration file exec.conf
+[2017-11-13 16:15:36] Reading configuration file trigger.conf
+[2017-11-13 16:15:36] Reading configuration file aspell.conf
+[2017-11-13 16:15:36] Reading configuration file alias.conf
+[2017-11-13 16:15:36] Reading configuration file fifo.conf
+[2017-11-13 16:15:36] Reading configuration file xfer.conf
+[2017-11-13 16:15:36] Reading configuration file irc.conf
+[2017-11-13 16:15:36] Reading configuration file relay.conf
+[2017-11-13 16:15:37] Reading configuration file colorize_nicks.conf
+[2017-11-13 16:15:37] Reading configuration file autosort.conf
+[2017-11-13 16:15:37] Writing configuration file autosort.conf
+[2017-11-13 16:15:37] Reading configuration file otr.conf
+[2017-11-13 16:15:37] Reading configuration file buffers.conf
+[2017-11-13 16:15:37] Reading configuration file script.conf
+[2017-11-13 16:15:37] irc: connecting to server chat.freenode.net/6697 (SSL)...
+[2017-11-13 19:41:17] irc: connecting to server chat.freenode.net/6697 (SSL)...
