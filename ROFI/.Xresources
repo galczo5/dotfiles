@@ -1,8 +1,22 @@
-! ------------------------------------------------------------------------------
-! ROFI Color theme
-! ------------------------------------------------------------------------------
 rofi.color-enabled: true
-rofi.color-window: #07322B, #07322B, #07322B
-rofi.color-normal: #07322B, #747661, #07322B, #747661, #07322B
-rofi.color-active: #07322B, #929D7F, #07322B, #929D7F, #07322B
-rofi.color-urgent: #07322B, #747661, #07322B, #747661, #07322B
+rofi.color-window: #282A36, #282A36, #F8F8F2
+
+rofi.color-normal: #282A36, #F8F8F2, #282A36, #F8F8F2, #819396
+rofi.color-active: #282A36, #4D4D4D, #282A36, #F8F8F2, #282A36
+rofi.color-urgent: #282A36, #F8F8F2, #282A36, #F8F8F2, #da4281
+
+rofi.separator-style: none
+rofi.sidebar-mode: false
+rofi.bw: 1
+rofi.columns: 5
+rofi.padding: 50
+
+rofi.yoffset: 0
+rofi.fake-transparency: false
+rofi.location: 0
+rofi.width: 100
+rofi.fullscreen: true
+rofi.font: Iosevka 16
+rofi.lines: 1
+rofi.fixed-num-lines: false
+rofi.hide-scrollbar: true

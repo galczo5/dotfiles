@@ -1,35 +1,32 @@
-! special
-*background:     #1C1E1F
-*foreground:     #bdbdb3
-*cursorColor:    #fb8512
-*colorUL:        #cc8512
-*underlineColor: #baba36
-*color0:         #0a0a0a
-*color1:         #CC5542
-*color2:         #6aa350
-*color3:         #bdbc61
-*color4:         #5180b3
-*color5:         #DC8CC3
-*color6:         #6a7550
-*color7:         #9b9b9b
-*color8:         #4c4c4c
-*color9:         #dd5542
-*color10:        #6abd50
-*color11:        #bdbc61
-*color12:        #528fd1
-*color13:        #5C888B
-*color14:        #6380b3
-*color15:        #c9c9c9
+! Colors
+*.foreground: #F8F8F2
+*.background: #282A36
+*.color0:     #000000
+*.color8:     #4D4D4D
+*.color1:     #FF5555
+*.color9:     #FF6E67
+*.color2:     #50FA7B
+*.color10:    #5AF78E
+*.color3:     #F1FA8C
+*.color11:    #F4F99D
+*.color4:     #BD93F9
+*.color12:    #CAA9FA
+*.color5:     #FF79C6
+*.color13:    #FF92D0
+*.color6:     #8BE9FD
+*.color14:    #9AEDFE
+*.color7:     #BFBFBF
+*.color15:    #E6E6E6
 
 ! URxvt*geometry:            112x22
 URxvt*font:                xft:Iosevka:size=14
 URxvt*urlLauncher:         vivaldi-stable
 URxvt*scrollBar:           false
 URxvt*scrollBar_right:     false
-URxvt.internalBorder:      15
+URxvt.internalBorder:      25
 URxvt*depth: 32
 
-! URxvt*background: rgba:0500/2600/2100/E500
+URxvt*background: rgba:2800/2A00/3600/EE00
 
 Xft*dpi:                96
 Xft*antialias:          true
