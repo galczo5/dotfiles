@@ -2,6 +2,7 @@
 Configs for i3-gaps, rofi, vivaldi, dunst, polybar, emacs and urxvt with fish will be updated.
 
 I'm not planning to update Vim and Conky configs soon.
+Wallpapers can be found in I3 dir.
 
 * i3-gaps
 [[./I3/preview.png]]
