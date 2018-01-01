@@ -1,4 +1,5 @@
-;=====================================================
+
+  ;=====================================================
 ;
 ;   To learn more about how to configure Polybar
 ;   go to https://github.com/jaagr/polybar
@@ -36,14 +37,14 @@ monitor = ${env:MONITOR:DP-0}
 width = 100%
 height = 25
 offset-x = 0
-offset-y = 5
-padding-right = 5
-padding-left = 5
+offset-y = 7
+padding-right = 7
+padding-left = 7
 
 background = #00000000
-foreground = #07322B
+foreground = #FFFFFF00
 
-font-0 = Source Sans Pro:pixelsize=12;1
+font-0 = Source Sans Pro:pixelsize=9;1
 font-1 = unifont:size=6:heavy:fontformat=truetype;-2
 font-2 = siji:pixelsize=10;0
 font-3 = FontAwesome:pixelsize=14;0
@@ -63,14 +64,14 @@ monitor = ${env:MONITOR:DP-2}
 width = 100%
 height = 25
 offset-x = 0
-offset-y = 5
-padding-right = 5
-padding-left = 5
+offset-y = 7
+padding-right = 7
+padding-left = 7
 
 background = #00000000
-foreground = #07322B
+foreground = #FFFFFF00
 
-font-0 = Source Sans Pro:pixelsize=12;1
+font-0 = Source Sans Pro:pixelsize=9;1
 font-1 = unifont:size=6:heavy:fontformat=truetype;-2
 font-2 = siji:pixelsize=10;0
 font-3 = FontAwesome:pixelsize=14;0
@@ -95,11 +96,11 @@ pin-workspaces = true
 
 label-mode-padding = 5
 
-label-unfocused-foreground = #07322B
+label-unfocused-foreground = #AAAAAA
 label-unfocused-padding = 1
-label-visible-foregroud = #07322B
+label-visible-foregroud = #AAAAAA
 label-visible-padding = 1
-label-focused-foreground = #475544
+label-focused-foreground = #FFFFFF00
 label-focused-padding = 1
 label-urgent-padding = 1
 
@@ -118,7 +119,7 @@ label = %date% %time%
 [module/volume]
 type = internal/volume
 
-format-volume = <label-volume> <bar-volume>
+format-volume = <bar-volume>
 label-volume = ""
 label-volume-foreground = ${root.foreground}
 label-muted = muted
