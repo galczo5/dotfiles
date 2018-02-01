@@ -32,11 +32,12 @@
                         (when (eq (length (frame-list)) 2)
                             (progn
                               (select-frame frame)
-                              (set-frame-font "Iosevka")))))
-  (set-frame-font "Iosevka"))
+                              (load-theme 'zerodark t)))))
+  (load-theme 'zerodark t))
 
-(set-frame-font "Iosevka")
-(set-face-attribute 'default nil :height 140)
+(set-frame-font "DejaVu Sans Mono")
+(set-face-attribute 'default nil :height 120)
+(fringe-mode 20)
 
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
@@ -112,10 +113,21 @@
 
 (use-package "dracula-theme"
   :ensure t
+  ;; :config
+  ;; (load-theme 'dracula t)
+  ;; :init
+  ;; (set-face-attribute 'fringe nil :background nil)
+  )
+
+(use-package "zerodark-theme"
+  :ensure t
   :config
-  (load-theme 'dracula t)
-  :init
-  (set-face-attribute 'fringe nil :background nil))
+  (load-theme 'zerodark t)
+  (set-face-attribute 'fringe nil :background nil)
+  (zerodark-setup-modeline-format))
+
+(use-package "all-the-icons"
+  :ensure t)
 
 (use-package "column-enforce-mode"
   :ensure t
@@ -418,20 +430,16 @@
   :config
   (add-hook 'rust-mode-hook #'racer-mode)
   (add-hook 'racer-mode-hook #'eldoc-mode))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "1db337246ebc9c083be0d728f8d20913a0f46edc0a00277746ba411c149d7fe5" "d0404bd38534a00ee72a4f887a987d6bff87f4cf8d8f85149e32849b262465a5" "a7e7804313dbf827a441c86a8109ef5b64b03011383322cbdbf646eb02692f76" "0a3a41085c19d8121ed0ad3eb658a475ccb948a70a83604641ee7d4c3575a4d5" "a4c9e536d86666d4494ef7f43c84807162d9bd29b0dfd39bdf2c3d845dcc7b2e" "c4bd8fa17f1f1fc088a1153ca676b1e6abc55005e72809ad3aeffb74bd121d23" "36a0da076b9e1f1e55f404c897818542310c4fdc32dcf9a98fd797e12dd61a7e" "7a599c892741b38e482f8445dd595699a495362948978499607c605c223f1573" default)))
- '(package-selected-packages
-   (quote
-    (dracula-theme nord-theme nimbus-theme cmake-mode ws-butler web-mode visual-regexp use-package undo-tree switch-window srefactor sr-speedbar sqlup-mode smooth-scrolling smex rainbow-mode rainbow-delimiters racer project-explorer ox-twbs org-bullets multiple-cursors molokai-theme magit latex-preview-pane kaolin-theme js2-mode indent-guide htmlize hlinum helm-swoop helm-google helm-css-scss google-c-style git-gutter-fringe function-args focus flyspell-popup flycheck-irony fill-column-indicator expand-region emmet-mode doom-themes company-web company-irony company-c-headers column-enforce-mode cm-mode buffer-move autopair auto-yasnippet auto-complete atom-one-dark-theme ample-zen-theme alpha aggressive-indent ac-html-bootstrap))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
+(use-package "jedi"
+  :ensure t
+  :config (add-hook 'python-mode-hook 'jedi:setup))
+
+(use-package "company-jedi"
+  :ensure t
+  :config
+
+  (defun my/python-mode-hook ()
+    (add-to-list 'company-backends 'company-jedi))
+
+  (add-hook 'python-mode-hook 'my/python-mode-hook))
