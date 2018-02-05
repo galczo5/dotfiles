@@ -27,14 +27,6 @@
 (setq-default tab-width 2)
 (setq indent-line-function 'insert-tab)
 
-(if (daemonp)
-    (add-hook 'after-make-frame-functions (lambda (frame)
-                        (when (eq (length (frame-list)) 2)
-                            (progn
-                              (select-frame frame)
-                              (load-theme 'zerodark t)))))
-  (load-theme 'zerodark t))
-
 (set-frame-font "DejaVu Sans Mono")
 (set-face-attribute 'default nil :height 120)
 (fringe-mode 20)
@@ -74,57 +66,34 @@
   (setq fci-rule-use-dashes 1))
 
 (use-package "doom-themes"
-  ;; :ensure t
-  ;; :config
-  ;; (load-theme 'doom-molokai t)
-  ;; (set-face-attribute 'fringe nil :background nil)
-  ;; (set-face-background 'mode-line "#2E4D4D")
-  ;; (set-face-foreground 'mode-line "#ffffff")
-  )
+  :ensure t)
 
 (use-package "badwolf-theme"
-  ;; :ensure t
-  ;; :config (load-theme 'badwolf t)
-  )
+  :ensure t)
 
 (use-package "kaolin-theme"
-  ;; :ensure t
-  ;; :config
-  ;; (load-theme 'kaolin t)
-  ;; (set-face-background 'mode-line "#052621")
-  ;; (set-face-attribute 'mode-line nil :box nil)
-  ;; (set-background-color "#052621")
-  ;; (set-face-attribute 'fringe nil :background nil)
-  )
+  :ensure t)
 
 (use-package "ample-zen-theme"
-  ;; :ensure t
-  ;; :config
-  ;; (load-theme 'ample-zen t)
-  ;; :init
-  ;; (set-face-attribute 'fringe nil :background nil)
-  ;; (set-face-attribute 'mode-line nil :box nil)
-
-
-  ;; (set-face-attribute 'vertical-border
-  ;;                     nil
-  ;;                     :foreground "#1C1E1F")
-  )
+  :ensure t)
 
 (use-package "dracula-theme"
-  :ensure t
-  ;; :config
-  ;; (load-theme 'dracula t)
-  ;; :init
-  ;; (set-face-attribute 'fringe nil :background nil)
-  )
+  :ensure t)
 
 (use-package "zerodark-theme"
-  :ensure t
-  :config
+  :ensure t)
+
+(if (daemonp)
+    (add-hook 'after-make-frame-functions (lambda (frame)
+                        (when (eq (length (frame-list)) 2)
+                            (progn
+                              (select-frame frame)
+                              (load-theme 'zerodark t)
+                              (zerodark-setup-modeline-format)
+                              (set-face-attribute 'fringe nil :background nil)))))
   (load-theme 'zerodark t)
-  (set-face-attribute 'fringe nil :background nil)
-  (zerodark-setup-modeline-format))
+  (zerodark-setup-modeline-format)
+  (set-face-attribute 'fringe nil :background nil))
 
 (use-package "all-the-icons"
   :ensure t)
