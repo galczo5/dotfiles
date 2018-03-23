@@ -1,6 +1,6 @@
 ! Colors
 *.foreground: #F8F8F2
-*.background: #282A36
+*.background: #04142D
 *.color0:     #000000
 *.color8:     #4D4D4D
 *.color1:     #FF5555
@@ -19,14 +19,14 @@
 *.color15:    #E6E6E6
 
 ! URxvt*geometry:            112x22
-URxvt*font:                xft:Iosevka:size=14
+URxvt*font:                xft:DejaVu Sans Mono:size=12
 URxvt*urlLauncher:         vivaldi-stable
 URxvt*scrollBar:           false
 URxvt*scrollBar_right:     false
 URxvt.internalBorder:      25
 URxvt*depth: 32
 
-URxvt*background: rgba:2800/2A00/3600/EE00
+URxvt*background: rgba:0400/1400/2D00/EE00
 
 Xft*dpi:                96
 Xft*antialias:          true
