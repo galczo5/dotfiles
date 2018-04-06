@@ -42,7 +42,7 @@ padding-right = 7
 padding-left = 7
 
 background = #00000000
-foreground = #FFFFFF00
+foreground = #04142D
 
 font-0 = Source Sans Pro:pixelsize=9;1
 font-1 = unifont:size=6:heavy:fontformat=truetype;-2
@@ -69,7 +69,7 @@ padding-right = 7
 padding-left = 7
 
 background = #00000000
-foreground = #FFFFFF00
+foreground = #04142D
 
 font-0 = Source Sans Pro:pixelsize=9;1
 font-1 = unifont:size=6:heavy:fontformat=truetype;-2
@@ -96,11 +96,11 @@ pin-workspaces = true
 
 label-mode-padding = 5
 
-label-unfocused-foreground = #AAAAAA
+label-unfocused-foreground = #44526C
 label-unfocused-padding = 1
-label-visible-foregroud = #AAAAAA
+label-visible-foregroud = #44526C
 label-visible-padding = 1
-label-focused-foreground = #FFFFFF00
+label-focused-foreground = #04142D
 label-focused-padding = 1
 label-urgent-padding = 1
 

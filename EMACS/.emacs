@@ -91,6 +91,9 @@
   (set-background-color "#04142D")
   (set-face-background 'mode-line "#04142D")
   (set-face-attribute 'mode-line nil
+                      :box '(:line-width 8 :color "#04142D"))
+  (set-face-background 'mode-line-inactive "#04142D")
+  (set-face-attribute 'mode-line-inactive nil
                       :box '(:line-width 8 :color "#04142D")))
 
 (if (daemonp)
@@ -426,20 +429,3 @@
     (add-to-list 'company-backends 'company-jedi))
 
   (add-hook 'python-mode-hook 'my/python-mode-hook))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("065efdd71e6d1502877fd5621b984cded01717930639ded0e569e1724d058af8" "3edbdd0ad45cb8f7c2575c0ad8f6625540283c6e928713c328b0bacf4cfbb60f" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "2af26301bded15f5f9111d3a161b6bfb3f4b93ec34ffa95e42815396da9cb560" default)))
- '(package-selected-packages
-   (quote
-    (color-theme-x xresources-theme exotica-theme telephone-line projectile zoom treemacs kaolin-theme zerodark-theme ycmd ws-butler web-mode visual-regexp use-package switch-window swiper srefactor sr-speedbar sqlup-mode spaceline-all-the-icons smooth-scrolling smex rainbow-mode rainbow-delimiters racer project-explorer powerline-evil ox-twbs org-bullets multiple-cursors latex-preview-pane js2-mode jedi indent-guide htmlize hlinum helm-swoop helm-google helm-css-scss google-c-style git-gutter-fringe function-args focus flyspell-popup flycheck-irony fill-column-indicator expand-region emmet-mode ecb dracula-theme doom-themes doom company-web company-jedi company-irony company-c-headers column-enforce-mode buffer-move badwolf-theme autopair auto-yasnippet auctex ample-zen-theme alpha airline-themes aggressive-indent ac-html-bootstrap))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
