@@ -15,7 +15,7 @@
 
   bindsym Print exec scrot
   bindsym $win+Print exec scrot -u
-    
+
   # alternatively, you can use the cursor keys:
   bindsym $mod+Left focus left
   bindsym $mod+Down focus down
@@ -33,7 +33,7 @@
 
   # split in vertical orientation
   bindsym $mod+v split v
-    
+
   # enter fullscreen mode for the focused container
   bindsym $mod+f fullscreen toggle
 
@@ -91,7 +91,7 @@
   bindsym $mod+Shift+8 move container to workspace $workspace8
   bindsym $mod+Shift+9 move container to workspace $workspace9
   bindsym $mod+Shift+0 move container to workspace $workspace10
-  
+
   # set workspace output
   workspace $workspace1  output DP-0
   workspace $workspace2  output DP-2
@@ -123,19 +123,20 @@
   }
 
   bindsym $mod+r mode "resize"
-  bindsym $alt+space exec rofi -show combi -modi combi -font "Source Sans Pro 12" -lines 10 -matching fuzzy
+  bindsym $alt+space exec rofi -show combi -modi combi -font "Open Sans 14" -lines 10 -matching fuzzy daemon
 
   bindsym XF86AudioRaiseVolume exec amixer -q sset Master 3%+
   bindsym XF86AudioLowerVolume exec amixer -q sset Master 3%-
 
-  bindsym XF86MonBrightnessUp exec xbacklight -inc 20
-  bindsym XF86MonBrightnessDown exec xbacklight -dec 20
+  bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+  bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 
   gaps inner 10
   gaps outer 30
 
-  exec --no-startup-id run_polybar.sh
-  exec --no-startup-id compton --backend glx --paint-on-overlay --vsync opengl-swc -o 0
+  exec --no-startup-id dunst -config /home/kamil/Dev/dotfiles/DUNST/dunstrc
+  exec --no-startup-id sh /home/kamil/Dev/dotfiles/POLYBAR/run_polybar.sh
+  exec --no-startup-id compton --backend glx --paint-on-overlay --vsync opengl-swc -l -15 -t -15 -r 10 -o 0.5 -f -D 5
   exec --no-startup-id redshift
   exec --no-startup-id nitrogen --restore
   exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1

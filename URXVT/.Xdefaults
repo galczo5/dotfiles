@@ -1,22 +1,25 @@
-! Colors
-*.foreground: #F8F8F2
-*.background: #04142D
-*.color0:     #000000
-*.color8:     #4D4D4D
-*.color1:     #FF5555
-*.color9:     #FF6E67
-*.color2:     #50FA7B
-*.color10:    #5AF78E
-*.color3:     #F1FA8C
-*.color11:    #F4F99D
-*.color4:     #BD93F9
-*.color12:    #CAA9FA
-*.color5:     #FF79C6
-*.color13:    #FF92D0
-*.color6:     #8BE9FD
-*.color14:    #9AEDFE
-*.color7:     #BFBFBF
-*.color15:    #E6E6E6
+*.foreground:   #d1d1d1
+*.background:   #0a0a0a
+*.cursorColor:  #d1d1d1
+*.color0:       #282a2e
+*.color8:       #373b41
+*.color1:       #ff0000
+*.color9:       #f52749
+*.color2:       #1d8b15
+*.color10:      #518c46
+*.color3:       #e87400
+*.color11:      #eab700
+*.color4:       #0f6d9e
+*.color12:      #3e89bb
+*.color5:       #622f7d
+*.color13:      #683e7d
+*.color6:       #1d8b15
+*.color14:      #518c46
+*.color7:       #393939
+*.color15:      #e8e8e8
+
+urxvt*depth: 32
+urxvt*background: rgba:000A/000A/000A/DD00
 
 ! URxvt*geometry:            112x22
 URxvt*font:                xft:DejaVu Sans Mono:size=12
@@ -25,8 +28,6 @@ URxvt*scrollBar:           false
 URxvt*scrollBar_right:     false
 URxvt.internalBorder:      25
 URxvt*depth: 32
-
-URxvt*background: rgba:0400/1400/2D00/EE00
 
 Xft*dpi:                96
 Xft*antialias:          true

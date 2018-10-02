@@ -1,3 +1,4 @@
+;; Prepare and install use-package
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/")
@@ -27,8 +28,8 @@
 (setq-default tab-width 2)
 (setq indent-line-function 'insert-tab)
 
-(set-frame-font "DejaVu Sans Mono")
-(set-face-attribute 'default nil :height 120)
+(set-frame-font "Iosevka")
+(set-face-attribute 'default nil :height 130)
 (fringe-mode 20)
 
 (scroll-bar-mode -1)
@@ -38,6 +39,7 @@
 (show-paren-mode 1)
 (column-number-mode 1)
 
+(blink-cursor-mode 0)
 (set-default 'cursor-type 'box)
 
 (global-hl-line-mode 1)
@@ -56,64 +58,42 @@
   :ensure t
   :config
   (hlinum-activate)
-  (add-hook 'linum-mode-hook (lambda () (set-face-background 'linum-highlight-face (face-background 'default))
-(set-face-foreground 'linum-highlight-face "#ffffff"))))
-
-(use-package "fill-column-indicator"
-  :ensure t
-  :config
-  (setq fci-rule-column 80)
-  (setq fci-rule-use-dashes 1))
-
-(use-package "doom-themes"
-  :ensure t)
-
-(use-package "badwolf-theme"
-  :ensure t)
-
-(use-package "kaolin-theme"
-  :ensure t)
+  (add-hook 'linum-mode-hook (lambda ()
+                               (set-face-background 'linum-highlight-face
+                                                    (face-background 'default))
+                               (set-face-foreground 'linum-highlight-face "#ffffff"))))
 
 (use-package "ample-zen-theme"
   :ensure t)
 
-(use-package "dracula-theme"
-  :ensure t)
-
-(use-package "zerodark-theme"
-  :ensure t)
-
-(use-package "exotica-theme"
-  :ensure t)
-
 (defun customize-theme ()
   "my theme customs"
-  (set-background-color "#04142D")
-  (set-face-background 'mode-line "#04142D")
+  ;; (set-background-color "#101010")
+  (set-face-background 'mode-line "#0a0a0a")
   (set-face-attribute 'mode-line nil
-                      :box '(:line-width 8 :color "#04142D"))
-  (set-face-background 'mode-line-inactive "#04142D")
+                      :box '(:line-width 4 :color "#0a0a0a"))
+  (set-face-background 'mode-line-inactive "#0a0a0a")
   (set-face-attribute 'mode-line-inactive nil
-                      :box '(:line-width 8 :color "#04142D")))
+                      :box '(:line-width 4 :color "#0a0a0a"))
+  (set-face-background 'linum "#212121")
+  (set-face-attribute 'mode-line nil :height 100 :weight 'light)
+  (set-face-background 'vertical-border "#1A1A1A")
+  (set-face-foreground 'vertical-border (face-background 'vertical-border))
+  ;; (set-cursor-color "#ffffff")
+  )
 
 (if (daemonp)
     (add-hook 'after-make-frame-functions (lambda (frame)
                                             (when (eq (length (frame-list)) 2)
                                               (progn
                                                 (select-frame frame)
-                                                (load-theme 'exotica t)
+                                                (load-theme 'ample-zen t)
                                                 (customize-theme)
                                                 (set-face-attribute 'fringe nil :background nil)))))
-  (load-theme 'exotica t)
+
   (customize-theme)
+  (load-theme 'ample-zen t)
   (set-face-attribute 'fringe nil :background nil))
-
-(use-package "all-the-icons"
-  :ensure t)
-
-(use-package "column-enforce-mode"
-  :ensure t
-  :config (column-enforce-mode 1))
 
 (use-package "aggressive-indent"
   :ensure t)
@@ -177,15 +157,16 @@
   (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.vue?\\'" . web-mode))
   :config
   (add-hook 'web-mode-hook 'superword-mode)
   (add-hook 'web-mode-hook 'aggressive-indent-mode))
 
-(use-package "company-web"
-  :ensure t
-  :config
-  (add-hook 'web-mode-hook 'company-web-bootstrap+)
-  (add-hook 'web-mode-hook 'company-web-fa+))
+;;(use-package "company-web"
+;;  :ensure t
+;;  :config
+;;  (add-hook 'web-mode-hook 'company-web-bootstrap+)
+;;  (add-hook 'web-mode-hook 'company-web-fa+))
 
 (use-package "company"
   :ensure t
@@ -193,14 +174,11 @@
   (global-company-mode 1)
   (setq company-idle-delay 0)
   (global-set-key (kbd "C-SPC") 'company-complete-common)
-  (add-to-list 'company-backends 'company-web-html)
-  (add-to-list 'company-backends 'company-web-bootstrap+))
+  ;;(add-to-list 'company-backends 'company-web-html)
+  ;;(add-to-list 'company-backends 'company-web-bootstrap+)
+  )
 
-(use-package "auto-complete"
-  :ensure t)
-
-(use-package "ac-html-bootstrap"
-  :ensure t)
+;; JS and Vue
 
 (use-package "js2-mode"
   :ensure t
@@ -208,6 +186,12 @@
   :config
   (add-hook 'js2-mode-hook 'ac-js2-mode)
   (add-hook 'js2-mode-hook 'subword-mode))
+
+(use-package "vue-mode"
+  :ensure t)
+
+(use-package "vue-html-mode"
+  :ensure t)
 
 (use-package "rainbow-mode"
   :ensure t
@@ -223,6 +207,9 @@
 (use-package "yasnippet-snippets"
   :ensure t)
 
+(load "/home/kamil/Dev/yasnippet-vue-snippets/yasnippet-vue-snippets.el")
+(require 'yasnippet-vue-snippets)
+
 (use-package "sqlup-mode"
   :ensure t
   :config (add-hook 'sql-mode-hook 'sqlup-mode))
@@ -234,12 +221,6 @@
 (use-package "org-bullets"
   :ensure t
   :config (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
-
-(use-package "htmlize"
-  :ensure t)
-
-(use-package "ox-twbs"
-  :ensure t)
 
 (use-package "ispell"
   :ensure t
@@ -284,8 +265,8 @@
 (use-package "alpha"
   :ensure t
   :config
-  (set-frame-parameter (selected-frame) 'alpha '(95 . 95))
-  (add-to-list 'default-frame-alist '(alpha . (95 . 95)))
+  (set-frame-parameter (selected-frame) 'alpha '(90 . 90))
+  (add-to-list 'default-frame-alist '(alpha . (90 . 90)))
   )
 
 (use-package "latex-preview-pane"
@@ -295,9 +276,6 @@
   :ensure t)
 
 (use-package "rainbow-delimiters"
-  :ensure t)
-
-(use-package "focus"
   :ensure t)
 
 (use-package "helm-google"
@@ -315,10 +293,8 @@
   (define-fringe-bitmap 'git-gutter-fr:deleted
     [0 0 0 0 0 0 0 0 0 0 0 0 0 128 192 224 240 248]
     nil nil 'center)
-  (global-git-gutter-mode))
-
-(use-package "helm-css-scss"
-  :ensure t)
+  ;; (global-git-gutter-mode)
+  )
 
 (use-package "magit"
   :ensure t)
@@ -354,19 +330,6 @@
   (add-hook 'c-mode-common-hook 'flycheck-mode)
   (add-hook 'c++-mode-hook (lambda ()
                              (setq irony-additional-clang-options '("-std=c++17")))))
-
-(use-package "sr-speedbar"
-  :ensure t
-  :config
-  (setq speedbar-show-unknown-files t)
-  (setq sr-speedbar-right-side nil)
-  (setq sr-speedbar-max-width 35)
-  (setq sr-speedbar-width 35)
-  (global-set-key [f8] 'sr-speedbar-toggle))
-
-(use-package "srefactor"
-  :ensure t
-  :config (semantic-mode 1))
 
 (defun header ()
   (interactive)
@@ -406,6 +369,8 @@
   :ensure t
   :config (smooth-scrolling-mode 1))
 
+
+;; Rust
 (use-package "rust-mode"
   :ensure t
   :config
@@ -417,6 +382,7 @@
   (add-hook 'rust-mode-hook #'racer-mode)
   (add-hook 'racer-mode-hook #'eldoc-mode))
 
+;; Python
 (use-package "jedi"
   :ensure t
   :config (add-hook 'python-mode-hook 'jedi:setup))
@@ -429,3 +395,26 @@
     (add-to-list 'company-backends 'company-jedi))
 
   (add-hook 'python-mode-hook 'my/python-mode-hook))
+
+;; (use-package "omnisharp"
+;;   :ensure t
+;;   :config
+;;   (setq omnisharp-server-executable-path "/opt/omnisharp-roslyn/OmniSharp.exe")
+;;   (eval-after-load 'company
+;;     '(add-to-list 'company-backends 'company-omnisharp))
+;;   (add-hook 'csharp-mode-hook 'omnisharp-mode)
+;;   )
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("075351c6aeaddd2343155cbcd4168da14f54284453b2f1c11d051b2687d6dc48" default))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

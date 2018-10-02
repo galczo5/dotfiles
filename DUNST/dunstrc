@@ -1,5 +1,5 @@
 [global]
-    font = Source Sans Pro 10
+    font = Open Sans 10
     allow_markup = yes
 
     format = "<b>%a:</b> %s\n%b"
@@ -11,7 +11,7 @@
     word_wrap = yes
 
     ignore_newline = no
-    geometry = "350x5-0+35"
+    geometry = "350x5+785+50"
     transparency = 0
     idle_threshold = 120
 
@@ -34,25 +34,25 @@
     dmenu = /usr/bin/dmenu -p dunst:
 
     # browser for opening urls in context menu
-    browser = vivaldi-stable
+    browser = opera
 
 [frame]
     width = 0
-    color = "#07322B"
+    color = "#0a0a0a"
 
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the '#' and following  would be interpreted as a comment.
-    background = "#07322B"
-    foreground = "#4F5B47"
+    background = "#0a0a0a"
+    foreground = "#d1d1d1"
     timeout = 10
 
 [urgency_normal]
-    background = "#07322B"
-    foreground = "#4F5B47"
+    background = "#0a0a0a"
+    foreground = "#d1d1d1"
     timeout = 10
 
 [urgency_critical]
-    background = "#07322B"
-    foreground = "#4F5B47"
+    background = "#f52749"
+    foreground = "#d1d1d1"
     timeout = 0

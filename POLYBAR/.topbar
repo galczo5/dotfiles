@@ -1,0 +1,52 @@
+[bar/topbar]
+monitor = ${env:MONITOR:}
+width = 100%
+height = 25
+offset-x = 0
+offset-y = 7
+padding-right = 7
+padding-left = 7
+
+background = #00000000
+foreground = #88FFFFFF
+
+font-0 = Open Sans:pixelsize=10;1
+font-1 = FontAwesome:pixelsize=10;1
+
+separator = "        "
+modules-left =
+modules-center = i3 date
+modules-right =
+
+override-redirect = true
+wm-restack = i3
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = true
+strip-wsnumbers = true
+pin-workspaces = true
+
+label-mode-padding = 5
+
+label-unfocused-foreground = #33FFFFFF
+label-unfocused-padding = 1
+label-visible-foregroud = #AAFFFFFF
+label-visible-padding = 1
+label-focused-foreground = #AAFFFFFF
+label-focused-padding = 1
+label-urgent-padding = 1
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = "%Y-%m-%d"
+time = " %H:%M"
+
+label = %date% %time%

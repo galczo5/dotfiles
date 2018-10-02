@@ -1,6 +1,13 @@
 #!/bin/sh
 
 killall polybar
-polybar traybar -c ~/.polybar &
-polybar topbar1 -c ~/.polybar &
-polybar topbar2 -c ~/.polybar &
+
+if type "xrandr"; then
+  for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+      MONITOR=$m polybar topbar -c .topbar &
+      MONITOR=$m polybar bottombar -c .bottombar &
+  done
+else
+    polybar topbar -c .topbar &
+    polybar bottombar -c .bottombar
+fi
