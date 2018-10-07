@@ -10,7 +10,7 @@ Wallpapers can be found in I3 dir.
 * rofi
 [[./ROFI/preview.png]]
 
-* vivaldi
+* vivaldi (obsolete, migration to Opera)
 [[./VIVALDI/preview.png]]
 
 * polybar
@@ -21,3 +21,6 @@ Wallpapers can be found in I3 dir.
 
 * urxvt
 [[./URXVT/preview.png]]
+
+* dunst
+[[./DUNST/preview.png]]
