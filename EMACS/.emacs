@@ -107,7 +107,9 @@
   :config (ws-butler-global-mode))
 
 (use-package "flycheck"
-  :ensure t)
+  :ensure t
+  :config
+  (flycheck-add-mode 'javascript-eslint 'web-mode))
 
 (use-package "switch-window"
   :ensure t
@@ -158,6 +160,7 @@
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.jsx?\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.vue?\\'" . web-mode))
+  (add-to-list 'auto-mode-alist '("\\.js?\\'" . web-mode))
   :config
   (add-hook 'web-mode-hook 'superword-mode)
   (add-hook 'web-mode-hook 'aggressive-indent-mode))
@@ -180,12 +183,12 @@
 
 ;; JS and Vue
 
-(use-package "js2-mode"
-  :ensure t
-  :init (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-  :config
-  (add-hook 'js2-mode-hook 'ac-js2-mode)
-  (add-hook 'js2-mode-hook 'subword-mode))
+;; (use-package "js2-mode"
+;;   :ensure t
+;;   :init (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+;;   :config
+;;   (add-hook 'js2-mode-hook 'ac-js2-mode)
+;;   (add-hook 'js2-mode-hook 'subword-mode))
 
 (use-package "vue-mode"
   :ensure t)
@@ -396,25 +399,23 @@
 
   (add-hook 'python-mode-hook 'my/python-mode-hook))
 
-;; (use-package "omnisharp"
-;;   :ensure t
-;;   :config
-;;   (setq omnisharp-server-executable-path "/opt/omnisharp-roslyn/OmniSharp.exe")
-;;   (eval-after-load 'company
-;;     '(add-to-list 'company-backends 'company-omnisharp))
-;;   (add-hook 'csharp-mode-hook 'omnisharp-mode)
-;;   )
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("075351c6aeaddd2343155cbcd4168da14f54284453b2f1c11d051b2687d6dc48" default))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(use-package editorconfig
+  :ensure t
+  :config
+  (editorconfig-mode 1))
+
+(defun use-eslint-from-node-modules ()
+  "Find the eslint binary local to the current file to use the correct configuration, plugins, etc."
+  (let* ((root (locate-dominating-file
+                (or (buffer-file-name) default-directory)
+                "node_modules"))
+         (eslint (and root
+                      (expand-file-name "node_modules/.bin/eslint"
+                                        root))))
+    (when (and eslint (file-executable-p eslint))
+      (setq-local flycheck-javascript-eslint-executable eslint))))
+
+(add-hook 'flycheck-mode-hook 'use-eslint-from-node-modules)
+
+(use-package "markdown-mode"
+  :ensure t)
