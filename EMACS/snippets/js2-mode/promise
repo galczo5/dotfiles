@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: Promise
-# key: promise
-# --
-new Promise((resolve, reject) => {
-    $1
-});

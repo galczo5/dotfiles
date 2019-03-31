@@ -136,7 +136,7 @@
 
   exec --no-startup-id dunst -config /home/kamil/Dev/dotfiles/DUNST/dunstrc
   exec --no-startup-id sh /home/kamil/Dev/dotfiles/POLYBAR/run_polybar.sh
-  exec --no-startup-id compton --backend glx --paint-on-overlay --vsync opengl-swc -l -15 -t -15 -r 10 -o 0.5 -f -D 5
+  exec --no-startup-id compton
   exec --no-startup-id redshift
   exec --no-startup-id nitrogen --restore
   exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1

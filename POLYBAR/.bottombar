@@ -5,7 +5,7 @@ height = 25
 bottom = true
 
 background = #00000000
-foreground = #55FFFFFF
+foreground = #88FFFFFF
 
 font-0 = Open Sans:pixelsize=10;1
 font-1 = FontAwesome:pixelsize=10;1
@@ -32,24 +32,24 @@ master-mixer = Master
 interval = 5
 
 format-volume = <label-volume>
-label-volume = %{T2}%{T-}   %percentage%%
+label-volume = VOLUME %percentage%%
 
 [module/memory]
 type = internal/memory
-label = %{T2}%{T-}   %percentage_used%%
+label = MEMORY %percentage_used%%
 label-padding = 10
 
 [module/cpu]
 type = internal/cpu
 format = <label>
-label = %{T2}%{T-}   %percentage%%
+label = CPU %percentage%%
 
 [module/temperature]
 type = internal/temperature
 interval = 0.5
 thermal-zone = 0
 warn-temperature = 60
-label = %{T2}%{T-}    %temperature%
+label = TEMPERATURE %temperature%
 label-padding = 10
 
 [module/battery]
@@ -57,11 +57,11 @@ type = internal/battery
 battery = BAT0
 adapter = ADP1
 poll-interval = 5
-label = %{T2}%{T-}   %percentage%
+label = BATTERY %percentage%
 
-format-charging =  <label-charging>
+format-charging = <label-charging>
 
 format-discharging = <label-discharging>
-label-charging = %{T2}%{T-}   %percentage%%
-label-discharging = %{T2}%{T-}   %percentage%%
-label-full = %{T2}%{T-}   %percentage%%
+label-charging = CHARGING %percentage%%
+label-discharging = BATTERY %percentage%%
+label-full = BATTERY FULL
