@@ -8,11 +8,11 @@ function fish_prompt --description 'Write out the prompt'
     end
 
     if not set -q __fish_prompt_normal
-    set -g __fish_prompt_normal (set_color normal)
+    	set -g __fish_prompt_normal (set_color normal)
     end
 
     if not set -q __git_cb
-    set __git_cb " git:"(set_color brown)(git branch ^/dev/null | grep \* | sed 's/* //')(set_color normal)""
+    	set __git_cb " "(set_color brown)(git branch --show-current 2>/dev/null)(set_color normal)""
     end
 
     switch $USER
