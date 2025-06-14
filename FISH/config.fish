@@ -2,44 +2,19 @@ function fish_greeting
 end
 
 function mc
-    env SHELL=/bin/bash command mc $argv
+	env SHELL=/bin/bash command mc $argv
 end
 
-function fish_prompt --description 'Write out the prompt'
-    # Just calculate these once, to save a few cycles when displaying the prompt
-    if not set -q __fish_prompt_hostname
-    set -g __fish_prompt_hostname (hostname|cut -d . -f 1)
-    end
+function fish_prompt 
 
-    if not set -q __fish_prompt_normal
-    	set -g __fish_prompt_normal (set_color normal)
-    end
+	set -l branch ""
+	if git rev-parse --is-inside-work-tree >/dev/null 2>&1
+		set branch (set_color white --background red --bold) (git symbolic-ref --short HEAD 2>/dev/null; or git rev-parse --short HEAD 2>/dev/null) (set_color normal)
+	end
 
-    if not set -q __git_cb
-    	set __git_cb " "(set_color brown)(git branch --show-current 2>/dev/null)(set_color normal)""
-    end
+	set -l branch (echo $branch | tr -d '\n')
+	set -l now (set_color yellow)(date "+%H:%M:%S")(set_color normal)
 
-    switch $USER
+	printf '> %s %s %s %s > ' $now $USER (prompt_pwd) $branch
 
-    case root
-
-    if not set -q __fish_prompt_cwd
-        if set -q fish_color_cwd_root
-            set -g __fish_prompt_cwd (set_color $fish_color_cwd_root)
-        else
-            set -g __fish_prompt_cwd (set_color $fish_color_cwd)
-        end
-    end
-
-    printf (date) '> %s%s%s%s '  "$__fish_prompt_cwd" (prompt_pwd) "$__fish_prompt_normal" $__git_cb
-
-    case '*'
-
-    if not set -q __fish_prompt_cwd
-        set -g __fish_prompt_cwd (set_color $fish_color_cwd)
-    end
-
-    printf '> %s%s%s%s ' "$__fish_prompt_cwd" (prompt_pwd) "$__fish_prompt_normal" $__git_cb
-
-    end
 end
