@@ -1,6 +1,10 @@
 function fish_greeting
 end
 
+function mc
+    env SHELL=/bin/bash command mc $argv
+end
+
 function fish_prompt --description 'Write out the prompt'
     # Just calculate these once, to save a few cycles when displaying the prompt
     if not set -q __fish_prompt_hostname
