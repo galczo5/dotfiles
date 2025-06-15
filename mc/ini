@@ -88,7 +88,7 @@ filepos_max_saved_entries=1024
 
 [Layout]
 output_lines=0
-left_panel_size=46
+left_panel_size=76
 top_panel_size=0
 message_visible=false
 keybar_visible=true
