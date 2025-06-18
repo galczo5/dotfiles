@@ -83,12 +83,12 @@ editor_backup_extension=~
 editor_filesize_threshold=64M
 editor_stop_format_chars=-+*\\,.;:&>
 mcview_eof=
-skin=default
+skin=gray-orange-blue256
 filepos_max_saved_entries=1024
 
 [Layout]
 output_lines=0
-left_panel_size=49
+left_panel_size=48
 top_panel_size=0
 message_visible=false
 keybar_visible=true
