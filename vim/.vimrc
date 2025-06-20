@@ -30,3 +30,6 @@ syntax on                     " Enable syntax highlighting
 set background=dark           " For dark terminal themes
 set termguicolors             " True color support (for terminals like Kitty)
 
+highlight lineNr term=bold cterm=NONE ctermbg=none  ctermfg=none gui=bold
+highlight CursorLine term=bold cterm=NONE ctermbg=none  ctermfg=none gui=bold
+highlight CursorLineNr term=bold cterm=none ctermbg=none ctermfg=yellow gui=bold
