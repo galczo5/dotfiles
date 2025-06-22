@@ -1,7 +1,8 @@
 " === General Settings ===
 set nocompatible              " Don't be compatible with vi
 set number                    " Show line numbers
-set relativenumber            " Show relative line numbers
+:set numberwidth=5
+" set relativenumber            " Show relative line numbers
 set showcmd                   " Show (partial) command in status line
 set cursorline                " Highlight current line
 set wildmenu                  " Enable command-line completion enhancement
@@ -30,6 +31,15 @@ syntax on                     " Enable syntax highlighting
 set background=dark           " For dark terminal themes
 set termguicolors             " True color support (for terminals like Kitty)
 
-highlight lineNr term=bold cterm=NONE ctermbg=none  ctermfg=none gui=bold
+highlight lineNr term=bold cterm=NONE ctermbg=none  ctermfg=DarkGray gui=bold guifg=DarkGray
+highlight CursorLineNr term=bold cterm=none ctermbg=none ctermfg=DarkGray gui=bold guifg=DarkGray
 highlight CursorLine term=bold cterm=NONE ctermbg=none  ctermfg=none gui=bold
-highlight CursorLineNr term=bold cterm=none ctermbg=none ctermfg=yellow gui=bold
+
+" === Plugins ===
+call plug#begin()
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'kien/ctrlp.vim'
+call plug#end()
+
+let g:airline_theme='base16_spacemacs'
