@@ -37,9 +37,10 @@ highlight CursorLine term=bold cterm=NONE ctermbg=none  ctermfg=none gui=bold
 
 " === Plugins ===
 call plug#begin()
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'kien/ctrlp.vim'
+Plug 'itchyny/lightline.vim'
 call plug#end()
 
-let g:airline_theme='base16_spacemacs'
+set laststatus=2
+let g:lightline = {
+      \ 'colorscheme': 'one',
+      \ }
