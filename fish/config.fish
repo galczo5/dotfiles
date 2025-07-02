@@ -13,9 +13,10 @@ function fish_prompt
 	end
 
 	set -l branch (echo $branch | tr -d '\n')
-	set -l currentPath (set_color blue --bold)(prompt_pwd)(set_color normal)
+
+    set -l currentPath (set_color blue --bold)(prompt_pwd)(set_color normal)
 	set -l currentUser (set_color blue --bold)$USER(set_color normal)
 
-	printf '%s %s%s > ' $currentUser $currentPath $branch
+	printf '%s %s%s ' $currentUser $currentPath $branch 
 
 end
