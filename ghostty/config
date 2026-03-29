@@ -1,0 +1,14 @@
+theme = GitHub Dark Dimmed
+font-family = "Menlo"
+font-size = 14
+
+window-padding-x = 12
+window-padding-y = 12
+
+
+cursor-style = block
+scrollback-limit = 10000
+mouse-hide-while-typing = true
+
+confirm-close-surface = false
+quit-after-last-window-closed = true

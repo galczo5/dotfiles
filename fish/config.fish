@@ -19,3 +19,5 @@ function fish_prompt
 	printf '%s %s%s ' $currentPath $branch 
 
 end
+
+
