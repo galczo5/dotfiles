@@ -9,5 +9,7 @@ window-padding-y = 12
 cursor-style = block
 mouse-hide-while-typing = true
 
+command = /opt/homebrew/bin/fish
+
 confirm-close-surface = false
 quit-after-last-window-closed = true
