@@ -40,8 +40,8 @@ link "zed/settings.json" "$HOME/.config/zed/settings.json"
 link "zed/keymap.json" "$HOME/.config/zed/keymap.json"
 link "zed/tasks.json" "$HOME/.config/zed/tasks.json"
 
-# Vim
-link "vim/.vimrc" "$HOME/.vimrc"
+# Neovim
+link "nvim/init.lua" "$HOME/.config/nvim/init.lua"
 
 # Vi
 link "vi/.exrc" "$HOME/.exrc"

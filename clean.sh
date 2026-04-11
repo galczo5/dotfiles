@@ -40,8 +40,8 @@ unlink_file "$HOME/.config/zed/settings.json"
 unlink_file "$HOME/.config/zed/keymap.json"
 unlink_file "$HOME/.config/zed/tasks.json"
 
-# Vim
-unlink_file "$HOME/.vimrc"
+# Neovim
+unlink_file "$HOME/.config/nvim/init.lua"
 
 # Vi
 unlink_file "$HOME/.exrc"
