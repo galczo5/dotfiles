@@ -48,3 +48,6 @@ link "vi/.exrc" "$HOME/.exrc"
 
 # Zsh
 link "zshrc/.zshrc" "$HOME/.zshrc"
+
+# Hushlogin
+touch "$HOME/.hushlogin"
