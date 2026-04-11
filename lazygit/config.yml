@@ -1,0 +1,10 @@
+gui:
+  showBottomLine: false
+  showFileTree: true
+  fileTreeSortOrder: foldersFirst
+
+git:
+  autoFetch: false
+
+update:
+  method: never

@@ -1,0 +1,94 @@
+{
+  "tab_bar": {
+    "show_pinned_tabs_in_separate_row": false,
+    "show_tab_bar_buttons": true,
+    "show_nav_history_buttons": true,
+  },
+  "status_bar": {
+    "show_active_file": true,
+  },
+  "collaboration_panel": {
+    "button": false,
+  },
+  "git_panel": {
+    "file_icons": true,
+    "tree_view": true,
+    "status_style": "icon",
+  },
+  "hide_mouse": "never",
+  "agent_servers": {
+    "claude-acp": {
+      "favorite_config_option_values": {
+        "model": ["default"],
+      },
+      "type": "registry",
+    },
+  },
+  "use_system_window_tabs": false,
+  "tabs": {
+    "file_icons": true,
+    "git_status": true,
+  },
+  "title_bar": {
+    "button_layout": "platform_default",
+    "show_user_picture": false,
+    "show_user_menu": false,
+    "show_sign_in": false,
+    "show_onboarding_banner": true,
+    "show_menus": true,
+    "show_branch_icon": true,
+  },
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 1000,
+    },
+  },
+  "cursor_shape": "bar",
+  "terminal": {
+    "shell": {
+      "with_arguments": {
+        "program": "zsh",
+        "args": [],
+        "title_override": null,
+      },
+    },
+  },
+  "project_panel": {
+    "button": true,
+    "hide_root": false,
+    "indent_guides": {
+      "show": "always",
+    },
+    "git_status_indicator": true,
+    "diagnostic_badges": true,
+    "bold_folder_labels": false,
+    "indent_size": 24.0,
+    "entry_spacing": "comfortable",
+    "dock": "left",
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "base_keymap": "JetBrains",
+  "icon_theme": {
+    "mode": "light",
+    "light": "Colored Zed Icons Theme Light",
+    "dark": "Colored Zed Icons Theme Dark",
+  },
+  "ui_font_size": 14.0,
+  "buffer_font_size": 14.0,
+  "theme": {
+    "mode": "dark",
+    "light": "Ayu Light",
+    "dark": "Ayu Dark",
+  },
+  "auto_install_extensions": {
+    "html": true,
+    "git-firefly": true,
+    "xml": true,
+    "log": true,
+    "colored-zed-icons-theme": true,
+  },
+}
+
