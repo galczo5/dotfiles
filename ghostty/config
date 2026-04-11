@@ -1,4 +1,4 @@
-theme = Ayu 
+theme = Atom One Dark
 font-family = "Menlo"
 font-size = 14
 
@@ -10,6 +10,8 @@ cursor-style = block
 mouse-hide-while-typing = true
 
 command = /opt/homebrew/bin/fish
+
+window-theme = dark
 
 confirm-close-surface = false
 quit-after-last-window-closed = true

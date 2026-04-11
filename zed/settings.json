@@ -80,8 +80,8 @@
   "buffer_font_size": 14.0,
   "theme": {
     "mode": "dark",
-    "light": "Ayu Light",
-    "dark": "Ayu Dark",
+    "light": "One Light",
+    "dark": "One Dark",
   },
   "auto_install_extensions": {
     "html": true,
@@ -91,4 +91,3 @@
     "colored-zed-icons-theme": true,
   },
 }
-
