@@ -20,6 +20,6 @@ function fish_prompt
 
     set -l currentPath (set_color blue --bold)(prompt_pwd)(set_color normal)
 
-	printf '%s %s%s → ' $currentPath $branch
+	printf '%s %s%s ' $currentPath $branch
 
 end
