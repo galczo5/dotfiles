@@ -1,6 +1,9 @@
 set -gx XDG_CONFIG_HOME "$HOME/.config"
+
 fish_add_path "$HOME/.local/bin"
 fish_add_path /opt/homebrew/bin
+
+set fish_cursor_default block
 
 function fish_greeting
 end
@@ -10,6 +13,7 @@ function mc
 end
 
 function fish_prompt
+	printf '\e[2 q'
 
 	set -l branch ""
 	if git rev-parse --is-inside-work-tree >/dev/null 2>&1

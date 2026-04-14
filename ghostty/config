@@ -5,8 +5,10 @@ font-size = 14
 window-padding-x = 12
 window-padding-y = 12
 
-
 cursor-style = block
+cursor-style-blink = true
+cursor-color = #FF0000
+
 mouse-hide-while-typing = true
 
 command = /opt/homebrew/bin/fish
