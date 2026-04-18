@@ -3,6 +3,8 @@ set -gx XDG_CONFIG_HOME "$HOME/.config"
 fish_add_path "$HOME/.local/bin"
 fish_add_path /opt/homebrew/bin
 
+fnm env --use-on-cd --shell fish | source
+
 set fish_cursor_default block
 
 function fish_greeting

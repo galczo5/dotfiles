@@ -7,8 +7,13 @@ link() {
     local dst="$2"
 
     if [ -e "$dst" ] || [ -L "$dst" ]; then
-        echo "[SKIP] $dst already exists"
-        return
+        read -r -p "[EXISTS] $dst — remove and replace? [y/N] " reply
+        if [[ "$reply" =~ ^[Yy]$ ]]; then
+            rm -rf "$dst"
+        else
+            echo "[SKIP] $dst"
+            return
+        fi
     fi
 
     mkdir -p "$(dirname "$dst")"
@@ -34,6 +39,9 @@ link "lazygit/config.yml" "$HOME/.config/lazygit/config.yml"
 # Midnight Commander
 link "mc/ini" "$HOME/.config/mc/ini"
 link "mc/panels.ini" "$HOME/.config/mc/panels.ini"
+
+# skhd
+link "skhd/skhdrc" "$HOME/.config/skhd/skhdrc"
 
 # Zed
 link "zed/settings.json" "$HOME/.config/zed/settings.json"
