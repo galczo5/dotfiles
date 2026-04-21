@@ -23,6 +23,7 @@ link() {
 
 # Fish
 link "fish/config.fish" "$HOME/.config/fish/config.fish"
+link "fish/functions/fish_source.fish" "$HOME/.config/fish/functions/fish_source.fish"
 
 # Ghostty
 link "ghostty/config" "$HOME/.config/ghostty/config"

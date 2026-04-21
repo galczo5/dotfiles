@@ -1,5 +1,8 @@
 set -gx XDG_CONFIG_HOME "$HOME/.config"
 
+fish_source ~/.zprofile
+fish_source ~/.zshrc
+
 fish_add_path "$HOME/.local/bin"
 fish_add_path /opt/homebrew/bin
 
