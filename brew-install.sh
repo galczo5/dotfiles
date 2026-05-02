@@ -17,3 +17,5 @@ confirm "obsidian" && brew install --cask obsidian
 confirm "skhd" && brew install --HEAD asmvik/skhd/skhd
 confirm "alt-tab" && brew install --cask alt-tab
 confirm "marta" && brew install --cask marta
+confirm "vlc" && brew install --cask vlc
+confirm "duti" && brew install duti

@@ -1,4 +1,13 @@
 {
+  "outline_panel": {
+    "dock": "left"
+  },
+  "agent": {
+    "sidebar_side": "right",
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": []
+  },
   "tab_bar": {
     "show_pinned_tabs_in_separate_row": false,
     "show_tab_bar_buttons": true,
@@ -8,9 +17,11 @@
     "show_active_file": true,
   },
   "collaboration_panel": {
+    "dock": "left",
     "button": false,
   },
   "git_panel": {
+    "dock": "left",
     "file_icons": true,
     "tree_view": true,
     "status_style": "icon",
