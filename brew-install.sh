@@ -1,24 +1,22 @@
 #!/bin/bash
 
-confirm() {
-    read -r -p "Install $1? [y/N] " reply
-    [[ "$reply" =~ ^[Yy]$ ]]
-}
+source "$(cd "$(dirname "$0")" && pwd)/script/pick.sh"
 
-confirm "fish" && brew install fish
-confirm "neovim" && brew install neovim
-confirm "lazygit" && brew install lazygit
-confirm "midnight-commander" && brew install midnight-commander
-confirm "htop" && brew install htop
-confirm "fnm" && brew install fnm
-confirm "zed" && brew install zed
-confirm "ghostty" && brew install --cask ghostty
-confirm "obsidian" && brew install --cask obsidian
-confirm "skhd" && brew install --HEAD asmvik/skhd/skhd
-confirm "alt-tab" && brew install --cask alt-tab
-confirm "marta" && brew install --cask marta
-confirm "vlc" && brew install --cask vlc
-confirm "duti" && brew install duti
-confirm "spotify" && brew install --cask spotify
-confirm "discord" && brew install --cask discord
-confirm "kepubify" && brew install kepubify
+pick \
+    "fish|brew install fish" \
+    "neovim|brew install neovim" \
+    "lazygit|brew install lazygit" \
+    "midnight-commander|brew install midnight-commander" \
+    "htop|brew install htop" \
+    "fnm|brew install fnm" \
+    "zed|brew install zed" \
+    "ghostty|brew install --cask ghostty" \
+    "obsidian|brew install --cask obsidian" \
+    "hammerspoon|brew install --cask hammerspoon" \
+    "alt-tab|brew install --cask alt-tab" \
+    "marta|brew install --cask marta" \
+    "vlc|brew install --cask vlc" \
+    "duti|brew install duti" \
+    "spotify|brew install --cask spotify" \
+    "discord|brew install --cask discord" \
+    "kepubify|brew install kepubify"

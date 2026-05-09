@@ -1,6 +1,7 @@
 #!/bin/bash
 
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
+source "$DOTFILES_DIR/script/pick.sh"
 
 link() {
     local src="$DOTFILES_DIR/$1"
@@ -21,42 +22,22 @@ link() {
     echo "[LINK] $src -> $dst"
 }
 
-# Fish
-link "fish/config.fish" "$HOME/.config/fish/config.fish"
-link "fish/functions/fish_source.fish" "$HOME/.config/fish/functions/fish_source.fish"
-
-# Ghostty
-link "ghostty/config" "$HOME/.config/ghostty/config"
-
-# Alacritty
-link "alacritty/alacritty.toml" "$HOME/.config/alacritty/alacritty.toml"
-
-# Kitty
-link "kitty/kitty.conf" "$HOME/.config/kitty/kitty.conf"
-
-# Lazygit
-link "lazygit/config.yml" "$HOME/.config/lazygit/config.yml"
-
-# Midnight Commander
-link "mc/ini" "$HOME/.config/mc/ini"
-link "mc/panels.ini" "$HOME/.config/mc/panels.ini"
-
-# skhd
-link "skhd/skhdrc" "$HOME/.config/skhd/skhdrc"
-
-# Zed
-link "zed/settings.json" "$HOME/.config/zed/settings.json"
-link "zed/keymap.json" "$HOME/.config/zed/keymap.json"
-link "zed/tasks.json" "$HOME/.config/zed/tasks.json"
-
-# Neovim
-link "nvim/init.lua" "$HOME/.config/nvim/init.lua"
-
-# Vi
-link "vi/.exrc" "$HOME/.exrc"
-
-# Zsh
-link "zshrc/.zshrc" "$HOME/.zshrc"
-
-# Hushlogin
-touch "$HOME/.hushlogin"
+pick \
+    "fish config|link fish/config.fish $HOME/.config/fish/config.fish" \
+    "fish source function|link fish/functions/fish_source.fish $HOME/.config/fish/functions/fish_source.fish" \
+    "ghostty|link ghostty/config $HOME/.config/ghostty/config" \
+    "alacritty|link alacritty/alacritty.toml $HOME/.config/alacritty/alacritty.toml" \
+    "kitty|link kitty/kitty.conf $HOME/.config/kitty/kitty.conf" \
+    "lazygit|link lazygit/config.yml $HOME/.config/lazygit/config.yml" \
+    "mc ini|link mc/ini $HOME/.config/mc/ini" \
+    "mc panels|link mc/panels.ini $HOME/.config/mc/panels.ini" \
+    "hammerspoon|link hammerspoon/init.lua $HOME/.hammerspoon/init.lua" \
+    "zed settings|link zed/settings.json $HOME/.config/zed/settings.json" \
+    "zed keymap|link zed/keymap.json $HOME/.config/zed/keymap.json" \
+    "zed tasks|link zed/tasks.json $HOME/.config/zed/tasks.json" \
+    "neovim|link nvim/init.lua $HOME/.config/nvim/init.lua" \
+    "vi exrc|link vi/.exrc $HOME/.exrc" \
+    "zshrc|link zshrc/.zshrc $HOME/.zshrc" \
+    "hushlogin|touch $HOME/.hushlogin" \
+    "set zed as default editor|$DOTFILES_DIR/script/set-zed-default.sh" \
+    "set vlc as default media player|$DOTFILES_DIR/script/set-vlc-default.sh"
