@@ -19,3 +19,6 @@ confirm "alt-tab" && brew install --cask alt-tab
 confirm "marta" && brew install --cask marta
 confirm "vlc" && brew install --cask vlc
 confirm "duti" && brew install duti
+confirm "spotify" && brew install --cask spotify
+confirm "discord" && brew install --cask discord
+confirm "kepubify" && brew install kepubify
