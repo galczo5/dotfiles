@@ -29,6 +29,10 @@
   "hide_mouse": "never",
   "agent_servers": {
     "claude-acp": {
+      "default_config_options": {
+        "mode": "acceptEdits",
+        "model": "opus"
+      },
       "favorite_config_option_values": {
         "model": ["default"],
       },

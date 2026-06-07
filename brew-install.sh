@@ -13,7 +13,6 @@ pick \
     "ghostty|brew install --cask ghostty" \
     "obsidian|brew install --cask obsidian" \
     "hammerspoon|brew install --cask hammerspoon" \
-    "alt-tab|brew install --cask alt-tab" \
     "marta|brew install --cask marta" \
     "vlc|brew install --cask vlc" \
     "duti|brew install duti" \
