@@ -5,14 +5,19 @@
 local ROW_H    = 40
 local ICON_SZ  = 22
 local PAD      = 12
-local WIDTH    = 420
 local MAX_ROWS = 12
+local MARGIN   = 24  -- transparent border around the panel so the shadow isn't clipped
 
-local windows      = {}
-local selectedIdx  = 1
-local overlay      = nil
-local altIsDown    = false
-local iconCache    = {}
+local PREVIEW_DELAY = 0.25  -- seconds to hover before previewing the window
+
+local windows       = {}
+local selectedIdx   = 1
+local overlay       = nil
+local altIsDown     = false
+local iconCache     = {}
+local previewTimer  = nil   -- fires after hovering, raises the selected window
+local previewActive = false -- whether a window has been raised for preview
+local originalFront = nil   -- frontmost window when the switcher opened
 
 local function icon(app)
     if not app then return nil end
@@ -41,7 +46,39 @@ local function hideOverlay()
     end
 end
 
+-- Cancel any pending/active preview. When a window was raised, put the
+-- originally-frontmost window back on top to restore the prior order.
+local function cancelPreview()
+    if previewTimer then
+        previewTimer:stop()
+        previewTimer = nil
+    end
+    if previewActive and originalFront then
+        originalFront:raise()
+    end
+    previewActive = false
+end
+
+-- Schedule a preview of the current selection after PREVIEW_DELAY. The raised
+-- window sits behind the overlay, which stays above it at the overlay level.
+local function schedulePreview()
+    if previewTimer then previewTimer:stop() end
+    previewTimer = hs.timer.doAfter(PREVIEW_DELAY, function()
+        previewTimer = nil
+        local win = windows[selectedIdx]
+        if win and altIsDown and win ~= originalFront then
+            win:raise()
+            previewActive = true
+        end
+    end)
+end
+
 local function focusSelected()
+    if previewTimer then
+        previewTimer:stop()
+        previewTimer = nil
+    end
+    previewActive = false
     local win = windows[selectedIdx]
     hideOverlay()
     if win then win:focus() end
@@ -51,11 +88,12 @@ local function redraw()
     local count  = math.min(#windows, MAX_ROWS)
     local height = count * ROW_H + PAD * 2
     local sf     = hs.screen.mainScreen():frame()
-    local ox     = math.floor((sf.w - WIDTH) / 2) + sf.x
-    local oy     = math.floor((sf.h - height) / 2) + sf.y
+    local WIDTH  = math.floor(sf.w / 4)
+    local ox     = math.floor((sf.w - WIDTH) / 2) + sf.x - MARGIN
+    local oy     = math.floor((sf.h - height) / 2) + sf.y - MARGIN
 
     if overlay then overlay:delete() end
-    overlay = hs.canvas.new({ x = ox, y = oy, w = WIDTH, h = height })
+    overlay = hs.canvas.new({ x = ox, y = oy, w = WIDTH + MARGIN * 2, h = height + MARGIN * 2 })
     overlay:level(hs.canvas.windowLevels.overlay)
     overlay:alpha(1)
 
@@ -65,14 +103,20 @@ local function redraw()
     els[#els + 1] = {
         type             = "rectangle",
         action           = "fill",
-        fillColor        = { red = 0.12, green = 0.12, blue = 0.12, alpha = 0.96 },
+        fillColor        = { white = 0.97, alpha = 0.97 },
         roundedRectRadii = { xRadius = 12, yRadius = 12 },
-        frame            = { x = 0, y = 0, w = WIDTH, h = height },
+        frame            = { x = MARGIN, y = MARGIN, w = WIDTH, h = height },
+        withShadow       = true,
+        shadow           = {
+            blurRadius = 18,
+            color      = { white = 0, alpha = 0.35 },
+            offset     = { h = -6, w = 0 },
+        },
     }
 
     for i, win in ipairs(windows) do
         if i > MAX_ROWS then break end
-        local ry  = PAD + (i - 1) * ROW_H
+        local ry  = MARGIN + PAD + (i - 1) * ROW_H
         local sel = i == selectedIdx
 
         -- row highlight
@@ -80,9 +124,9 @@ local function redraw()
             els[#els + 1] = {
                 type             = "rectangle",
                 action           = "fill",
-                fillColor        = { red = 0.25, green = 0.45, blue = 0.85, alpha = 0.75 },
+                fillColor        = { red = 0.20, green = 0.50, blue = 0.95, alpha = 0.90 },
                 roundedRectRadii = { xRadius = 7, yRadius = 7 },
-                frame            = { x = PAD / 2, y = ry + 2, w = WIDTH - PAD, h = ROW_H - 4 },
+                frame            = { x = MARGIN + PAD / 2, y = ry + 2, w = WIDTH - PAD, h = ROW_H - 4 },
             }
         end
 
@@ -93,7 +137,7 @@ local function redraw()
                 type  = "image",
                 image = img,
                 frame = {
-                    x = PAD,
+                    x = MARGIN + PAD,
                     y = ry + (ROW_H - ICON_SZ) / 2,
                     w = ICON_SZ,
                     h = ICON_SZ,
@@ -112,11 +156,11 @@ local function redraw()
             type      = "text",
             text      = hs.styledtext.new(title, {
                 font       = { name = "System Font Regular", size = 13 },
-                color      = { white = 1, alpha = sel and 1.0 or 0.75 },
+                color      = sel and { white = 1, alpha = 1.0 } or { white = 0.15, alpha = 0.85 },
                 paragraphStyle = { lineBreak = "truncatingTail" },
             }),
             frame = {
-                x = PAD + ICON_SZ + 10,
+                x = MARGIN + PAD + ICON_SZ + 10,
                 y = ry + (ROW_H - 18) / 2,
                 w = WIDTH - PAD * 2 - ICON_SZ - 10,
                 h = 20,
@@ -131,12 +175,19 @@ end
 local function showOrCycle(dir)
     altIsDown = true
     if not overlay then
-        windows     = visibleWindows()
-        selectedIdx = math.min(2, #windows)
-        if #windows > 0 then redraw() end
+        windows       = visibleWindows()
+        selectedIdx   = math.min(2, #windows)
+        originalFront = windows[1]
+        previewActive = false
+        if #windows > 0 then
+            redraw()
+            schedulePreview()
+        end
     else
+        cancelPreview()
         selectedIdx = ((selectedIdx - 1 + dir) % #windows) + 1
         redraw()
+        schedulePreview()
     end
 end
 
