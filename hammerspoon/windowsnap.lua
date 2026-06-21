@@ -87,18 +87,24 @@ local function computeTarget(pt)
         else                 return { x=f.x+g,         y=f.y+g, w=W-g*2,        h=H-g*2 } end
     end
 
+    -- left edge: corner | adaptive width | fixed 50% | corner (top → bottom)
     if rx < EDGE_SIZE then
         local t = ry / H
-        if     t < 1/3 then return leftSnap(scr, f, f.y+g,       H/2-g*1.5)
-        elseif t > 2/3 then return leftSnap(scr, f, f.y+H/2+g/2, H/2-g*1.5)
-        else                 return leftSnap(scr, f, f.y+g,       H-g*2)     end
+        if     t < 1/4 then return leftSnap(scr, f, f.y+g,       H/2-g*1.5)            -- top corner
+        elseif t < 1/2 then return leftSnap(scr, f, f.y+g,       H-g*2)                -- adaptive, full height
+        elseif t < 3/4 then return { x=f.x+g, y=f.y+g, w=W/2-g*1.5, h=H-g*2 }          -- fixed 50%, full height
+        else                 return leftSnap(scr, f, f.y+H/2+g/2, H/2-g*1.5)           -- bottom corner
+        end
     end
 
+    -- right edge: corner | adaptive width | fixed 50% | corner (top → bottom)
     if rx > W - EDGE_SIZE then
         local t = ry / H
-        if     t < 1/3 then return rightSnap(scr, f, f.y+g,       H/2-g*1.5)
-        elseif t > 2/3 then return rightSnap(scr, f, f.y+H/2+g/2, H/2-g*1.5)
-        else                 return rightSnap(scr, f, f.y+g,       H-g*2)    end
+        if     t < 1/4 then return rightSnap(scr, f, f.y+g,       H/2-g*1.5)           -- top corner
+        elseif t < 1/2 then return rightSnap(scr, f, f.y+g,       H-g*2)               -- adaptive, full height
+        elseif t < 3/4 then return { x=f.x+W/2+g/2, y=f.y+g, w=W/2-g*1.5, h=H-g*2 }    -- fixed 50%, full height
+        else                 return rightSnap(scr, f, f.y+H/2+g/2, H/2-g*1.5)          -- bottom corner
+        end
     end
 
     return nil
