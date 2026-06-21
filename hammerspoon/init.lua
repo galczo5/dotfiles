@@ -3,3 +3,4 @@ hs.hotkey.bind({"cmd"}, "return", function()
 end)
 
 require("windowswitcher")
+require("windowsnap")

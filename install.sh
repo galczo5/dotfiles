@@ -33,6 +33,7 @@ pick \
     "mc panels|link mc/panels.ini $HOME/.config/mc/panels.ini" \
     "hammerspoon|link hammerspoon/init.lua $HOME/.hammerspoon/init.lua" \
     "hammerspoon windowswitcher|link hammerspoon/windowswitcher.lua $HOME/.hammerspoon/windowswitcher.lua" \
+    "hammerspoon windowsnap|link hammerspoon/windowsnap.lua $HOME/.hammerspoon/windowsnap.lua" \
     "zed settings|link zed/settings.json $HOME/.config/zed/settings.json" \
     "zed keymap|link zed/keymap.json $HOME/.config/zed/keymap.json" \
     "zed tasks|link zed/tasks.json $HOME/.config/zed/tasks.json" \
