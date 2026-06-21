@@ -18,4 +18,5 @@ pick \
     "duti|brew install duti" \
     "spotify|brew install --cask spotify" \
     "discord|brew install --cask discord" \
-    "kepubify|brew install kepubify"
+    "kepubify|brew install kepubify" \
+    "fzf|brew install fzf"
