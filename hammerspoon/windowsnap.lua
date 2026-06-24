@@ -14,18 +14,23 @@ local snapTarget = nil
 local dragStart  = nil
 local isDragWin  = false
 local dragWindow = nil   -- window being dragged; excluded from wall scans
+local wallFrames = {}    -- snapshot of other windows' frames, taken once per drag
 
 -- ── wall detection ────────────────────────────────────────────────────────────
+-- Walls are computed from wallFrames (a snapshot captured at mouseDown) rather
+-- than querying hs.window.visibleWindows() on every drag event, which is slow.
+
+local function onScreen(wf, sf)
+    local cx, cy = wf.x + wf.w / 2, wf.y + wf.h / 2
+    return cx >= sf.x and cx < sf.x + sf.w and cy >= sf.y and cy < sf.y + sf.h
+end
 
 -- Nearest left-edge among windows centered in the right half → right wall.
 local function rightWall(scr, sf)
     local wall = sf.x + sf.w - GAP
     local mid  = sf.x + sf.w / 2
-    for _, w in ipairs(hs.window.visibleWindows()) do
-        if w ~= dragWindow and w:isStandard() and w:screen():id() == scr:id() then
-            local wf = w:frame()
-            if wf.x + wf.w / 2 > mid then wall = math.min(wall, wf.x) end
-        end
+    for _, wf in ipairs(wallFrames) do
+        if onScreen(wf, sf) and wf.x + wf.w / 2 > mid then wall = math.min(wall, wf.x) end
     end
     return wall
 end
@@ -34,11 +39,8 @@ end
 local function leftWall(scr, sf)
     local wall = sf.x + GAP
     local mid  = sf.x + sf.w / 2
-    for _, w in ipairs(hs.window.visibleWindows()) do
-        if w ~= dragWindow and w:isStandard() and w:screen():id() == scr:id() then
-            local wf = w:frame()
-            if wf.x + wf.w / 2 < mid then wall = math.max(wall, wf.x + wf.w) end
-        end
+    for _, wf in ipairs(wallFrames) do
+        if onScreen(wf, sf) and wf.x + wf.w / 2 < mid then wall = math.max(wall, wf.x + wf.w) end
     end
     return wall
 end
@@ -112,34 +114,47 @@ end
 
 -- ── preview overlay ───────────────────────────────────────────────────────────
 
-local snapOverlay = nil
+local snapOverlay = nil   -- persistent canvas, created once and reused
+local shownFrame  = nil   -- geometry currently drawn, to skip redundant redraws
+
+local function sameFrame(a, b)
+    return a and b and a.x==b.x and a.y==b.y and a.w==b.w and a.h==b.h
+end
 
 local function showOverlay(t)
-    if snapOverlay then snapOverlay:delete() end
-    snapOverlay = hs.canvas.new({ x=t.x, y=t.y, w=t.w, h=t.h })
-    snapOverlay:level(hs.canvas.windowLevels.overlay - 1)
+    if sameFrame(shownFrame, t) then return end   -- nothing changed; avoid redraw
+    shownFrame = { x=t.x, y=t.y, w=t.w, h=t.h }
+
+    if not snapOverlay then
+        snapOverlay = hs.canvas.new({ x=t.x, y=t.y, w=t.w, h=t.h })
+        snapOverlay:level(hs.canvas.windowLevels.overlay - 1)
+    else
+        snapOverlay:frame({ x=t.x, y=t.y, w=t.w, h=t.h })
+    end
+
     snapOverlay:replaceElements(
         {
             type             = "rectangle",
             action           = "fill",
-            fillColor        = { red=0.20, green=0.50, blue=0.95, alpha=0.18 },
+            fillColor        = { white=1, alpha=0.25 },
             roundedRectRadii = { xRadius=10, yRadius=10 },
             frame            = { x=0, y=0, w=t.w, h=t.h },
         },
         {
             type             = "rectangle",
             action           = "stroke",
-            strokeColor      = { red=0.20, green=0.50, blue=0.95, alpha=0.65 },
-            strokeWidth      = 2,
+            strokeColor      = { white=1, alpha=0.95 },
+            strokeWidth      = 4,
             roundedRectRadii = { xRadius=10, yRadius=10 },
-            frame            = { x=0, y=0, w=t.w, h=t.h },
+            frame            = { x=2, y=2, w=t.w-4, h=t.h-4 },
         }
     )
     snapOverlay:show()
 end
 
 local function hideOverlay()
-    if snapOverlay then snapOverlay:delete() snapOverlay = nil end
+    shownFrame = nil
+    if snapOverlay then snapOverlay:hide() end
 end
 
 -- ── drag tracking ─────────────────────────────────────────────────────────────
@@ -166,6 +181,17 @@ local downWatcher = hs.eventtap.new({ hs.eventtap.event.types.leftMouseDown }, f
     isDragWin  = dragWindow ~= nil
     dragStart  = pt
     snapTarget = nil
+
+    -- Snapshot other windows' frames once, so drag events don't repeatedly
+    -- hit the (slow) Accessibility API while computing snap walls.
+    wallFrames = {}
+    if isDragWin then
+        for _, w in ipairs(hs.window.visibleWindows()) do
+            if w ~= dragWindow and w:isStandard() then
+                wallFrames[#wallFrames + 1] = w:frame()
+            end
+        end
+    end
     return false
 end)
 
@@ -194,6 +220,7 @@ local upWatcher = hs.eventtap.new({ hs.eventtap.event.types.leftMouseUp }, funct
     dragStart  = nil
     isDragWin  = false
     dragWindow = nil
+    wallFrames = {}
     hideOverlay()
 
     if target and win then
