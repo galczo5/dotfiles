@@ -18,7 +18,7 @@ Everything is installed via symlinks, so edits in this repo take effect immediat
 | `lazygit/` | Lazygit |
 | `mc/` | Midnight Commander (`ini`, `panels.ini`) |
 | `zed/` | Zed editor (`settings.json`, `keymap.json`, `tasks.json`) |
-| `hammerspoon/` | Hammerspoon — launch-or-focus hotkey and a custom window switcher |
+| `hammerspoon/` | Hammerspoon — launch-or-focus hotkey, a custom window switcher, and drag-to-edge window snapping (see `hammerspoon/README.md`) |
 | `script/` | Helper scripts (interactive picker, default-app setters) |
 | `brew-install.sh` | Installs apps and CLI tools via Homebrew |
 | `install.sh` | Symlinks configs into place |
@@ -47,6 +47,7 @@ cd ~/Dev/dotfiles
 ## Highlights
 
 - **Hammerspoon window switcher** (`hammerspoon/windowswitcher.lua`) — hold `alt` and tap `tab` to cycle through visible windows (`alt`+`shift`+`tab` to go back); release `alt` to focus. Hovering a row briefly previews that window. `cmd`+`return` launches or focuses Ghostty.
+- **Hammerspoon window snapping** (`hammerspoon/windowsnap.lua`) — drag a window by its title bar to a screen edge to snap it, with uniform gaps. The top edge gives 2/3, full, and 1/3 zones; the left/right edges give four zones (corner, adaptive-width, fixed 50%, corner). The adaptive zone fills the free space up to the nearest window. Requires disabling macOS native edge tiling — see `hammerspoon/README.md`.
 - **Default-app setters** — `install.sh` can optionally run `script/set-zed-default.sh` (Zed for text/source files) and `script/set-vlc-default.sh` (VLC for audio/video). Both use [`duti`](https://github.com/moretension/duti) (`brew install duti`).
 - **Shared shell environment** — Fish sources `~/.zprofile` and `~/.zshrc` via the `fish_source` function, keeping environment variables consistent across shells.
 
