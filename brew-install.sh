@@ -19,4 +19,7 @@ pick \
     "spotify|brew install --cask spotify" \
     "discord|brew install --cask discord" \
     "kepubify|brew install kepubify" \
-    "fzf|brew install fzf"
+    "fzf|brew install fzf" \
+    "github-cli|brew install gh" \
+    "aws-cli|brew install awscli" \
+    "terraform|brew install terraform"
