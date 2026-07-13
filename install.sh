@@ -42,4 +42,5 @@ pick \
     "zshrc|link zshrc/.zshrc $HOME/.zshrc" \
     "hushlogin|touch $HOME/.hushlogin" \
     "set zed as default editor|$DOTFILES_DIR/script/set-zed-default.sh" \
-    "set vlc as default media player|$DOTFILES_DIR/script/set-vlc-default.sh"
+    "set vlc as default media player|$DOTFILES_DIR/script/set-vlc-default.sh" \
+    "macOS system defaults|$DOTFILES_DIR/script/macos-defaults.sh"
