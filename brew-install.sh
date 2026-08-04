@@ -14,6 +14,7 @@ pick \
     "obsidian|brew install --cask obsidian" \
     "hammerspoon|brew install --cask hammerspoon" \
     "marta|brew install --cask marta" \
+    "appcleaner|brew install --cask appcleaner" \
     "vlc|brew install --cask vlc" \
     "duti|brew install duti" \
     "spotify|brew install --cask spotify" \

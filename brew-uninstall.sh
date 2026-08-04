@@ -14,6 +14,7 @@ pick \
     "obsidian|brew uninstall --cask obsidian" \
     "hammerspoon|brew uninstall --cask hammerspoon" \
     "marta|brew uninstall --cask marta" \
+    "appcleaner|brew uninstall --cask appcleaner" \
     "vlc|brew uninstall --cask vlc" \
     "duti|brew uninstall duti" \
     "spotify|brew uninstall --cask spotify" \
